@@ -17,7 +17,8 @@ const locale = {
 	ANNUAL_VEHICLES_INSPECTION:'Inspección anual de vehículo',
 	INVOICES_AND_PAYMENTS:'Invoices And Payments',
 	TRAILER_RENTAL:'Alquiler de remolques',
-	YARD_RENTAL:'Alquiler de patio'
+	YARD_RENTAL:'Alquiler de patio',
+	POSITIONS: 'Cargo',
 
 
 

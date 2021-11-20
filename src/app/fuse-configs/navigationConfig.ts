@@ -89,14 +89,6 @@ const navigationConfig: Array<MenuItem> = [
         icon: 'settings',
         children: [
             {
-                id: App_Modules.Headquarters,
-                title: 'Headquarters',
-                translate: 'HEADQUARTERS',
-                type: 'item',
-                url: '/headquarters',
-                exact: true
-            },
-            {
                 id: App_Modules.UserArea,
                 title: 'User Area',
                 translate: 'USER_AREA',

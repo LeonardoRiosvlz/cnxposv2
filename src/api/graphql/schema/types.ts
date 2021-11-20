@@ -26,85 +26,64 @@ export enum Action_List {
   UsersGetUserProfile = 'USERS_GET_USER_PROFILE',
   FilesGetWriteSignedUrl = 'FILES_GET_WRITE_SIGNED_URL',
   FilesCreateUploadedFile = 'FILES_CREATE_UPLOADED_FILE',
-  TenantGetConnection = 'TENANT_GET_CONNECTION',
-  TranscoderTranscoder = 'TRANSCODER_TRANSCODER'
+  TenantGetConnection = 'TENANT_GET_CONNECTION'
 }
 
 export enum App_Modules {
   Users = 'USERS',
-  Headquarters = 'HEADQUARTERS',
   UserArea = 'USER_AREA',
   UserPosition = 'USER_POSITION',
   UserRoles = 'USER_ROLES',
   Tenant = 'TENANT',
   Files = 'FILES',
   Notifications = 'NOTIFICATIONS',
-  Setting = 'SETTING',
-  Membership = 'MEMBERSHIP',
-  IrpRoadTaxes = 'IRP_ROAD_TAXES',
-  IftaFuelTaxes = 'IFTA_FUEL_TAXES',
-  DotInfo = 'DOT_INFO',
-  SubstanceComplianceClearingHouse = 'SUBSTANCE_COMPLIANCE_CLEARING_HOUSE',
-  DriverFiles = 'DRIVER_FILES',
-  AnnualVehInspStateRermits = 'ANNUAL_VEH_INSP_STATE_RERMITS',
-  TrailerRental = 'TRAILER_RENTAL',
-  YardRental = 'YARD_RENTAL',
-  FinancedEquipment = 'FINANCED_EQUIPMENT',
-  Accounting = 'ACCOUNTING'
+  Sales = 'SALES',
+  Products = 'PRODUCTS',
+  Company = 'COMPANY',
+  Taxes = 'TAXES',
+  Group = 'GROUP',
+  Warehouse = 'WAREHOUSE',
+  BarCodeIdentifier = 'BAR_CODE_IDENTIFIER',
+  BillingResolution = 'BILLING_RESOLUTION',
+  Composition = 'COMPOSITION',
+  ProductArea = 'PRODUCT_AREA',
+  ProductGroup = 'PRODUCT_GROUP',
+  ProductMenu = 'PRODUCT_MENU',
+  ProductParams = 'PRODUCT_PARAMS',
+  TaxesAndCosts = 'TAXES_AND_COSTS',
+  UnitMeasurement = 'UNIT_MEASUREMENT',
+  ProductSalePrice = 'PRODUCT_SALE_PRICE',
+  SpecialPrices = 'SPECIAL_PRICES',
+  PriceByVolume = 'PRICE_BY_VOLUME',
+  Services = 'SERVICES',
+  PreparationType = 'PREPARATION_TYPE',
+  PartialTotalPhysicalInventory = 'PARTIAL_TOTAL_PHYSICAL_INVENTORY',
+  PartialInventoryItems = 'PARTIAL_INVENTORY_ITEMS',
+  InitialPhysicalInventory = 'INITIAL_PHYSICAL_INVENTORY',
+  InventoryCovementConpepts = 'INVENTORY_COVEMENT_CONPEPTS',
+  ThirdParties = 'THIRD_PARTIES',
+  ThirdPartyClassification = 'THIRD_PARTY_CLASSIFICATION',
+  InventoryMovement = 'INVENTORY_MOVEMENT',
+  MonetaryDenomination = 'MONETARY_DENOMINATION',
+  Purchase = 'PURCHASE',
+  PurchaseReturns = 'PURCHASE_RETURNS',
+  Serial = 'SERIAL',
+  CashDocument = 'CASH_DOCUMENT'
 }
 
-export type AccountingFilterFilter = {
-  and?: Maybe<Array<AccountingFilterFilter>>;
-  or?: Maybe<Array<AccountingFilterFilter>>;
-  id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
-  createdAt?: Maybe<DateFieldComparison>;
-  updatedAt?: Maybe<DateFieldComparison>;
-};
+export enum Accounting {
+  None = 'NONE',
+  CashRegister = 'CASH_REGISTER',
+  Banks = 'BANKS',
+  Credits = 'CREDITS'
+}
 
-export type AccountingResponse = {
-  id: Scalars['ID'];
-  date: Scalars['DateTime'];
-  paymentAmount: Scalars['Float'];
-  achDate: Scalars['String'];
-  file?: Maybe<CloudFileResponse>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type AnnualVehInspStateRermitsFilterFilter = {
-  and?: Maybe<Array<AnnualVehInspStateRermitsFilterFilter>>;
-  or?: Maybe<Array<AnnualVehInspStateRermitsFilterFilter>>;
-  id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
-  createdAt?: Maybe<DateFieldComparison>;
-  updatedAt?: Maybe<DateFieldComparison>;
-};
-
-export type AnnualVehInspStateRermitsResponse = {
-  id: Scalars['ID'];
-  annualVehInspReport?: Maybe<Scalars['String']>;
-  annualVehInspReportUnbound?: Maybe<Scalars['String']>;
-  annualVehInspReportFile?: Maybe<CloudFileResponse>;
-  statePermits?: Maybe<Scalars['String']>;
-  statePermitsUnbound?: Maybe<Scalars['String']>;
-  statePermitsExpiration?: Maybe<Scalars['DateTime']>;
-  statePermitsFile?: Maybe<CloudFileResponse>;
-  newMexicoLogin?: Maybe<Scalars['String']>;
-  newMexicoLoginUnbound?: Maybe<Scalars['String']>;
-  newMexicoLoginFile?: Maybe<CloudFileResponse>;
-  newMexicoPassword?: Maybe<Scalars['String']>;
-  newMexicoPasswordUnbound?: Maybe<Scalars['String']>;
-  newMexicoPasswordFile?: Maybe<CloudFileResponse>;
-  otherPermitInfo?: Maybe<Scalars['String']>;
-  otherPermitInfoUnbound?: Maybe<Scalars['String']>;
-  otherPermitInfoFile?: Maybe<CloudFileResponse>;
-  notes?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
+export enum AlwaysLinkedWith {
+  None = 'NONE',
+  Banks = 'BANKS',
+  CreditCardAndBanks = 'CREDIT_CARD_AND_BANKS',
+  Credits = 'CREDITS'
+}
 
 export type AuthProviderDataResponse = {
   thirdPartyId: Scalars['String'];
@@ -135,6 +114,103 @@ export type AvailablePermitsResponse = {
   actions: Array<Action_List>;
 };
 
+export type BanksFilterFilter = {
+  and?: Maybe<Array<BanksFilterFilter>>;
+  or?: Maybe<Array<BanksFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type BanksResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  accountingAccount: Scalars['Int'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum BarCodeFormat {
+  Code_128_3Labels = 'CODE_128_3_LABELS',
+  Code_128_2Labels = 'CODE_128_2_LABELS',
+  Ean_13_3Labels = 'EAN_13_3_LABELS',
+  Code_128_3LabelsWithCompany = 'CODE_128_3_LABELS_WITH_COMPANY',
+  Code_128_3LabelsWithCompanyCompressed = 'CODE_128_3_LABELS_WITH_COMPANY_COMPRESSED',
+  Gondola_70_32 = 'GONDOLA_70_32',
+  Zebra_5_08_2_0Lp_2824 = 'ZEBRA_5_08_2_0_LP_2824',
+  Code_128_3LabelsWithCompanyWithoutPrice = 'CODE_128_3_LABELS_WITH_COMPANY_WITHOUT_PRICE',
+  GondolaWithBarcodeC70_32 = 'GONDOLA_WITH_BARCODE_C70_32',
+  Jewelry_91_5_1 = 'JEWELRY_91_5_1',
+  LabelsAdditionalData_55_40 = 'LABELS_ADDITIONAL_DATA_55_40',
+  LabelArgox_3Labels_32_25 = 'LABEL_ARGOX_3_LABELS_32_25',
+  LabelSatoC128_40_30 = 'LABEL_SATO_C128_40_30'
+}
+
+export enum BarCodeIdentifier {
+  Barcode = 'BARCODE',
+  InternalCode = 'INTERNAL_CODE'
+}
+
+export type BarCodeIdentifierFilterFilter = {
+  and?: Maybe<Array<BarCodeIdentifierFilterFilter>>;
+  or?: Maybe<Array<BarCodeIdentifierFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  code?: Maybe<StringFieldComparison>;
+  price?: Maybe<StringFieldComparison>;
+  currency?: Maybe<StringFieldComparison>;
+  quantity?: Maybe<StringFieldComparison>;
+  identifier?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type BarCodeIdentifierResponse = {
+  id: Scalars['ID'];
+  code: Scalars['String'];
+  price: Scalars['Float'];
+  currency: Scalars['String'];
+  quantity: Scalars['Int'];
+  identifier: BarCodeIdentifier;
+  barCodeFormat: BarCodeFormat;
+  warehouse: SolvedEntityResponse;
+  company: SolvedEntityResponse;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type BillingResolutionFilterFilter = {
+  and?: Maybe<Array<BillingResolutionFilterFilter>>;
+  or?: Maybe<Array<BillingResolutionFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  resolutionNumber?: Maybe<StringFieldComparison>;
+  prefix?: Maybe<StringFieldComparison>;
+  from?: Maybe<StringFieldComparison>;
+  to?: Maybe<StringFieldComparison>;
+  initialNumber?: Maybe<StringFieldComparison>;
+  finalNumber?: Maybe<StringFieldComparison>;
+  resolutionClass?: Maybe<StringFieldComparison>;
+  resolutionType?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type BillingResolutionResponse = {
+  id: Scalars['ID'];
+  resolutionNumber: Scalars['String'];
+  prefix: Scalars['String'];
+  initialNumber: Scalars['Int'];
+  finalNumber: Scalars['Int'];
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  localBilling: Scalars['Boolean'];
+  resolutionClass: ResolutionClass;
+  resolutionType: ResolutionType;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type BooleanFieldComparison = {
   is?: Maybe<Scalars['Boolean']>;
   isNot?: Maybe<Scalars['Boolean']>;
@@ -143,35 +219,6 @@ export type BooleanFieldComparison = {
 export type ChangePasswordInput = {
   oldPassword: Scalars['String'];
   newPassword: Scalars['ID'];
-};
-
-export type ClientFilterFilter = {
-  and?: Maybe<Array<ClientFilterFilter>>;
-  or?: Maybe<Array<ClientFilterFilter>>;
-  id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
-  createdAt?: Maybe<DateFieldComparison>;
-  updatedAt?: Maybe<DateFieldComparison>;
-};
-
-export type ClientResponse = {
-  id: Scalars['ID'];
-  clientSince?: Maybe<Scalars['String']>;
-  companyName?: Maybe<Scalars['String']>;
-  customerName?: Maybe<Scalars['String']>;
-  tax?: Maybe<SolvedEntityResponse>;
-  mc?: Maybe<Scalars['String']>;
-  ofTrucks?: Maybe<Scalars['String']>;
-  street?: Maybe<Scalars['String']>;
-  city?: Maybe<Scalars['String']>;
-  stateProvince?: Maybe<Scalars['String']>;
-  zipPostalCode?: Maybe<Scalars['String']>;
-  contacEmail?: Maybe<Scalars['String']>;
-  conactOficePhone?: Maybe<Scalars['String']>;
-  mobilePhone?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type CloudFileIdResponse = {
@@ -185,9 +232,42 @@ export type CloudFileResponse = {
   url?: Maybe<Scalars['String']>;
 };
 
-export type CorporationEinFilterFilter = {
-  and?: Maybe<Array<CorporationEinFilterFilter>>;
-  or?: Maybe<Array<CorporationEinFilterFilter>>;
+export type CompanyFilterFilter = {
+  and?: Maybe<Array<CompanyFilterFilter>>;
+  or?: Maybe<Array<CompanyFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  country?: Maybe<StringFieldComparison>;
+  webSite?: Maybe<StringFieldComparison>;
+  address?: Maybe<StringFieldComparison>;
+  phoneNumber?: Maybe<StringFieldComparison>;
+  email?: Maybe<StringFieldComparison>;
+  nit?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type CompanyResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  country: Scalars['String'];
+  city: Scalars['String'];
+  webSite: Scalars['String'];
+  address: Scalars['String'];
+  phoneNumber: Scalars['String'];
+  email: Scalars['String'];
+  nit: Scalars['String'];
+  isActive: Scalars['Boolean'];
+  contact?: Maybe<SolvedEntityResponse>;
+  photoFile?: Maybe<CloudFileResponse>;
+  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type CompositionDecompositionFilterFilter = {
+  and?: Maybe<Array<CompositionDecompositionFilterFilter>>;
+  or?: Maybe<Array<CompositionDecompositionFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
   description?: Maybe<StringFieldComparison>;
@@ -195,128 +275,125 @@ export type CorporationEinFilterFilter = {
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type CorporationEinResponse = {
+export type CompositionDecompositionResponse = {
   id: Scalars['ID'];
-  client?: Maybe<SolvedEntityResponse>;
-  documentType: DocumentType;
-  expiration: Scalars['DateTime'];
-  expires: Scalars['Boolean'];
+  compositionType: CompositionType;
+  warehouse?: Maybe<SolvedEntityResponse>;
+  userAdmin?: Maybe<SolvedEntityResponse>;
+  product?: Maybe<SolvedEntityResponse>;
+  code: Scalars['String'];
+  quantity: Scalars['Int'];
   description?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type CreateAccountingInput = {
-  date: Scalars['DateTime'];
-  paymentAmount: Scalars['Float'];
-  achDate: Scalars['String'];
-  file?: Maybe<Scalars['ID']>;
+export type CompositionFilterFilter = {
+  and?: Maybe<Array<CompositionFilterFilter>>;
+  or?: Maybe<Array<CompositionFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  code?: Maybe<StringFieldComparison>;
+  ref?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type CreateAnnualVehInspStateRermitsInput = {
-  annualVehInspReport?: Maybe<Scalars['String']>;
-  annualVehInspReportUnbound?: Maybe<Scalars['String']>;
-  annualVehInspReportFile?: Maybe<Scalars['ID']>;
-  statePermits?: Maybe<Scalars['String']>;
-  statePermitsUnbound?: Maybe<Scalars['String']>;
-  statePermitsExpiration?: Maybe<Scalars['DateTime']>;
-  statePermitsFile?: Maybe<Scalars['ID']>;
-  newMexicoLogin?: Maybe<Scalars['String']>;
-  newMexicoLoginUnbound?: Maybe<Scalars['String']>;
-  newMexicoLoginFile?: Maybe<Scalars['ID']>;
-  newMexicoPassword?: Maybe<Scalars['String']>;
-  newMexicoPasswordUnbound?: Maybe<Scalars['String']>;
-  newMexicoPasswordFile?: Maybe<Scalars['ID']>;
-  otherPermitInfo?: Maybe<Scalars['String']>;
-  otherPermitInfoUnbound?: Maybe<Scalars['String']>;
-  otherPermitInfoFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
-};
-
-export type CreateClientInput = {
-  clientSince?: Maybe<Scalars['String']>;
-  companyName?: Maybe<Scalars['String']>;
-  customerName?: Maybe<Scalars['String']>;
-  tax?: Maybe<Scalars['ID']>;
-  mc?: Maybe<Scalars['String']>;
-  ofTrucks?: Maybe<Scalars['String']>;
-  street?: Maybe<Scalars['String']>;
-  city?: Maybe<Scalars['String']>;
-  stateProvince?: Maybe<Scalars['String']>;
-  zipPostalCode?: Maybe<Scalars['String']>;
-  contacEmail?: Maybe<Scalars['String']>;
-  conactOficePhone?: Maybe<Scalars['String']>;
-  mobilePhone?: Maybe<Scalars['String']>;
-};
-
-export type CreateCorporationEinInput = {
-  client?: Maybe<Scalars['ID']>;
-  documentType: DocumentType;
-  expiration: Scalars['DateTime'];
-  expires: Scalars['Boolean'];
+export type CompositionResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  code: Scalars['String'];
+  ref: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  um?: Maybe<SolvedEntityResponse>;
+  area?: Maybe<SolvedEntityResponse>;
+  photoFile?: Maybe<CloudFileResponse>;
+  products?: Maybe<Array<SolvedEntityResponse>>;
+  compound: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type CreateDotInfoInput = {
-  dot?: Maybe<Scalars['String']>;
-  dotDetail?: Maybe<Scalars['String']>;
-  dotExpiration?: Maybe<Scalars['DateTime']>;
-  dotFile?: Maybe<Scalars['ID']>;
-  mc?: Maybe<Scalars['String']>;
-  mcDetail?: Maybe<Scalars['String']>;
-  mcFile?: Maybe<Scalars['ID']>;
-  taxId?: Maybe<Scalars['String']>;
-  taxIdDetail?: Maybe<Scalars['String']>;
-  taxIdFile?: Maybe<Scalars['ID']>;
-  dotPin?: Maybe<Scalars['String']>;
-  dotPinDetail?: Maybe<Scalars['String']>;
-  dotPinFile?: Maybe<Scalars['ID']>;
-  mcPin?: Maybe<Scalars['String']>;
-  mcPinDetail?: Maybe<Scalars['String']>;
-  mcPinFile?: Maybe<Scalars['ID']>;
-  scac?: Maybe<Scalars['String']>;
-  scacDetail?: Maybe<Scalars['String']>;
-  scacExpiration?: Maybe<Scalars['DateTime']>;
-  scacFile?: Maybe<Scalars['ID']>;
-  ucr?: Maybe<Scalars['String']>;
-  ucrDetail?: Maybe<Scalars['String']>;
-  ucrExpiration?: Maybe<Scalars['DateTime']>;
-  ucrFile?: Maybe<Scalars['ID']>;
-  bocThree?: Maybe<Scalars['String']>;
-  bocThreeDetail?: Maybe<Scalars['String']>;
-  bocThreeFile?: Maybe<Scalars['ID']>;
-  docRoadInspection?: Maybe<Scalars['String']>;
-  docRoadInspectionDetail?: Maybe<Scalars['String']>;
-  docRoadInspectionFile?: Maybe<Scalars['ID']>;
-  docAudits?: Maybe<Scalars['String']>;
-  docAuditsDetail?: Maybe<Scalars['String']>;
-  docAuditsFile?: Maybe<Scalars['ID']>;
-  otherDotDocument?: Maybe<Scalars['String']>;
-  otherDotDocumentDetail?: Maybe<Scalars['String']>;
-  otherDotDocumentFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export enum CompositionType {
+  Composition = 'COMPOSITION',
+  Decomposition = 'DECOMPOSITION'
+}
+
+export type CreateBanksInput = {
+  name: Scalars['String'];
+  accountingAccount?: Maybe<Scalars['Int']>;
 };
 
-export type CreateDriverFilesInput = {
-  name?: Maybe<Scalars['String']>;
-  dni?: Maybe<Scalars['String']>;
-  driveLicense?: Maybe<Scalars['String']>;
-  driveLicenseFile?: Maybe<Scalars['ID']>;
-  driveLicenseExpiration?: Maybe<Scalars['DateTime']>;
-  medicalCardFile?: Maybe<Scalars['ID']>;
-  medicalCardExpiration?: Maybe<Scalars['DateTime']>;
-  mvrFile?: Maybe<Scalars['ID']>;
-  mvrExpiration?: Maybe<Scalars['DateTime']>;
-  socialSecurityFile?: Maybe<Scalars['ID']>;
-  socialSecurityExpiration?: Maybe<Scalars['DateTime']>;
-  driverFile?: Maybe<Scalars['ID']>;
-  driverSignedContractFile?: Maybe<Scalars['ID']>;
-  inquiryToPreviousEmployerFile?: Maybe<Scalars['ID']>;
-  drugsTestFile?: Maybe<Scalars['ID']>;
-  clearingHouseFile?: Maybe<Scalars['ID']>;
-  clearingHouseExpiration?: Maybe<Scalars['DateTime']>;
-  readInspectionsNoaFile?: Maybe<Scalars['ID']>;
-  otherDocuments?: Maybe<Scalars['ID']>;
+export type CreateBarCodeIdentifierInput = {
+  code: Scalars['String'];
+  price: Scalars['Float'];
+  currency?: Maybe<Scalars['String']>;
+  quantity: Scalars['Int'];
+  identifier: BarCodeIdentifier;
+  barCodeFormat: BarCodeFormat;
+  warehouse?: Maybe<Scalars['ID']>;
+  company?: Maybe<Scalars['ID']>;
+};
+
+export type CreateBillingResolutionInput = {
+  resolutionNumber: Scalars['String'];
+  prefix: Scalars['String'];
+  initialNumber: Scalars['Int'];
+  finalNumber: Scalars['Int'];
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  resolutionClass: ResolutionClass;
+  resolutionType: ResolutionType;
+  localBilling?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateCompanyInput = {
+  name: Scalars['String'];
+  country: Scalars['String'];
+  city: Scalars['String'];
+  webSite: Scalars['String'];
+  address: Scalars['String'];
+  phoneNumber: Scalars['String'];
+  email: Scalars['String'];
+  nit: Scalars['String'];
+  isActive?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  contact?: Maybe<Scalars['ID']>;
+};
+
+export type CreateCompositionDecompositionInput = {
+  warehouse?: Maybe<Scalars['ID']>;
+  userAdmin?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+  compositionType: CompositionType;
+  code: Scalars['String'];
+  quantity: Scalars['Int'];
+};
+
+export type CreateCompositionInput = {
+  name: Scalars['String'];
+  code: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  ref: Scalars['String'];
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  compound: Scalars['Boolean'];
+};
+
+export type CreateCreditCardInput = {
+  name: Scalars['String'];
+  commission?: Maybe<Scalars['Float']>;
+  photoFile?: Maybe<Scalars['ID']>;
+};
+
+export type CreateEconomicActivitiesInput = {
+  codeCiu: Scalars['Int'];
+  codeActivity: Scalars['Int'];
+  rate: Scalars['Int'];
+  nameActivity: Scalars['String'];
 };
 
 export type CreateFilesInput = {
@@ -328,63 +405,246 @@ export type CreateFilesInput = {
   status: FileStatus;
 };
 
-export type CreateFinancedEquipmentInput = {
-  saleAmount: Scalars['String'];
-  saleDate: Scalars['String'];
-  monthlyPayment: Scalars['String'];
-  lastPaymentDate: Scalars['String'];
-  financeAgreementDocuments?: Maybe<Scalars['ID']>;
-  repairsCostReceiptsText: Scalars['String'];
-  repairsCostReceiptsFile?: Maybe<Scalars['ID']>;
-  truckVin?: Maybe<Scalars['String']>;
-  payOffList?: Maybe<Scalars['ID']>;
+export type CreateFiscalResponsibilityInput = {
+  codeDian: Scalars['Int'];
+  taxDescription?: Maybe<Scalars['String']>;
 };
 
-export type CreateIftaFuelTaxesInput = {
-  iftaAccount?: Maybe<Scalars['String']>;
-  iftaAccountDetail?: Maybe<Scalars['String']>;
-  iftaAccountExpiration?: Maybe<Scalars['DateTime']>;
-  iftaAccountFile?: Maybe<Scalars['ID']>;
-  iftaApplRenewalsChanges?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesDetail?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesFile?: Maybe<Scalars['ID']>;
-  fuelTaxes?: Maybe<Scalars['String']>;
-  fuelTaxesDetail?: Maybe<Scalars['String']>;
-  fuelTaxesExpiration?: Maybe<Scalars['DateTime']>;
-  fuelTaxesFile?: Maybe<Scalars['ID']>;
-  otherIftaRequest?: Maybe<Scalars['String']>;
-  otherIftaRequestDetail?: Maybe<Scalars['String']>;
-  otherIftaRequestExpiration?: Maybe<Scalars['DateTime']>;
-  otherIftaRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type CreateGroupInput = {
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isActive: Scalars['Boolean'];
+  area?: Maybe<Scalars['ID']>;
+  leader: Scalars['ID'];
+  members: Array<Scalars['ID']>;
 };
 
-export type CreateIrpRoadTaxesInput = {
-  irpAccount?: Maybe<Scalars['String']>;
-  irpAccountDetail?: Maybe<Scalars['String']>;
-  irpExpiration?: Maybe<Scalars['DateTime']>;
-  irpFile?: Maybe<Scalars['ID']>;
-  certificateTitle: Scalars['String'];
-  certificateTitleDetail?: Maybe<Scalars['String']>;
-  certificateTitleFile?: Maybe<Scalars['ID']>;
-  tag?: Maybe<Scalars['String']>;
-  tagDetail?: Maybe<Scalars['String']>;
-  tagExpiration?: Maybe<Scalars['DateTime']>;
-  tagFile?: Maybe<Scalars['ID']>;
-  roadTax?: Maybe<Scalars['String']>;
-  roadTaxDetail?: Maybe<Scalars['String']>;
-  roadTaxExpiration?: Maybe<Scalars['DateTime']>;
-  roadTaxFile?: Maybe<Scalars['ID']>;
-  leaseAgreement?: Maybe<Scalars['String']>;
-  leaseAgreementDetail?: Maybe<Scalars['String']>;
-  leaseAgreementFile?: Maybe<Scalars['ID']>;
-  irpApplicationsRenewals?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsDetail?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsFile?: Maybe<Scalars['ID']>;
-  otherIrpRequest?: Maybe<Scalars['String']>;
-  otherIrpRequestDetail?: Maybe<Scalars['String']>;
-  otherIrpRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type CreateInitialPhysicalInventoryInput = {
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  partialInventory?: Maybe<Scalars['ID']>;
+};
+
+export type CreateInventoryCovementConceptsInput = {
+  name: Scalars['String'];
+  requestThird?: Maybe<Scalars['Boolean']>;
+  loadAllProducts?: Maybe<Scalars['Boolean']>;
+  valueType: ValueTypes;
+  movementType: MovementType;
+};
+
+export type CreateInventoryMovementInput = {
+  concepts?: Maybe<Scalars['ID']>;
+  warehouse?: Maybe<Scalars['ID']>;
+  third?: Maybe<Scalars['ID']>;
+  settingNumber: Scalars['Int'];
+  detail?: Maybe<Scalars['String']>;
+  movementDate: Scalars['DateTime'];
+  movementStatus: MovementStatus;
+};
+
+export type CreateInventoryMovementItemsInput = {
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  entry: Scalars['Float'];
+  output: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  movementInventory?: Maybe<Scalars['ID']>;
+};
+
+export type CreateInventoryTransferInput = {
+  originWarehouse?: Maybe<Scalars['ID']>;
+  destinationWarehouse?: Maybe<Scalars['ID']>;
+  transfertDate: Scalars['DateTime'];
+  transferNumber: Scalars['Int'];
+  document: Scalars['String'];
+  detail?: Maybe<Scalars['String']>;
+  transferStatus: TransferStatus;
+};
+
+export type CreateInventoryTransferItemsInput = {
+  originQuantity: Scalars['Float'];
+  totalTransfer: Scalars['Float'];
+  originRestant: Scalars['Float'];
+  destinationBalance: Scalars['Float'];
+  transfer: Scalars['Float'];
+  destinationBalanceTotal: Scalars['Float'];
+  movementTransfer?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+};
+
+export type CreateMonetaryDenominationInput = {
+  value: Scalars['Float'];
+  photoFile?: Maybe<Scalars['ID']>;
+  monetaryDenominationTypes: MonetaryDenominationTypes;
+};
+
+export type CreatePartialInventoryItemsInput = {
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  partialInventory?: Maybe<Scalars['ID']>;
+};
+
+export type CreatePartialTotalPhysicalInventoryInput = {
+  detail: Scalars['String'];
+  number: Scalars['Int'];
+  warehouse?: Maybe<Scalars['ID']>;
+  isConfirmed?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreatePaymentMethodInput = {
+  name: Scalars['String'];
+  code: Scalars['String'];
+  cashOnHand?: Maybe<Scalars['Boolean']>;
+  credit?: Maybe<Scalars['Boolean']>;
+  divideIntoInstallments?: Maybe<Scalars['Boolean']>;
+  paycheck?: Maybe<Scalars['Boolean']>;
+  deferPayment?: Maybe<Scalars['Boolean']>;
+  days?: Maybe<Scalars['Int']>;
+  accounting?: Maybe<Accounting>;
+  alwaysLinkedWith?: Maybe<AlwaysLinkedWith>;
+  accountingAccount: Scalars['String'];
+  askBank?: Maybe<Scalars['Boolean']>;
+  askBoucherNumber?: Maybe<Scalars['Boolean']>;
+  askDocumentDate?: Maybe<Scalars['Boolean']>;
+  askCardType?: Maybe<Scalars['Boolean']>;
+  paymentMethodDian?: Maybe<Scalars['ID']>;
+  paymentMethodDianType?: Maybe<PaymentMethodDianType>;
+  administersDominicilios?: Maybe<Scalars['Boolean']>;
+  administersBonuses?: Maybe<Scalars['Boolean']>;
+  administersAdvanceReservationsOrders?: Maybe<Scalars['Boolean']>;
+  affectVouchersConsignmentsThirds?: Maybe<Scalars['Boolean']>;
+  showIva?: Maybe<Scalars['Boolean']>;
+  iva?: Maybe<Scalars['ID']>;
+  confirmReturns?: Maybe<Scalars['Boolean']>;
+  confirmCreditCut?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+};
+
+export type CreatePreparationTypeInput = {
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+};
+
+export type CreateProductAreaInput = {
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  attentionArea?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateProductGroupInput = {
+  name: Scalars['String'];
+  sortingToOrders?: Maybe<Scalars['Boolean']>;
+  source: Scalars['String'];
+  tipInOrder?: Maybe<Scalars['Boolean']>;
+  warehouses?: Maybe<Array<Scalars['ID']>>;
+  taxAppliedToPurchases?: Maybe<Array<Scalars['ID']>>;
+  taxAppliedToSales?: Maybe<Array<Scalars['ID']>>;
+  timeTax?: Maybe<Scalars['Boolean']>;
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateProductInput = {
+  name: Scalars['String'];
+  code: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  compound?: Maybe<Scalars['Boolean']>;
+  shoppingAssistant?: Maybe<Scalars['Boolean']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  composition?: Maybe<Scalars['ID']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  barCode?: Maybe<Array<Scalars['ID']>>;
+  groups?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type CreateProductMenuInput = {
+  name: Scalars['String'];
+  product?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type CreateProductParamsInput = {
+  updatePriceInInvoice?: Maybe<Scalars['Boolean']>;
+  belongsToWarehouse?: Maybe<Scalars['Boolean']>;
+  releaseToMenu?: Maybe<Scalars['Boolean']>;
+  invoicePriceRangeFrom?: Maybe<Scalars['Float']>;
+  invoicePriceRangeTo?: Maybe<Scalars['Float']>;
+  maxDiscount?: Maybe<Scalars['Int']>;
+  maxStock?: Maybe<Scalars['Int']>;
+  minStock?: Maybe<Scalars['Int']>;
+  replenishIn?: Maybe<Scalars['String']>;
+  additional?: Maybe<Scalars['String']>;
+  unitPoints?: Maybe<Scalars['String']>;
+  warehouse?: Maybe<Scalars['ID']>;
+  attentionTimeServiceOrders?: Maybe<Scalars['String']>;
+  calculatePriceInvoicePercentage?: Maybe<Scalars['String']>;
+  pointsPerUnit?: Maybe<Scalars['String']>;
+  menu?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+  options?: Maybe<Array<Scalars['String']>>;
+  gourmetQualify?: Maybe<Array<Scalars['String']>>;
+  productWithPreparation?: Maybe<Scalars['Boolean']>;
+  preparationType?: Maybe<Scalars['ID']>;
+  inventoryAccount?: Maybe<Scalars['String']>;
+  salesAccount?: Maybe<Scalars['String']>;
+  costSaleAccount?: Maybe<Scalars['String']>;
+  fixedAsset?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateProductSalePriceInput = {
+  product?: Maybe<Scalars['ID']>;
+  generalValueTax?: Maybe<Scalars['ID']>;
+  generalValue: Scalars['Float'];
+  generalUtilityValue: Scalars['Float'];
+  ncTax?: Maybe<Scalars['ID']>;
+  commission: Scalars['Float'];
+  specialOneValueTax?: Maybe<Scalars['ID']>;
+  specialOneValue: Scalars['Float'];
+  specialOneUtilityValue: Scalars['Float'];
+  specialTwoValueTax?: Maybe<Scalars['ID']>;
+  specialTwoValue: Scalars['Float'];
+  specialTwoUtilityValue: Scalars['Float'];
+};
+
+export type CreatePurchaseReturnsInput = {
+  thirdSupplier: Scalars['ID'];
+  purchase: Scalars['ID'];
+  purchaseReturnsNumber: Scalars['Float'];
+  purchaseReturnsDate: Scalars['DateTime'];
+  purchaseDateNow: Scalars['DateTime'];
+  totalPurchaseReturnsValue: Scalars['Float'];
+  subTotalPurchaseReturnsValue: Scalars['Float'];
+  discount: Scalars['Float'];
+  otherTaxes: Scalars['Float'];
+  reference?: Maybe<Scalars['String']>;
+  purchaseReturnsStatus: PurchaseReturnsStatus;
+  taxes?: Maybe<Array<Scalars['ID']>>;
+  details?: Maybe<Scalars['String']>;
+};
+
+export type CreateRegimeTypeInput = {
+  name: Scalars['String'];
 };
 
 export type CreateRoleInput = {
@@ -393,34 +653,57 @@ export type CreateRoleInput = {
   permits: Array<PermitsInput>;
 };
 
-export type CreateSubstanceComplianceClearinghouseInput = {
-  drugRandomEnrollment?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentDetail?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentExpiration?: Maybe<Scalars['DateTime']>;
-  drugRandomEnrollmentFile?: Maybe<Scalars['ID']>;
-  reasonableSuspicious?: Maybe<Scalars['String']>;
-  reasonableSuspiciousDetail?: Maybe<Scalars['String']>;
-  reasonableSuspiciousExpiration?: Maybe<Scalars['DateTime']>;
-  reasonableSuspiciousFile?: Maybe<Scalars['ID']>;
-  clearingHouseLogin?: Maybe<Scalars['String']>;
-  clearingHouseLoginDetail?: Maybe<Scalars['String']>;
-  clearingHouseLoginFile?: Maybe<Scalars['ID']>;
-  clearingHousePassword?: Maybe<Scalars['String']>;
-  clearingHousePasswordDetail?: Maybe<Scalars['String']>;
-  clearingHousePasswordFile?: Maybe<Scalars['ID']>;
-  clearingHouseRegQueries?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesDetail?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesFile?: Maybe<Scalars['ID']>;
-  otherSubstanceRequest?: Maybe<Scalars['String']>;
-  otherSubstanceRequestDetail?: Maybe<Scalars['String']>;
-  otherSubstanceRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type CreateSerialInput = {
+  serial: Scalars['String'];
+  product?: Maybe<Scalars['ID']>;
+};
+
+export type CreateSerialMovementInput = {
+  serial: Scalars['String'];
+  product?: Maybe<Scalars['ID']>;
+  movementInventory?: Maybe<Scalars['ID']>;
+};
+
+export type CreateSerialTransferInput = {
+  serial: Scalars['String'];
+  product?: Maybe<Scalars['ID']>;
+  transferInventory?: Maybe<Scalars['ID']>;
+};
+
+export type CreateServicesInput = {
+  code: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  iva?: Maybe<Scalars['ID']>;
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  groups?: Maybe<Array<Scalars['ID']>>;
+  cost: Scalars['Float'];
+  price: Scalars['Float'];
+  ultCost: Scalars['Boolean'];
+  loadOrderScreen: Scalars['Boolean'];
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateTaxesAndCostsInput = {
+  product?: Maybe<Scalars['ID']>;
+  shoppingTax?: Maybe<Scalars['ID']>;
+  applyIco?: Maybe<Scalars['Boolean']>;
+  valueIco: Scalars['Float'];
+  includeIcoInCost?: Maybe<Scalars['Boolean']>;
+  productCost: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitTaxCost?: Maybe<Scalars['ID']>;
+  valueUnitTaxCost: Scalars['Float'];
+  totalUnitCost: Scalars['Float'];
+  volumePrice: Array<Scalars['String']>;
 };
 
 export type CreateTaxesInput = {
   name: Scalars['String'];
   tax: Scalars['Float'];
   description?: Maybe<Scalars['String']>;
+  taxType: TaxType;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -431,16 +714,71 @@ export type CreateTenantInput = {
   info?: Maybe<TenantInfoInput>;
 };
 
-export type CreateTrailerRentalInput = {
-  unit: Scalars['String'];
-  vin: Scalars['String'];
-  tag: Scalars['String'];
-  year: Scalars['String'];
-  make: Scalars['String'];
-  model: Scalars['String'];
-  rentalDate: Scalars['DateTime'];
-  rentalAmount: Scalars['Float'];
-  file?: Maybe<Scalars['ID']>;
+export type CreateThirdPartiesInput = {
+  identificationDocument?: Maybe<Scalars['String']>;
+  verificationDigit?: Maybe<Scalars['String']>;
+  identificationDocumentType: IdentificationDocumentType;
+  personType: PersonType;
+  barCode?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  firstSurname?: Maybe<Scalars['String']>;
+  secondSurname?: Maybe<Scalars['String']>;
+  businessName?: Maybe<Scalars['String']>;
+  tradename?: Maybe<Scalars['String']>;
+  address?: Maybe<Scalars['String']>;
+  phoneNumber?: Maybe<Scalars['String']>;
+  secondPhoneNumber?: Maybe<Scalars['String']>;
+  birthday?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  department?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  neighborhood?: Maybe<Scalars['String']>;
+  thirdPartyClassification?: Maybe<Scalars['ID']>;
+  nationality?: Maybe<Scalars['String']>;
+  regime: RegimeType;
+  isClient?: Maybe<Scalars['Boolean']>;
+  isEmployee?: Maybe<Scalars['Boolean']>;
+  isSupplier?: Maybe<Scalars['Boolean']>;
+  isOtherSellers?: Maybe<Scalars['Boolean']>;
+  isPosBilling?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  assignDebtQuota?: Maybe<Scalars['Boolean']>;
+  debtQuota?: Maybe<Scalars['String']>;
+  isSetPrices: Scalars['Boolean'];
+  priceType: PriceType;
+  isActive?: Maybe<Scalars['Boolean']>;
+  enablePoints?: Maybe<Scalars['Boolean']>;
+  baseRetention: Scalars['String'];
+  percentageRetention?: Maybe<Scalars['Float']>;
+  seller?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  restrictPaymentMethod?: Maybe<Scalars['Boolean']>;
+  restrictAllPaymentMethod?: Maybe<Scalars['Boolean']>;
+  paymentMethod?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type CreateThirdPartyClassificationInput = {
+  name: Scalars['String'];
+  assignDebtQuota?: Maybe<Scalars['Boolean']>;
+  debtQuota?: Maybe<Scalars['Float']>;
+  gourmetConnection?: Maybe<Scalars['Boolean']>;
+  includeServiceOrders?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateTributaryInformationInput = {
+  third?: Maybe<Scalars['ID']>;
+  regimeType?: Maybe<Scalars['ID']>;
+  economicActivities?: Maybe<Scalars['ID']>;
+  retention: Retention;
+  registrationNumber: Scalars['Int'];
+  taxDetail?: Maybe<Array<Scalars['ID']>>;
+  fiscalResponsibility?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type CreateUnitMeasurementInput = {
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
 };
 
 export type CreateUploadedFileInput = {
@@ -475,13 +813,30 @@ export type CreateUserPositionInput = {
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
-export type CreateYardRentalInput = {
-  truck: Scalars['String'];
-  truckColor: Scalars['String'];
-  tag: Scalars['String'];
-  rentalDate: Scalars['DateTime'];
-  rentalAmount: Scalars['Float'];
-  file?: Maybe<Scalars['ID']>;
+export type CreateWarehouseInput = {
+  name: Scalars['String'];
+  code: Scalars['String'];
+  location: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreditCardFilterFilter = {
+  and?: Maybe<Array<CreditCardFilterFilter>>;
+  or?: Maybe<Array<CreditCardFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type CreditCardResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  commission: Scalars['Float'];
+  photoFile?: Maybe<CloudFileResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type DateFieldComparison = {
@@ -505,27 +860,35 @@ export type DateFieldComparisonBetween = {
 };
 
 
-export type DeleteAccountingInput = {
+export type DeleteBanksInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteAnnualVehInspStateRermitsInput = {
+export type DeleteBarCodeIdentifierInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteClientInput = {
+export type DeleteBillingResolutionInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteCorporationEinInput = {
+export type DeleteCompanyInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteDotInfoInput = {
+export type DeleteCompositionDecompositionInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteDriverFilesInput = {
+export type DeleteCompositionInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteCreditCardInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteEconomicActivitiesInput = {
   entityId: Scalars['ID'];
 };
 
@@ -533,76 +896,204 @@ export type DeleteFilesInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteFinancedEquipmentInput = {
+export type DeleteFiscalResponsibilityInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteIftaFuelTaxesInput = {
+export type DeleteGroupInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteIrpRoadTaxesInput = {
+export type DeleteInitialPhysicalInventoryInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteManyAccountingInput = {
-  where?: Maybe<AccountingFilterFilter>;
+export type DeleteInventoryCovementConceptsInput = {
+  entityId: Scalars['ID'];
 };
 
-export type DeleteManyAnnualVehInspStateRermitsInput = {
-  where?: Maybe<AnnualVehInspStateRermitsFilterFilter>;
+export type DeleteInventoryMovementInput = {
+  entityId: Scalars['ID'];
 };
 
-export type DeleteManyClientInput = {
-  where?: Maybe<ClientFilterFilter>;
+export type DeleteInventoryMovementItemsInput = {
+  entityId: Scalars['ID'];
 };
 
-export type DeleteManyCorporationEinInput = {
-  where?: Maybe<CorporationEinFilterFilter>;
+export type DeleteInventoryTransferInput = {
+  entityId: Scalars['ID'];
 };
 
-export type DeleteManyDotInfoInput = {
-  where?: Maybe<DotInfoFilterFilter>;
+export type DeleteInventoryTransferItemsInput = {
+  entityId: Scalars['ID'];
 };
 
-export type DeleteManyDriverFilesInput = {
-  where?: Maybe<DriverFilesFilterFilter>;
+export type DeleteManyBanksInput = {
+  where?: Maybe<BanksFilterFilter>;
+};
+
+export type DeleteManyBarCodeIdentifierInput = {
+  where?: Maybe<BarCodeIdentifierFilterFilter>;
+};
+
+export type DeleteManyBillingResolutionInput = {
+  where?: Maybe<BillingResolutionFilterFilter>;
+};
+
+export type DeleteManyCompanyInput = {
+  where?: Maybe<CompanyFilterFilter>;
+};
+
+export type DeleteManyCompositionDecompositionInput = {
+  where?: Maybe<CompositionDecompositionFilterFilter>;
+};
+
+export type DeleteManyCompositionInput = {
+  where?: Maybe<CompositionFilterFilter>;
+};
+
+export type DeleteManyCreditCardInput = {
+  where?: Maybe<CreditCardFilterFilter>;
+};
+
+export type DeleteManyEconomicActivitiesInput = {
+  where?: Maybe<EconomicActivitiesFilterFilter>;
 };
 
 export type DeleteManyFilesInput = {
   where?: Maybe<FilesFilterFilter>;
 };
 
-export type DeleteManyFinancedEquipmentInput = {
-  where?: Maybe<FinancedEquipmentFilterFilter>;
+export type DeleteManyFiscalResponsibilityInput = {
+  where?: Maybe<FiscalResponsibilityFilterFilter>;
 };
 
-export type DeleteManyIftaFuelTaxesInput = {
-  where?: Maybe<IftaFuelTaxesFilterFilter>;
+export type DeleteManyGroupInput = {
+  where?: Maybe<GroupFilterFilter>;
 };
 
-export type DeleteManyIrpRoadTaxesInput = {
-  where?: Maybe<IrpRoadTaxesFilterFilter>;
+export type DeleteManyInitialPhysicalInventoryInput = {
+  where?: Maybe<InitialPhysicalInventoryFilterFilter>;
+};
+
+export type DeleteManyInventoryCovementConceptsInput = {
+  where?: Maybe<InventoryCovementConceptsFilterFilter>;
+};
+
+export type DeleteManyInventoryMovementInput = {
+  where?: Maybe<InventoryMovementFilterFilter>;
+};
+
+export type DeleteManyInventoryMovementItemsInput = {
+  where?: Maybe<InventoryMovementItemsFilterFilter>;
+};
+
+export type DeleteManyInventoryTransferInput = {
+  where?: Maybe<InventoryTransferFilterFilter>;
+};
+
+export type DeleteManyInventoryTransferItemsInput = {
+  where?: Maybe<InventoryTransferItemsFilterFilter>;
+};
+
+export type DeleteManyMonetaryDenominationInput = {
+  where?: Maybe<MonetaryDenominationFilterFilter>;
 };
 
 export type DeleteManyNotificationInput = {
   where?: Maybe<NotificationFilterFilter>;
 };
 
+export type DeleteManyPartialInventoryItemsInput = {
+  where?: Maybe<PartialInventoryItemsFilterFilter>;
+};
+
+export type DeleteManyPartialTotalPhysicalInventoryInput = {
+  where?: Maybe<PartialTotalPhysicalInventoryFilterFilter>;
+};
+
+export type DeleteManyPaymentMethodInput = {
+  where?: Maybe<PaymentMethodFilterFilter>;
+};
+
+export type DeleteManyPreparationTypeInput = {
+  where?: Maybe<PreparationTypeFilterFilter>;
+};
+
+export type DeleteManyProductAreaInput = {
+  where?: Maybe<ProductAreaFilterFilter>;
+};
+
+export type DeleteManyProductGroupInput = {
+  where?: Maybe<ProductGroupFilterFilter>;
+};
+
+export type DeleteManyProductInput = {
+  where?: Maybe<ProductFilterFilter>;
+};
+
+export type DeleteManyProductMenuInput = {
+  where?: Maybe<ProductMenuFilterFilter>;
+};
+
+export type DeleteManyProductParamsInput = {
+  where?: Maybe<ProductParamsFilterFilter>;
+};
+
+export type DeleteManyProductSalePriceInput = {
+  where?: Maybe<ProductSalePriceFilterFilter>;
+};
+
+export type DeleteManyPurchaseReturnsInput = {
+  where?: Maybe<PurchaseReturnsFilterFilter>;
+};
+
+export type DeleteManyRegimeTypeInput = {
+  where?: Maybe<RegimeTypeFilterFilter>;
+};
+
 export type DeleteManyRoleInput = {
   where?: Maybe<RoleFilterFilter>;
 };
 
-export type DeleteManySubstanceComplianceClearinghouseInput = {
-  where?: Maybe<SubstanceComplianceClearinghouseFilterFilter>;
+export type DeleteManySerialInput = {
+  where?: Maybe<SerialFilterFilter>;
+};
+
+export type DeleteManySerialMovementInput = {
+  where?: Maybe<SerialMovementFilterFilter>;
+};
+
+export type DeleteManySerialTransferInput = {
+  where?: Maybe<SerialTransferFilterFilter>;
+};
+
+export type DeleteManyServicesInput = {
+  where?: Maybe<ServicesFilterFilter>;
+};
+
+export type DeleteManyTaxesAndCostsInput = {
+  where?: Maybe<TaxesAndCostsFilterFilter>;
 };
 
 export type DeleteManyTaxesInput = {
   where?: Maybe<TaxesFilterFilter>;
 };
 
-export type DeleteManyTrailerRentalInput = {
-  where?: Maybe<TrailerRentalFilterFilter>;
+export type DeleteManyThirdPartiesInput = {
+  where?: Maybe<ThirdPartiesFilterFilter>;
+};
+
+export type DeleteManyThirdPartyClassificationInput = {
+  where?: Maybe<ThirdPartyClassificationFilterFilter>;
+};
+
+export type DeleteManyTributaryInformationInput = {
+  where?: Maybe<TributaryInformationFilterFilter>;
+};
+
+export type DeleteManyUnitMeasurementInput = {
+  where?: Maybe<UnitMeasurementFilterFilter>;
 };
 
 export type DeleteManyUserAreaInput = {
@@ -617,11 +1108,63 @@ export type DeleteManyUserPositionInput = {
   where?: Maybe<UserPositionFilterFilter>;
 };
 
-export type DeleteManyYardRentalInput = {
-  where?: Maybe<YardRentalFilterFilter>;
+export type DeleteManyWarehouseInput = {
+  where?: Maybe<WarehouseFilterFilter>;
+};
+
+export type DeleteMonetaryDenominationInput = {
+  entityId: Scalars['ID'];
 };
 
 export type DeleteNotificationInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePartialInventoryItemsInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePartialTotalPhysicalInventoryInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePaymentMethodInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePreparationTypeInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductAreaInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductGroupInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductMenuInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductParamsInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteProductSalePriceInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePurchaseReturnsInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteRegimeTypeInput = {
   entityId: Scalars['ID'];
 };
 
@@ -629,7 +1172,23 @@ export type DeleteRoleInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteSubstanceComplianceClearinghouseInput = {
+export type DeleteSerialInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteSerialMovementInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteSerialTransferInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteServicesInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteTaxesAndCostsInput = {
   entityId: Scalars['ID'];
 };
 
@@ -641,7 +1200,19 @@ export type DeleteTenantInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteTrailerRentalInput = {
+export type DeleteThirdPartiesInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteThirdPartyClassificationInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteTributaryInformationInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteUnitMeasurementInput = {
   entityId: Scalars['ID'];
 };
 
@@ -657,20 +1228,13 @@ export type DeleteUserPositionInput = {
   entityId: Scalars['ID'];
 };
 
-export type DeleteYardRentalInput = {
+export type DeleteWarehouseInput = {
   entityId: Scalars['ID'];
 };
 
-export enum DocumentType {
-  ArticlesOfIncorporation = 'ARTICLES_OF_INCORPORATION',
-  EinIrs = 'EIN_IRS',
-  OwnerDriverLicense = 'OWNER_DRIVER_LICENSE',
-  OwnerSocialSecurityNumber = 'OWNER_SOCIAL_SECURITY_NUMBER'
-}
-
-export type DotInfoFilterFilter = {
-  and?: Maybe<Array<DotInfoFilterFilter>>;
-  or?: Maybe<Array<DotInfoFilterFilter>>;
+export type EconomicActivitiesFilterFilter = {
+  and?: Maybe<Array<EconomicActivitiesFilterFilter>>;
+  or?: Maybe<Array<EconomicActivitiesFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
   description?: Maybe<StringFieldComparison>;
@@ -678,80 +1242,12 @@ export type DotInfoFilterFilter = {
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type DotInfoResponse = {
+export type EconomicActivitiesResponse = {
   id: Scalars['ID'];
-  dot?: Maybe<Scalars['String']>;
-  dotDetail?: Maybe<Scalars['String']>;
-  dotExpiration?: Maybe<Scalars['DateTime']>;
-  dotFile?: Maybe<CloudFileResponse>;
-  mc?: Maybe<Scalars['String']>;
-  mcDetail?: Maybe<Scalars['String']>;
-  mcFile?: Maybe<CloudFileResponse>;
-  taxId?: Maybe<Scalars['String']>;
-  taxIdDetail?: Maybe<Scalars['String']>;
-  taxIdFile?: Maybe<CloudFileResponse>;
-  dotPin?: Maybe<Scalars['String']>;
-  dotPinDetail?: Maybe<Scalars['String']>;
-  dotPinFile?: Maybe<CloudFileResponse>;
-  mcPin?: Maybe<Scalars['String']>;
-  mcPinDetail?: Maybe<Scalars['String']>;
-  mcPinFile?: Maybe<CloudFileResponse>;
-  scac?: Maybe<Scalars['String']>;
-  scacDetail?: Maybe<Scalars['String']>;
-  scacExpiration?: Maybe<Scalars['DateTime']>;
-  scacFile?: Maybe<CloudFileResponse>;
-  ucr?: Maybe<Scalars['String']>;
-  ucrDetail?: Maybe<Scalars['String']>;
-  ucrExpiration?: Maybe<Scalars['DateTime']>;
-  ucrFile?: Maybe<CloudFileResponse>;
-  bocThree?: Maybe<Scalars['String']>;
-  bocThreeDetail?: Maybe<Scalars['String']>;
-  bocThreeFile?: Maybe<CloudFileResponse>;
-  docRoadInspection?: Maybe<Scalars['String']>;
-  docRoadInspectionDetail?: Maybe<Scalars['String']>;
-  docRoadInspectionFile?: Maybe<CloudFileResponse>;
-  docAudits?: Maybe<Scalars['String']>;
-  docAuditsDetail?: Maybe<Scalars['String']>;
-  docAuditsFile?: Maybe<CloudFileResponse>;
-  otherDotDocument?: Maybe<Scalars['String']>;
-  otherDotDocumentDetail?: Maybe<Scalars['String']>;
-  otherDotDocumentFile?: Maybe<CloudFileResponse>;
-  notes?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type DriverFilesFilterFilter = {
-  and?: Maybe<Array<DriverFilesFilterFilter>>;
-  or?: Maybe<Array<DriverFilesFilterFilter>>;
-  id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
-  createdAt?: Maybe<DateFieldComparison>;
-  updatedAt?: Maybe<DateFieldComparison>;
-};
-
-export type DriverFilesResponse = {
-  id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  dni?: Maybe<Scalars['String']>;
-  driveLicense?: Maybe<Scalars['String']>;
-  driveLicenseFile?: Maybe<CloudFileResponse>;
-  driveLicenseExpiration?: Maybe<Scalars['DateTime']>;
-  medicalCardFile?: Maybe<CloudFileResponse>;
-  medicalCardExpiration?: Maybe<Scalars['DateTime']>;
-  mvrFile?: Maybe<CloudFileResponse>;
-  mvrExpiration?: Maybe<Scalars['DateTime']>;
-  socialSecurityFile?: Maybe<CloudFileResponse>;
-  socialSecurityExpiration?: Maybe<Scalars['DateTime']>;
-  driverFile?: Maybe<CloudFileResponse>;
-  driverSignedContractFile?: Maybe<CloudFileResponse>;
-  inquiryToPreviousEmployerFile?: Maybe<CloudFileResponse>;
-  drugsTestFile?: Maybe<CloudFileResponse>;
-  clearingHouseFile?: Maybe<CloudFileResponse>;
-  clearingHouseExpiration?: Maybe<Scalars['DateTime']>;
-  readInspectionsNoaFile?: Maybe<CloudFileResponse>;
-  otherDocuments?: Maybe<CloudFileResponse>;
+  codeCiu: Scalars['Int'];
+  codeActivity: Scalars['Int'];
+  rate: Scalars['Int'];
+  nameActivity?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -800,27 +1296,20 @@ export type FilesResponse = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type FinancedEquipmentFilterFilter = {
-  and?: Maybe<Array<FinancedEquipmentFilterFilter>>;
-  or?: Maybe<Array<FinancedEquipmentFilterFilter>>;
+export type FiscalResponsibilityFilterFilter = {
+  and?: Maybe<Array<FiscalResponsibilityFilterFilter>>;
+  or?: Maybe<Array<FiscalResponsibilityFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
+  codeDian?: Maybe<StringFieldComparison>;
+  taxDescription?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type FinancedEquipmentResponse = {
+export type FiscalResponsibilityResponse = {
   id: Scalars['ID'];
-  saleAmount: Scalars['String'];
-  saleDate: Scalars['String'];
-  monthlyPayment: Scalars['String'];
-  lastPaymentDate: Scalars['String'];
-  financeAgreementDocuments?: Maybe<CloudFileResponse>;
-  repairsCostReceiptsText: Scalars['String'];
-  repairsCostReceiptsFile?: Maybe<CloudFileResponse>;
-  truckVin?: Maybe<Scalars['String']>;
-  payOffList?: Maybe<CloudFileResponse>;
+  codeDian: Scalars['Int'];
+  taxDescription?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -847,49 +1336,89 @@ export type GenderFilterComparison = {
   notIn?: Maybe<Array<UserGender>>;
 };
 
-export type GetAllAccountingInput = {
-  where?: Maybe<AccountingFilterFilter>;
-  orderBy?: Maybe<OrderByAccountingInput>;
+export type GetAllBanksInput = {
+  where?: Maybe<BanksFilterFilter>;
+  orderBy?: Maybe<OrderByBanksInput>;
 };
 
-export type GetAllAnnualVehInspStateRermitsInput = {
-  where?: Maybe<AnnualVehInspStateRermitsFilterFilter>;
-  orderBy?: Maybe<OrderByAnnualVehInspStateRermitsInput>;
+export type GetAllBarCodeIdentifierInput = {
+  where?: Maybe<BarCodeIdentifierFilterFilter>;
+  orderBy?: Maybe<OrderByBarCodeIdentifierInput>;
 };
 
-export type GetAllClientInput = {
-  where?: Maybe<ClientFilterFilter>;
-  orderBy?: Maybe<OrderByClientInput>;
+export type GetAllBillingResolutionInput = {
+  where?: Maybe<BillingResolutionFilterFilter>;
+  orderBy?: Maybe<OrderByBillingResolutionInput>;
 };
 
-export type GetAllCorporationEinInput = {
-  where?: Maybe<CorporationEinFilterFilter>;
-  orderBy?: Maybe<OrderByCorporationEinInput>;
+export type GetAllCompanyInput = {
+  where?: Maybe<CompanyFilterFilter>;
+  orderBy?: Maybe<OrderByCompanyInput>;
 };
 
-export type GetAllDotInfoInput = {
-  where?: Maybe<DotInfoFilterFilter>;
-  orderBy?: Maybe<OrderByDotInfoInput>;
+export type GetAllCompositionDecompositionInput = {
+  where?: Maybe<CompositionDecompositionFilterFilter>;
+  orderBy?: Maybe<OrderByCompositionDecompositionInput>;
 };
 
-export type GetAllDriverFilesInput = {
-  where?: Maybe<DriverFilesFilterFilter>;
-  orderBy?: Maybe<OrderByDriverFilesInput>;
+export type GetAllCompositionInput = {
+  where?: Maybe<CompositionFilterFilter>;
+  orderBy?: Maybe<OrderByCompositionInput>;
 };
 
-export type GetAllFinancedEquipmentInput = {
-  where?: Maybe<FinancedEquipmentFilterFilter>;
-  orderBy?: Maybe<OrderByFinancedEquipmentInput>;
+export type GetAllCreditCardInput = {
+  where?: Maybe<CreditCardFilterFilter>;
+  orderBy?: Maybe<OrderByCreditCardInput>;
 };
 
-export type GetAllIftaFuelTaxesInput = {
-  where?: Maybe<IftaFuelTaxesFilterFilter>;
-  orderBy?: Maybe<OrderByIftaFuelTaxesInput>;
+export type GetAllEconomicActivitiesInput = {
+  where?: Maybe<EconomicActivitiesFilterFilter>;
+  orderBy?: Maybe<OrderByEconomicActivitiesInput>;
 };
 
-export type GetAllIrpRoadTaxesInput = {
-  where?: Maybe<IrpRoadTaxesFilterFilter>;
-  orderBy?: Maybe<OrderByIrpRoadTaxesInput>;
+export type GetAllFiscalResponsibilityInput = {
+  where?: Maybe<FiscalResponsibilityFilterFilter>;
+  orderBy?: Maybe<OrderByFiscalResponsibilityInput>;
+};
+
+export type GetAllGroupInput = {
+  where?: Maybe<GroupFilterFilter>;
+  orderBy?: Maybe<OrderByGroupInput>;
+};
+
+export type GetAllInitialPhysicalInventoryInput = {
+  where?: Maybe<InitialPhysicalInventoryFilterFilter>;
+  orderBy?: Maybe<OrderByInitialPhysicalInventoryInput>;
+};
+
+export type GetAllInventoryCovementConceptsInput = {
+  where?: Maybe<InventoryCovementConceptsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryCovementConceptsInput>;
+};
+
+export type GetAllInventoryMovementInput = {
+  where?: Maybe<InventoryMovementFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryMovementInput>;
+};
+
+export type GetAllInventoryMovementItemsInput = {
+  where?: Maybe<InventoryMovementItemsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryMovementItemsInput>;
+};
+
+export type GetAllInventoryTransferInput = {
+  where?: Maybe<InventoryTransferFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryTransferInput>;
+};
+
+export type GetAllInventoryTransferItemsInput = {
+  where?: Maybe<InventoryTransferItemsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryTransferItemsInput>;
+};
+
+export type GetAllMonetaryDenominationInput = {
+  where?: Maybe<MonetaryDenominationFilterFilter>;
+  orderBy?: Maybe<OrderByMonetaryDenominationInput>;
 };
 
 export type GetAllNotificationInput = {
@@ -897,14 +1426,94 @@ export type GetAllNotificationInput = {
   orderBy?: Maybe<OrderByNotificationInput>;
 };
 
+export type GetAllPartialInventoryItemsInput = {
+  where?: Maybe<PartialInventoryItemsFilterFilter>;
+  orderBy?: Maybe<OrderByPartialInventoryItemsInput>;
+};
+
+export type GetAllPartialTotalPhysicalInventoryInput = {
+  where?: Maybe<PartialTotalPhysicalInventoryFilterFilter>;
+  orderBy?: Maybe<OrderByPartialTotalPhysicalInventoryInput>;
+};
+
+export type GetAllPaymentMethodInput = {
+  where?: Maybe<PaymentMethodFilterFilter>;
+  orderBy?: Maybe<OrderByPaymentMethodInput>;
+};
+
+export type GetAllPreparationTypeInput = {
+  where?: Maybe<PreparationTypeFilterFilter>;
+  orderBy?: Maybe<OrderByPreparationTypeInput>;
+};
+
+export type GetAllProductAreaInput = {
+  where?: Maybe<ProductAreaFilterFilter>;
+  orderBy?: Maybe<OrderByProductAreaInput>;
+};
+
+export type GetAllProductGroupInput = {
+  where?: Maybe<ProductGroupFilterFilter>;
+  orderBy?: Maybe<OrderByProductGroupInput>;
+};
+
+export type GetAllProductInput = {
+  where?: Maybe<ProductFilterFilter>;
+  orderBy?: Maybe<OrderByProductInput>;
+};
+
+export type GetAllProductMenuInput = {
+  where?: Maybe<ProductMenuFilterFilter>;
+  orderBy?: Maybe<OrderByProductMenuInput>;
+};
+
+export type GetAllProductParamsInput = {
+  where?: Maybe<ProductParamsFilterFilter>;
+  orderBy?: Maybe<OrderByProductParamsInput>;
+};
+
+export type GetAllProductSalePriceInput = {
+  where?: Maybe<ProductSalePriceFilterFilter>;
+  orderBy?: Maybe<OrderByProductSalePriceInput>;
+};
+
+export type GetAllPurchaseReturnsInput = {
+  where?: Maybe<PurchaseReturnsFilterFilter>;
+  orderBy?: Maybe<OrderByPurchaseReturnsInput>;
+};
+
+export type GetAllRegimeTypeInput = {
+  where?: Maybe<RegimeTypeFilterFilter>;
+  orderBy?: Maybe<OrderByRegimeTypeInput>;
+};
+
 export type GetAllRoleInput = {
   where?: Maybe<RoleFilterFilter>;
   orderBy?: Maybe<OrderByRoleInput>;
 };
 
-export type GetAllSubstanceComplianceClearinghouseInput = {
-  where?: Maybe<SubstanceComplianceClearinghouseFilterFilter>;
-  orderBy?: Maybe<OrderBySubstanceComplianceClearinghouseInput>;
+export type GetAllSerialInput = {
+  where?: Maybe<SerialFilterFilter>;
+  orderBy?: Maybe<OrderBySerialInput>;
+};
+
+export type GetAllSerialMovementInput = {
+  where?: Maybe<SerialMovementFilterFilter>;
+  orderBy?: Maybe<OrderBySerialMovementInput>;
+};
+
+export type GetAllSerialTransferInput = {
+  where?: Maybe<SerialTransferFilterFilter>;
+  orderBy?: Maybe<OrderBySerialTransferInput>;
+};
+
+export type GetAllServicesInput = {
+  where?: Maybe<ServicesFilterFilter>;
+  orderBy?: Maybe<OrderByServicesInput>;
+};
+
+export type GetAllTaxesAndCostsInput = {
+  where?: Maybe<TaxesAndCostsFilterFilter>;
+  orderBy?: Maybe<OrderByTaxesAndCostsInput>;
 };
 
 export type GetAllTaxesInput = {
@@ -917,9 +1526,24 @@ export type GetAllTenantsInput = {
   orderBy?: Maybe<OrderByTenantInput>;
 };
 
-export type GetAllTrailerRentalInput = {
-  where?: Maybe<TrailerRentalFilterFilter>;
-  orderBy?: Maybe<OrderByTrailerRentalInput>;
+export type GetAllThirdPartiesInput = {
+  where?: Maybe<ThirdPartiesFilterFilter>;
+  orderBy?: Maybe<OrderByThirdPartiesInput>;
+};
+
+export type GetAllThirdPartyClassificationInput = {
+  where?: Maybe<ThirdPartyClassificationFilterFilter>;
+  orderBy?: Maybe<OrderByThirdPartyClassificationInput>;
+};
+
+export type GetAllTributaryInformationInput = {
+  where?: Maybe<TributaryInformationFilterFilter>;
+  orderBy?: Maybe<OrderByTributaryInformationInput>;
+};
+
+export type GetAllUnitMeasurementInput = {
+  where?: Maybe<UnitMeasurementFilterFilter>;
+  orderBy?: Maybe<OrderByUnitMeasurementInput>;
 };
 
 export type GetAllUserAreaInput = {
@@ -937,61 +1561,157 @@ export type GetAllUsersInput = {
   orderBy?: Maybe<OrderByUserInput>;
 };
 
-export type GetAllYardRentalInput = {
-  where?: Maybe<YardRentalFilterFilter>;
-  orderBy?: Maybe<OrderByYardRentalInput>;
+export type GetAllWarehouseInput = {
+  where?: Maybe<WarehouseFilterFilter>;
+  orderBy?: Maybe<OrderByWarehouseInput>;
 };
 
-export type GetOneAccountingInput = {
-  where?: Maybe<AccountingFilterFilter>;
+export type GetOneBanksInput = {
+  where?: Maybe<BanksFilterFilter>;
 };
 
-export type GetOneAnnualVehInspStateRermitsInput = {
-  where?: Maybe<AnnualVehInspStateRermitsFilterFilter>;
+export type GetOneBarCodeIdentifierInput = {
+  where?: Maybe<BarCodeIdentifierFilterFilter>;
 };
 
-export type GetOneClientInput = {
-  where?: Maybe<ClientFilterFilter>;
+export type GetOneBillingResolutionInput = {
+  where?: Maybe<BillingResolutionFilterFilter>;
 };
 
-export type GetOneCorporationEinInput = {
-  where?: Maybe<CorporationEinFilterFilter>;
+export type GetOneCompanyInput = {
+  where?: Maybe<CompanyFilterFilter>;
 };
 
-export type GetOneDotInfoInput = {
-  where?: Maybe<DotInfoFilterFilter>;
+export type GetOneCompositionDecompositionInput = {
+  where?: Maybe<CompositionDecompositionFilterFilter>;
 };
 
-export type GetOneDriverFilesInput = {
-  where?: Maybe<DriverFilesFilterFilter>;
+export type GetOneCompositionInput = {
+  where?: Maybe<CompositionFilterFilter>;
+};
+
+export type GetOneCreditCardInput = {
+  where?: Maybe<CreditCardFilterFilter>;
+};
+
+export type GetOneEconomicActivitiesInput = {
+  where?: Maybe<EconomicActivitiesFilterFilter>;
 };
 
 export type GetOneFilesInput = {
   where?: Maybe<FilesFilterFilter>;
 };
 
-export type GetOneFinancedEquipmentInput = {
-  where?: Maybe<FinancedEquipmentFilterFilter>;
+export type GetOneFiscalResponsibilityInput = {
+  where?: Maybe<FiscalResponsibilityFilterFilter>;
 };
 
-export type GetOneIftaFuelTaxesInput = {
-  where?: Maybe<IftaFuelTaxesFilterFilter>;
+export type GetOneGroupInput = {
+  where?: Maybe<GroupFilterFilter>;
 };
 
-export type GetOneIrpRoadTaxesInput = {
-  where?: Maybe<IrpRoadTaxesFilterFilter>;
+export type GetOneInitialPhysicalInventoryInput = {
+  where?: Maybe<InitialPhysicalInventoryFilterFilter>;
+};
+
+export type GetOneInventoryCovementConceptsInput = {
+  where?: Maybe<InventoryCovementConceptsFilterFilter>;
+};
+
+export type GetOneInventoryMovementInput = {
+  where?: Maybe<InventoryMovementFilterFilter>;
+};
+
+export type GetOneInventoryMovementItemsInput = {
+  where?: Maybe<InventoryMovementItemsFilterFilter>;
+};
+
+export type GetOneInventoryTransferInput = {
+  where?: Maybe<InventoryTransferFilterFilter>;
+};
+
+export type GetOneInventoryTransferItemsInput = {
+  where?: Maybe<InventoryTransferItemsFilterFilter>;
+};
+
+export type GetOneMonetaryDenominationInput = {
+  where?: Maybe<MonetaryDenominationFilterFilter>;
 };
 
 export type GetOneNotificationInput = {
   where?: Maybe<NotificationFilterFilter>;
 };
 
+export type GetOnePartialInventoryItemsInput = {
+  where?: Maybe<PartialInventoryItemsFilterFilter>;
+};
+
+export type GetOnePartialTotalPhysicalInventoryInput = {
+  where?: Maybe<PartialTotalPhysicalInventoryFilterFilter>;
+};
+
+export type GetOnePaymentMethodInput = {
+  where?: Maybe<PaymentMethodFilterFilter>;
+};
+
+export type GetOnePreparationTypeInput = {
+  where?: Maybe<PreparationTypeFilterFilter>;
+};
+
+export type GetOneProductAreaInput = {
+  where?: Maybe<ProductAreaFilterFilter>;
+};
+
+export type GetOneProductGroupInput = {
+  where?: Maybe<ProductGroupFilterFilter>;
+};
+
+export type GetOneProductInput = {
+  where?: Maybe<ProductFilterFilter>;
+};
+
+export type GetOneProductMenuInput = {
+  where?: Maybe<ProductMenuFilterFilter>;
+};
+
+export type GetOneProductParamsInput = {
+  where?: Maybe<ProductParamsFilterFilter>;
+};
+
+export type GetOneProductSalePriceInput = {
+  where?: Maybe<ProductSalePriceFilterFilter>;
+};
+
+export type GetOnePurchaseReturnsInput = {
+  where?: Maybe<PurchaseReturnsFilterFilter>;
+};
+
+export type GetOneRegimeTypeInput = {
+  where?: Maybe<RegimeTypeFilterFilter>;
+};
+
 export type GetOneRoleInput = {
   where?: Maybe<RoleFilterFilter>;
 };
 
-export type GetOneSubstanceComplianceClearinghouseInput = {
-  where?: Maybe<SubstanceComplianceClearinghouseFilterFilter>;
+export type GetOneSerialInput = {
+  where?: Maybe<SerialFilterFilter>;
+};
+
+export type GetOneSerialMovementInput = {
+  where?: Maybe<SerialMovementFilterFilter>;
+};
+
+export type GetOneSerialTransferInput = {
+  where?: Maybe<SerialTransferFilterFilter>;
+};
+
+export type GetOneServicesInput = {
+  where?: Maybe<ServicesFilterFilter>;
+};
+
+export type GetOneTaxesAndCostsInput = {
+  where?: Maybe<TaxesAndCostsFilterFilter>;
 };
 
 export type GetOneTaxesInput = {
@@ -1002,8 +1722,20 @@ export type GetOneTenantInput = {
   where?: Maybe<TenantFilterFilter>;
 };
 
-export type GetOneTrailerRentalInput = {
-  where?: Maybe<TrailerRentalFilterFilter>;
+export type GetOneThirdPartiesInput = {
+  where?: Maybe<ThirdPartiesFilterFilter>;
+};
+
+export type GetOneThirdPartyClassificationInput = {
+  where?: Maybe<ThirdPartyClassificationFilterFilter>;
+};
+
+export type GetOneTributaryInformationInput = {
+  where?: Maybe<TributaryInformationFilterFilter>;
+};
+
+export type GetOneUnitMeasurementInput = {
+  where?: Maybe<UnitMeasurementFilterFilter>;
 };
 
 export type GetOneUserAreaInput = {
@@ -1019,44 +1751,56 @@ export type GetOneUserPositionInput = {
   where?: Maybe<UserPositionFilterFilter>;
 };
 
-export type GetOneYardRentalInput = {
-  where?: Maybe<YardRentalFilterFilter>;
+export type GetOneWarehouseInput = {
+  where?: Maybe<WarehouseFilterFilter>;
 };
 
-export type GetPaginatedAccountingInput = {
+export type GetPaginatedBanksInput = {
   paginator: PaginatorParams;
-  where?: Maybe<AccountingFilterFilter>;
-  orderBy?: Maybe<OrderByAccountingInput>;
+  where?: Maybe<BanksFilterFilter>;
+  orderBy?: Maybe<OrderByBanksInput>;
 };
 
-export type GetPaginatedAnnualVehInspStateRermitsInput = {
+export type GetPaginatedBarCodeIdentifierInput = {
   paginator: PaginatorParams;
-  where?: Maybe<AnnualVehInspStateRermitsFilterFilter>;
-  orderBy?: Maybe<OrderByAnnualVehInspStateRermitsInput>;
+  where?: Maybe<BarCodeIdentifierFilterFilter>;
+  orderBy?: Maybe<OrderByBarCodeIdentifierInput>;
 };
 
-export type GetPaginatedClientInput = {
+export type GetPaginatedBillingResolutionInput = {
   paginator: PaginatorParams;
-  where?: Maybe<ClientFilterFilter>;
-  orderBy?: Maybe<OrderByClientInput>;
+  where?: Maybe<BillingResolutionFilterFilter>;
+  orderBy?: Maybe<OrderByBillingResolutionInput>;
 };
 
-export type GetPaginatedCorporationEinInput = {
+export type GetPaginatedCompanyInput = {
   paginator: PaginatorParams;
-  where?: Maybe<CorporationEinFilterFilter>;
-  orderBy?: Maybe<OrderByCorporationEinInput>;
+  where?: Maybe<CompanyFilterFilter>;
+  orderBy?: Maybe<OrderByCompanyInput>;
 };
 
-export type GetPaginatedDotInfoInput = {
+export type GetPaginatedCompositionDecompositionInput = {
   paginator: PaginatorParams;
-  where?: Maybe<DotInfoFilterFilter>;
-  orderBy?: Maybe<OrderByDotInfoInput>;
+  where?: Maybe<CompositionDecompositionFilterFilter>;
+  orderBy?: Maybe<OrderByCompositionDecompositionInput>;
 };
 
-export type GetPaginatedDriverFilesInput = {
+export type GetPaginatedCompositionInput = {
   paginator: PaginatorParams;
-  where?: Maybe<DriverFilesFilterFilter>;
-  orderBy?: Maybe<OrderByDriverFilesInput>;
+  where?: Maybe<CompositionFilterFilter>;
+  orderBy?: Maybe<OrderByCompositionInput>;
+};
+
+export type GetPaginatedCreditCardInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<CreditCardFilterFilter>;
+  orderBy?: Maybe<OrderByCreditCardInput>;
+};
+
+export type GetPaginatedEconomicActivitiesInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<EconomicActivitiesFilterFilter>;
+  orderBy?: Maybe<OrderByEconomicActivitiesInput>;
 };
 
 export type GetPaginatedFilesInput = {
@@ -1065,22 +1809,58 @@ export type GetPaginatedFilesInput = {
   orderBy?: Maybe<OrderByFilesInput>;
 };
 
-export type GetPaginatedFinancedEquipmentInput = {
+export type GetPaginatedFiscalResponsibilityInput = {
   paginator: PaginatorParams;
-  where?: Maybe<FinancedEquipmentFilterFilter>;
-  orderBy?: Maybe<OrderByFinancedEquipmentInput>;
+  where?: Maybe<FiscalResponsibilityFilterFilter>;
+  orderBy?: Maybe<OrderByFiscalResponsibilityInput>;
 };
 
-export type GetPaginatedIftaFuelTaxesInput = {
+export type GetPaginatedGroupInput = {
   paginator: PaginatorParams;
-  where?: Maybe<IftaFuelTaxesFilterFilter>;
-  orderBy?: Maybe<OrderByIftaFuelTaxesInput>;
+  where?: Maybe<GroupFilterFilter>;
+  orderBy?: Maybe<OrderByGroupInput>;
 };
 
-export type GetPaginatedIrpRoadTaxesInput = {
+export type GetPaginatedInitialPhysicalInventoryInput = {
   paginator: PaginatorParams;
-  where?: Maybe<IrpRoadTaxesFilterFilter>;
-  orderBy?: Maybe<OrderByIrpRoadTaxesInput>;
+  where?: Maybe<InitialPhysicalInventoryFilterFilter>;
+  orderBy?: Maybe<OrderByInitialPhysicalInventoryInput>;
+};
+
+export type GetPaginatedInventoryCovementConceptsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<InventoryCovementConceptsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryCovementConceptsInput>;
+};
+
+export type GetPaginatedInventoryMovementInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<InventoryMovementFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryMovementInput>;
+};
+
+export type GetPaginatedInventoryMovementItemsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<InventoryMovementItemsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryMovementItemsInput>;
+};
+
+export type GetPaginatedInventoryTransferInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<InventoryTransferFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryTransferInput>;
+};
+
+export type GetPaginatedInventoryTransferItemsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<InventoryTransferItemsFilterFilter>;
+  orderBy?: Maybe<OrderByInventoryTransferItemsInput>;
+};
+
+export type GetPaginatedMonetaryDenominationInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<MonetaryDenominationFilterFilter>;
+  orderBy?: Maybe<OrderByMonetaryDenominationInput>;
 };
 
 export type GetPaginatedNotificationInput = {
@@ -1089,16 +1869,112 @@ export type GetPaginatedNotificationInput = {
   orderBy?: Maybe<OrderByNotificationInput>;
 };
 
+export type GetPaginatedPartialInventoryItemsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PartialInventoryItemsFilterFilter>;
+  orderBy?: Maybe<OrderByPartialInventoryItemsInput>;
+};
+
+export type GetPaginatedPartialTotalPhysicalInventoryInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PartialTotalPhysicalInventoryFilterFilter>;
+  orderBy?: Maybe<OrderByPartialTotalPhysicalInventoryInput>;
+};
+
+export type GetPaginatedPaymentMethodInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PaymentMethodFilterFilter>;
+  orderBy?: Maybe<OrderByPaymentMethodInput>;
+};
+
+export type GetPaginatedPreparationTypeInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PreparationTypeFilterFilter>;
+  orderBy?: Maybe<OrderByPreparationTypeInput>;
+};
+
+export type GetPaginatedProductAreaInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductAreaFilterFilter>;
+  orderBy?: Maybe<OrderByProductAreaInput>;
+};
+
+export type GetPaginatedProductGroupInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductGroupFilterFilter>;
+  orderBy?: Maybe<OrderByProductGroupInput>;
+};
+
+export type GetPaginatedProductInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductFilterFilter>;
+  orderBy?: Maybe<OrderByProductInput>;
+};
+
+export type GetPaginatedProductMenuInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductMenuFilterFilter>;
+  orderBy?: Maybe<OrderByProductMenuInput>;
+};
+
+export type GetPaginatedProductParamsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductParamsFilterFilter>;
+  orderBy?: Maybe<OrderByProductParamsInput>;
+};
+
+export type GetPaginatedProductSalePriceInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductSalePriceFilterFilter>;
+  orderBy?: Maybe<OrderByProductSalePriceInput>;
+};
+
+export type GetPaginatedPurchaseReturnsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PurchaseReturnsFilterFilter>;
+  orderBy?: Maybe<OrderByPurchaseReturnsInput>;
+};
+
+export type GetPaginatedRegimeTypeInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<RegimeTypeFilterFilter>;
+  orderBy?: Maybe<OrderByRegimeTypeInput>;
+};
+
 export type GetPaginatedRoleInput = {
   paginator: PaginatorParams;
   where?: Maybe<RoleFilterFilter>;
   orderBy?: Maybe<OrderByRoleInput>;
 };
 
-export type GetPaginatedSubstanceComplianceClearinghouseInput = {
+export type GetPaginatedSerialInput = {
   paginator: PaginatorParams;
-  where?: Maybe<SubstanceComplianceClearinghouseFilterFilter>;
-  orderBy?: Maybe<OrderBySubstanceComplianceClearinghouseInput>;
+  where?: Maybe<SerialFilterFilter>;
+  orderBy?: Maybe<OrderBySerialInput>;
+};
+
+export type GetPaginatedSerialMovementInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<SerialMovementFilterFilter>;
+  orderBy?: Maybe<OrderBySerialMovementInput>;
+};
+
+export type GetPaginatedSerialTransferInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<SerialTransferFilterFilter>;
+  orderBy?: Maybe<OrderBySerialTransferInput>;
+};
+
+export type GetPaginatedServicesInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ServicesFilterFilter>;
+  orderBy?: Maybe<OrderByServicesInput>;
+};
+
+export type GetPaginatedTaxesAndCostsInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<TaxesAndCostsFilterFilter>;
+  orderBy?: Maybe<OrderByTaxesAndCostsInput>;
 };
 
 export type GetPaginatedTaxesInput = {
@@ -1113,10 +1989,28 @@ export type GetPaginatedTenantInput = {
   orderBy?: Maybe<OrderByTenantInput>;
 };
 
-export type GetPaginatedTrailerRentalInput = {
+export type GetPaginatedThirdPartiesInput = {
   paginator: PaginatorParams;
-  where?: Maybe<TrailerRentalFilterFilter>;
-  orderBy?: Maybe<OrderByTrailerRentalInput>;
+  where?: Maybe<ThirdPartiesFilterFilter>;
+  orderBy?: Maybe<OrderByThirdPartiesInput>;
+};
+
+export type GetPaginatedThirdPartyClassificationInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ThirdPartyClassificationFilterFilter>;
+  orderBy?: Maybe<OrderByThirdPartyClassificationInput>;
+};
+
+export type GetPaginatedTributaryInformationInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<TributaryInformationFilterFilter>;
+  orderBy?: Maybe<OrderByTributaryInformationInput>;
+};
+
+export type GetPaginatedUnitMeasurementInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<UnitMeasurementFilterFilter>;
+  orderBy?: Maybe<OrderByUnitMeasurementInput>;
 };
 
 export type GetPaginatedUserAreaInput = {
@@ -1137,10 +2031,10 @@ export type GetPaginatedUsersInput = {
   orderBy?: Maybe<OrderByUserInput>;
 };
 
-export type GetPaginatedYardRentalInput = {
+export type GetPaginatedWarehouseInput = {
   paginator: PaginatorParams;
-  where?: Maybe<YardRentalFilterFilter>;
-  orderBy?: Maybe<OrderByYardRentalInput>;
+  where?: Maybe<WarehouseFilterFilter>;
+  orderBy?: Maybe<OrderByWarehouseInput>;
 };
 
 export type GetUploadSignedUrlInput = {
@@ -1163,6 +2057,28 @@ export type GraphQlFilterFilterComparison = {
   notILike?: Maybe<ProfileFilterFilter>;
   in?: Maybe<Array<ProfileFilterFilter>>;
   notIn?: Maybe<Array<ProfileFilterFilter>>;
+};
+
+export type GroupFilterFilter = {
+  and?: Maybe<Array<GroupFilterFilter>>;
+  or?: Maybe<Array<GroupFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type GroupResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isActive: Scalars['Boolean'];
+  area?: Maybe<SolvedEntityResponse>;
+  leader: SolvedEntityResponse;
+  members: Array<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type I18nMessageResponse = {
@@ -1192,80 +2108,156 @@ export type IdFilterComparison = {
   notIn?: Maybe<Array<Scalars['ID']>>;
 };
 
-export type IftaFuelTaxesFilterFilter = {
-  and?: Maybe<Array<IftaFuelTaxesFilterFilter>>;
-  or?: Maybe<Array<IftaFuelTaxesFilterFilter>>;
+export enum IdentificationDocumentType {
+  IdentificationCard = 'IDENTIFICATION_CARD',
+  ForeignerId = 'FOREIGNER_ID',
+  ForeignIdentificationDocument = 'FOREIGN_IDENTIFICATION_DOCUMENT',
+  Nit = 'NIT',
+  ForeignNit = 'FOREIGN_NIT',
+  Nuip = 'NUIP',
+  Passport = 'PASSPORT',
+  CivilRegistration = 'CIVIL_REGISTRATION',
+  ForeignCard = 'FOREIGN_CARD',
+  IdentityCard = 'IDENTITY_CARD'
+}
+
+export type InitialPhysicalInventoryFilterFilter = {
+  and?: Maybe<Array<InitialPhysicalInventoryFilterFilter>>;
+  or?: Maybe<Array<InitialPhysicalInventoryFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
-  irpAiftaAccountccount?: Maybe<StringFieldComparison>;
-  iftaApplRenewalsChanges?: Maybe<StringFieldComparison>;
-  otherIftaRequest?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type IftaFuelTaxesResponse = {
+export type InitialPhysicalInventoryResponse = {
   id: Scalars['ID'];
-  iftaAccount?: Maybe<Scalars['String']>;
-  iftaAccountDetail?: Maybe<Scalars['String']>;
-  iftaAccountExpiration?: Maybe<Scalars['DateTime']>;
-  iftaAccountFile?: Maybe<CloudFileResponse>;
-  iftaApplRenewalsChanges?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesDetail?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesFile?: Maybe<CloudFileResponse>;
-  fuelTaxes?: Maybe<Scalars['String']>;
-  fuelTaxesDetail?: Maybe<Scalars['String']>;
-  fuelTaxesExpiration?: Maybe<Scalars['DateTime']>;
-  fuelTaxesFile?: Maybe<CloudFileResponse>;
-  otherIftaRequest?: Maybe<Scalars['String']>;
-  otherIftaRequestDetail?: Maybe<Scalars['String']>;
-  otherIftaRequestExpiration?: Maybe<Scalars['DateTime']>;
-  otherIftaRequestFile?: Maybe<CloudFileResponse>;
-  notes?: Maybe<Scalars['String']>;
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<SolvedEntityResponse>;
+  partialInventory?: Maybe<SolvedEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type IrpRoadTaxesFilterFilter = {
-  and?: Maybe<Array<IrpRoadTaxesFilterFilter>>;
-  or?: Maybe<Array<IrpRoadTaxesFilterFilter>>;
+export type InventoryCovementConceptsFilterFilter = {
+  and?: Maybe<Array<InventoryCovementConceptsFilterFilter>>;
+  or?: Maybe<Array<InventoryCovementConceptsFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
-  irpAccount?: Maybe<StringFieldComparison>;
-  certificateTitle?: Maybe<StringFieldComparison>;
-  tag?: Maybe<StringFieldComparison>;
-  roadTax?: Maybe<StringFieldComparison>;
-  leaseAgreement?: Maybe<StringFieldComparison>;
-  irpApplicationsRenewals?: Maybe<StringFieldComparison>;
-  otherIrpRequest?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type IrpRoadTaxesResponse = {
+export type InventoryCovementConceptsResponse = {
   id: Scalars['ID'];
-  irpAccount: Scalars['String'];
-  irpAccountDetail?: Maybe<Scalars['String']>;
-  irpExpiration?: Maybe<Scalars['DateTime']>;
-  irpFile?: Maybe<CloudFileResponse>;
-  certificateTitle: Scalars['String'];
-  certificateTitleDetail?: Maybe<Scalars['String']>;
-  certificateTitleFile?: Maybe<CloudFileResponse>;
-  tag?: Maybe<Scalars['String']>;
-  tagDetail?: Maybe<Scalars['String']>;
-  tagFile?: Maybe<CloudFileResponse>;
-  roadTax?: Maybe<Scalars['String']>;
-  roadTaxDetail?: Maybe<Scalars['String']>;
-  roadTaxExpiration?: Maybe<Scalars['DateTime']>;
-  roadTaxFile?: Maybe<CloudFileResponse>;
-  leaseAgreement?: Maybe<Scalars['String']>;
-  leaseAgreementDetail?: Maybe<Scalars['String']>;
-  leaseAgreementFile?: Maybe<CloudFileResponse>;
-  irpApplicationsRenewals?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsDetail?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsFile?: Maybe<CloudFileResponse>;
-  otherIrpRequest?: Maybe<Scalars['String']>;
-  otherIrpRequestDetail?: Maybe<Scalars['String']>;
-  otherIrpRequestFile?: Maybe<CloudFileResponse>;
-  notes?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  valueType: ValueTypes;
+  movementType: MovementType;
+  requestThird: Scalars['Boolean'];
+  loadAllProducts: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type InventoryMovementFilterFilter = {
+  and?: Maybe<Array<InventoryMovementFilterFilter>>;
+  or?: Maybe<Array<InventoryMovementFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type InventoryMovementItemsFilterFilter = {
+  and?: Maybe<Array<InventoryMovementItemsFilterFilter>>;
+  or?: Maybe<Array<InventoryMovementItemsFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type InventoryMovementItemsResponse = {
+  id: Scalars['ID'];
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  entry: Scalars['Float'];
+  output: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<SolvedEntityResponse>;
+  movementInventory?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type InventoryMovementResponse = {
+  id: Scalars['ID'];
+  concepts?: Maybe<SolvedEntityResponse>;
+  warehouse?: Maybe<SolvedEntityResponse>;
+  third?: Maybe<SolvedEntityResponse>;
+  movementDate: Scalars['DateTime'];
+  settingNumber: Scalars['Int'];
+  detail: Scalars['String'];
+  movementStatus: MovementStatus;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type InventoryTransferFilterFilter = {
+  and?: Maybe<Array<InventoryTransferFilterFilter>>;
+  or?: Maybe<Array<InventoryTransferFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type InventoryTransferItemsFilterFilter = {
+  and?: Maybe<Array<InventoryTransferItemsFilterFilter>>;
+  or?: Maybe<Array<InventoryTransferItemsFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type InventoryTransferItemsResponse = {
+  id: Scalars['ID'];
+  originQuantity: Scalars['Float'];
+  totalTransfer: Scalars['Float'];
+  originRestant: Scalars['Float'];
+  destinationBalance: Scalars['Float'];
+  transfer: Scalars['Float'];
+  destinationBalanceTotal: Scalars['Float'];
+  product?: Maybe<SolvedEntityResponse>;
+  movementTransfer?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type InventoryTransferResponse = {
+  id: Scalars['ID'];
+  originWarehouse?: Maybe<SolvedEntityResponse>;
+  destinationWarehouse?: Maybe<SolvedEntityResponse>;
+  transfertDate: Scalars['DateTime'];
+  transferNumber: Scalars['Int'];
+  document: Scalars['String'];
+  detail: Scalars['String'];
+  transferStatus: TransferStatus;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -1276,6 +2268,43 @@ export type JwtAuthenticatedResponse = {
   providerData: AuthProviderDataResponse;
   access_token: Scalars['String'];
 };
+
+export type MonetaryDenominationFilterFilter = {
+  and?: Maybe<Array<MonetaryDenominationFilterFilter>>;
+  or?: Maybe<Array<MonetaryDenominationFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type MonetaryDenominationResponse = {
+  id: Scalars['ID'];
+  value: Scalars['Float'];
+  monetaryDenominationTypes: MonetaryDenominationTypes;
+  photoFile?: Maybe<CloudFileResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum MonetaryDenominationTypes {
+  Bill = 'BILL',
+  Coin = 'COIN'
+}
+
+export enum MovementStatus {
+  Confirmed = 'CONFIRMED',
+  Cancelled = 'CANCELLED',
+  Pending = 'PENDING'
+}
+
+export enum MovementType {
+  Entries = 'ENTRIES',
+  Outputs = 'OUTPUTS',
+  EntriesAndOutputs = 'ENTRIES_AND_OUTPUTS',
+  Returns = 'RETURNS'
+}
 
 export type Mutation = {
   createTenant?: Maybe<Scalars['Void']>;
@@ -1313,58 +2342,166 @@ export type Mutation = {
   updateFiles?: Maybe<Scalars['Void']>;
   deleteFiles?: Maybe<Scalars['Void']>;
   deleteManyFiles?: Maybe<Scalars['Void']>;
-  createClient?: Maybe<Scalars['Void']>;
-  updateClient?: Maybe<Scalars['Void']>;
-  deleteClient?: Maybe<Scalars['Void']>;
-  deleteManyClient?: Maybe<Scalars['Void']>;
+  createGroup?: Maybe<Scalars['Void']>;
+  updateGroup?: Maybe<Scalars['Void']>;
+  deleteGroup?: Maybe<Scalars['Void']>;
+  deleteManyGroup?: Maybe<Scalars['Void']>;
+  createWarehouse?: Maybe<Scalars['Void']>;
+  updateWarehouse?: Maybe<Scalars['Void']>;
+  deleteWarehouse?: Maybe<Scalars['Void']>;
+  deleteManyWarehouse?: Maybe<Scalars['Void']>;
   createTaxes?: Maybe<Scalars['Void']>;
   updateTaxes?: Maybe<Scalars['Void']>;
   deleteTaxes?: Maybe<Scalars['Void']>;
   deleteManyTaxes?: Maybe<Scalars['Void']>;
-  createCorporationEin?: Maybe<Scalars['Void']>;
-  updateCorporationEin?: Maybe<Scalars['Void']>;
-  deleteCorporationEin?: Maybe<Scalars['Void']>;
-  deleteManyCorporationEin?: Maybe<Scalars['Void']>;
-  createIrpRoadTaxes?: Maybe<Scalars['Void']>;
-  updateIrpRoadTaxes?: Maybe<Scalars['Void']>;
-  deleteIrpRoadTaxes?: Maybe<Scalars['Void']>;
-  deleteManyIrpRoadTaxes?: Maybe<Scalars['Void']>;
-  createIftaFuelTaxes?: Maybe<Scalars['Void']>;
-  updateIftaFuelTaxes?: Maybe<Scalars['Void']>;
-  deleteIftaFuelTaxes?: Maybe<Scalars['Void']>;
-  deleteManyIftaFuelTaxes?: Maybe<Scalars['Void']>;
-  createSubstanceComplianceClearinghouse?: Maybe<Scalars['Void']>;
-  updateSubstanceComplianceClearinghouse?: Maybe<Scalars['Void']>;
-  deleteSubstanceComplianceClearinghouse?: Maybe<Scalars['Void']>;
-  deleteManySubstanceComplianceClearinghouse?: Maybe<Scalars['Void']>;
-  createDriverFiles?: Maybe<Scalars['Void']>;
-  updateDriverFiles?: Maybe<Scalars['Void']>;
-  deleteDriverFiles?: Maybe<Scalars['Void']>;
-  deleteManyDriverFiles?: Maybe<Scalars['Void']>;
-  createDotInfo?: Maybe<Scalars['Void']>;
-  updateDotInfo?: Maybe<Scalars['Void']>;
-  deleteDotInfo?: Maybe<Scalars['Void']>;
-  deleteManyDotInfo?: Maybe<Scalars['Void']>;
-  createAnnualVehInspStateRermits?: Maybe<Scalars['Void']>;
-  updateAnnualVehInspStateRermits?: Maybe<Scalars['Void']>;
-  deleteAnnualVehInspStateRermits?: Maybe<Scalars['Void']>;
-  deleteManyAnnualVehInspStateRermits?: Maybe<Scalars['Void']>;
-  createTrailerRental?: Maybe<Scalars['Void']>;
-  updateTrailerRental?: Maybe<Scalars['Void']>;
-  deleteTrailerRental?: Maybe<Scalars['Void']>;
-  deleteManyTrailerRental?: Maybe<Scalars['Void']>;
-  createYardRental?: Maybe<Scalars['Void']>;
-  updateYardRental?: Maybe<Scalars['Void']>;
-  deleteYardRental?: Maybe<Scalars['Void']>;
-  deleteManyYardRental?: Maybe<Scalars['Void']>;
-  createFinancedEquipment?: Maybe<Scalars['Void']>;
-  updateFinancedEquipment?: Maybe<Scalars['Void']>;
-  deleteFinancedEquipment?: Maybe<Scalars['Void']>;
-  deleteManyFinancedEquipment?: Maybe<Scalars['Void']>;
-  createAccounting?: Maybe<Scalars['Void']>;
-  updateAccounting?: Maybe<Scalars['Void']>;
-  deleteAccounting?: Maybe<Scalars['Void']>;
-  deleteManyAccounting?: Maybe<Scalars['Void']>;
+  createCompany?: Maybe<Scalars['Void']>;
+  updateCompany?: Maybe<Scalars['Void']>;
+  deleteCompany?: Maybe<Scalars['Void']>;
+  deleteManyCompany?: Maybe<Scalars['Void']>;
+  createBarCodeIdentifier?: Maybe<Scalars['Void']>;
+  updateBarCodeIdentifier?: Maybe<Scalars['Void']>;
+  deleteBarCodeIdentifier?: Maybe<Scalars['Void']>;
+  deleteManyBarCodeIdentifier?: Maybe<Scalars['Void']>;
+  createBillingResolution?: Maybe<Scalars['Void']>;
+  updateBillingResolution?: Maybe<Scalars['Void']>;
+  deleteBillingResolution?: Maybe<Scalars['Void']>;
+  deleteManyBillingResolution?: Maybe<Scalars['Void']>;
+  createProduct?: Maybe<Scalars['Void']>;
+  updateProduct?: Maybe<Scalars['Void']>;
+  deleteProduct?: Maybe<Scalars['Void']>;
+  deleteManyProduct?: Maybe<Scalars['Void']>;
+  createProductMenu?: Maybe<Scalars['Void']>;
+  updateProductMenu?: Maybe<Scalars['Void']>;
+  deleteProductMenu?: Maybe<Scalars['Void']>;
+  deleteManyProductMenu?: Maybe<Scalars['Void']>;
+  createProductArea?: Maybe<Scalars['Void']>;
+  updateProductArea?: Maybe<Scalars['Void']>;
+  deleteProductArea?: Maybe<Scalars['Void']>;
+  deleteManyProductArea?: Maybe<Scalars['Void']>;
+  createProductParams?: Maybe<Scalars['Void']>;
+  updateProductParams?: Maybe<Scalars['Void']>;
+  deleteProductParams?: Maybe<Scalars['Void']>;
+  deleteManyProductParams?: Maybe<Scalars['Void']>;
+  createProductGroup?: Maybe<Scalars['Void']>;
+  updateProductGroup?: Maybe<Scalars['Void']>;
+  deleteProductGroup?: Maybe<Scalars['Void']>;
+  deleteManyProductGroup?: Maybe<Scalars['Void']>;
+  createTaxesAndCosts?: Maybe<Scalars['Void']>;
+  updateTaxesAndCosts?: Maybe<Scalars['Void']>;
+  deleteTaxesAndCosts?: Maybe<Scalars['Void']>;
+  deleteManyTaxesAndCosts?: Maybe<Scalars['Void']>;
+  createComposition?: Maybe<Scalars['Void']>;
+  updateComposition?: Maybe<Scalars['Void']>;
+  deleteComposition?: Maybe<Scalars['Void']>;
+  deleteManyComposition?: Maybe<Scalars['Void']>;
+  createProductSalePrice?: Maybe<Scalars['Void']>;
+  updateProductSalePrice?: Maybe<Scalars['Void']>;
+  deleteProductSalePrice?: Maybe<Scalars['Void']>;
+  deleteManyProductSalePrice?: Maybe<Scalars['Void']>;
+  createPreparationType?: Maybe<Scalars['Void']>;
+  updatePreparationType?: Maybe<Scalars['Void']>;
+  deletePreparationType?: Maybe<Scalars['Void']>;
+  deleteManyPreparationType?: Maybe<Scalars['Void']>;
+  createUnitMeasurement?: Maybe<Scalars['Void']>;
+  updateUnitMeasurement?: Maybe<Scalars['Void']>;
+  deleteUnitMeasurement?: Maybe<Scalars['Void']>;
+  deleteManyUnitMeasurement?: Maybe<Scalars['Void']>;
+  createServices?: Maybe<Scalars['Void']>;
+  updateServices?: Maybe<Scalars['Void']>;
+  deleteServices?: Maybe<Scalars['Void']>;
+  deleteManyServices?: Maybe<Scalars['Void']>;
+  createPartialTotalPhysicalInventory?: Maybe<Scalars['Void']>;
+  updatePartialTotalPhysicalInventory?: Maybe<Scalars['Void']>;
+  deletePartialTotalPhysicalInventory?: Maybe<Scalars['Void']>;
+  deleteManyPartialTotalPhysicalInventory?: Maybe<Scalars['Void']>;
+  createPartialInventoryItems?: Maybe<Scalars['Void']>;
+  updatePartialInventoryItems?: Maybe<Scalars['Void']>;
+  deletePartialInventoryItems?: Maybe<Scalars['Void']>;
+  deleteManyPartialInventoryItems?: Maybe<Scalars['Void']>;
+  createInitialPhysicalInventory?: Maybe<Scalars['Void']>;
+  updateInitialPhysicalInventory?: Maybe<Scalars['Void']>;
+  deleteInitialPhysicalInventory?: Maybe<Scalars['Void']>;
+  deleteManyInitialPhysicalInventory?: Maybe<Scalars['Void']>;
+  createInventoryCovementConcepts?: Maybe<Scalars['Void']>;
+  updateInventoryCovementConcepts?: Maybe<Scalars['Void']>;
+  deleteInventoryCovementConcepts?: Maybe<Scalars['Void']>;
+  deleteManyInventoryCovementConcepts?: Maybe<Scalars['Void']>;
+  createInventoryMovement?: Maybe<Scalars['Void']>;
+  updateInventoryMovement?: Maybe<Scalars['Void']>;
+  deleteInventoryMovement?: Maybe<Scalars['Void']>;
+  deleteManyInventoryMovement?: Maybe<Scalars['Void']>;
+  createInventoryMovementItems?: Maybe<Scalars['Void']>;
+  updateInventoryMovementItems?: Maybe<Scalars['Void']>;
+  deleteInventoryMovementItems?: Maybe<Scalars['Void']>;
+  deleteManyInventoryMovementItems?: Maybe<Scalars['Void']>;
+  createSerialMovement?: Maybe<Scalars['Void']>;
+  updateSerialMovement?: Maybe<Scalars['Void']>;
+  deleteSerialMovement?: Maybe<Scalars['Void']>;
+  deleteManySerialMovement?: Maybe<Scalars['Void']>;
+  createInventoryTransfer?: Maybe<Scalars['Void']>;
+  updateInventoryTransfer?: Maybe<Scalars['Void']>;
+  deleteInventoryTransfer?: Maybe<Scalars['Void']>;
+  deleteManyInventoryTransfer?: Maybe<Scalars['Void']>;
+  createInventoryTransferItems?: Maybe<Scalars['Void']>;
+  updateInventoryTransferItems?: Maybe<Scalars['Void']>;
+  deleteInventoryTransferItems?: Maybe<Scalars['Void']>;
+  deleteManyInventoryTransferItems?: Maybe<Scalars['Void']>;
+  createSerialTransfer?: Maybe<Scalars['Void']>;
+  updateSerialTransfer?: Maybe<Scalars['Void']>;
+  deleteSerialTransfer?: Maybe<Scalars['Void']>;
+  deleteManySerialTransfer?: Maybe<Scalars['Void']>;
+  createPaymentMethod?: Maybe<Scalars['Void']>;
+  updatePaymentMethod?: Maybe<Scalars['Void']>;
+  deletePaymentMethod?: Maybe<Scalars['Void']>;
+  deleteManyPaymentMethod?: Maybe<Scalars['Void']>;
+  createCreditCard?: Maybe<Scalars['Void']>;
+  updateCreditCard?: Maybe<Scalars['Void']>;
+  deleteCreditCard?: Maybe<Scalars['Void']>;
+  deleteManyCreditCard?: Maybe<Scalars['Void']>;
+  createBanks?: Maybe<Scalars['Void']>;
+  updateBanks?: Maybe<Scalars['Void']>;
+  deleteBanks?: Maybe<Scalars['Void']>;
+  deleteManyBanks?: Maybe<Scalars['Void']>;
+  createThirdParties?: Maybe<Scalars['Void']>;
+  updateThirdParties?: Maybe<Scalars['Void']>;
+  deleteThirdParties?: Maybe<Scalars['Void']>;
+  deleteManyThirdParties?: Maybe<Scalars['Void']>;
+  createThirdPartyClassification?: Maybe<Scalars['Void']>;
+  updateThirdPartyClassification?: Maybe<Scalars['Void']>;
+  deleteThirdPartyClassification?: Maybe<Scalars['Void']>;
+  deleteManyThirdPartyClassification?: Maybe<Scalars['Void']>;
+  createRegimeType?: Maybe<Scalars['Void']>;
+  updateRegimeType?: Maybe<Scalars['Void']>;
+  deleteRegimeType?: Maybe<Scalars['Void']>;
+  deleteManyRegimeType?: Maybe<Scalars['Void']>;
+  createEconomicActivities?: Maybe<Scalars['Void']>;
+  updateEconomicActivities?: Maybe<Scalars['Void']>;
+  deleteEconomicActivities?: Maybe<Scalars['Void']>;
+  deleteManyEconomicActivities?: Maybe<Scalars['Void']>;
+  createFiscalResponsibility?: Maybe<Scalars['Void']>;
+  updateFiscalResponsibility?: Maybe<Scalars['Void']>;
+  deleteFiscalResponsibility?: Maybe<Scalars['Void']>;
+  deleteManyFiscalResponsibility?: Maybe<Scalars['Void']>;
+  createTributaryInformation?: Maybe<Scalars['Void']>;
+  updateTributaryInformation?: Maybe<Scalars['Void']>;
+  deleteTributaryInformation?: Maybe<Scalars['Void']>;
+  deleteManyTributaryInformation?: Maybe<Scalars['Void']>;
+  createSerial?: Maybe<Scalars['Void']>;
+  updateSerial?: Maybe<Scalars['Void']>;
+  deleteSerial?: Maybe<Scalars['Void']>;
+  deleteManySerial?: Maybe<Scalars['Void']>;
+  createPurchaseReturns?: Maybe<Scalars['Void']>;
+  updatePurchaseReturns?: Maybe<Scalars['Void']>;
+  deletePurchaseReturns?: Maybe<Scalars['Void']>;
+  deleteManyPurchaseReturns?: Maybe<Scalars['Void']>;
+  createMonetaryDenomination?: Maybe<Scalars['Void']>;
+  updateMonetaryDenomination?: Maybe<Scalars['Void']>;
+  deleteMonetaryDenomination?: Maybe<Scalars['Void']>;
+  deleteManyMonetaryDenomination?: Maybe<Scalars['Void']>;
+  createCompositionDecomposition?: Maybe<Scalars['Void']>;
+  updateCompositionDecomposition?: Maybe<Scalars['Void']>;
+  deleteCompositionDecomposition?: Maybe<Scalars['Void']>;
+  deleteManyCompositionDecomposition?: Maybe<Scalars['Void']>;
 };
 
 
@@ -1533,23 +2670,43 @@ export type MutationDeleteManyFilesArgs = {
 };
 
 
-export type MutationCreateClientArgs = {
-  input: CreateClientInput;
+export type MutationCreateGroupArgs = {
+  input: CreateGroupInput;
 };
 
 
-export type MutationUpdateClientArgs = {
-  input: UpdateClientInput;
+export type MutationUpdateGroupArgs = {
+  input: UpdateGroupInput;
 };
 
 
-export type MutationDeleteClientArgs = {
-  input: DeleteClientInput;
+export type MutationDeleteGroupArgs = {
+  input: DeleteGroupInput;
 };
 
 
-export type MutationDeleteManyClientArgs = {
-  input: DeleteManyClientInput;
+export type MutationDeleteManyGroupArgs = {
+  input: DeleteManyGroupInput;
+};
+
+
+export type MutationCreateWarehouseArgs = {
+  input: CreateWarehouseInput;
+};
+
+
+export type MutationUpdateWarehouseArgs = {
+  input: UpdateWarehouseInput;
+};
+
+
+export type MutationDeleteWarehouseArgs = {
+  input: DeleteWarehouseInput;
+};
+
+
+export type MutationDeleteManyWarehouseArgs = {
+  input: DeleteManyWarehouseInput;
 };
 
 
@@ -1573,223 +2730,743 @@ export type MutationDeleteManyTaxesArgs = {
 };
 
 
-export type MutationCreateCorporationEinArgs = {
-  input: CreateCorporationEinInput;
+export type MutationCreateCompanyArgs = {
+  input: CreateCompanyInput;
 };
 
 
-export type MutationUpdateCorporationEinArgs = {
-  input: UpdateCorporationEinInput;
+export type MutationUpdateCompanyArgs = {
+  input: UpdateCompanyInput;
 };
 
 
-export type MutationDeleteCorporationEinArgs = {
-  input: DeleteCorporationEinInput;
+export type MutationDeleteCompanyArgs = {
+  input: DeleteCompanyInput;
 };
 
 
-export type MutationDeleteManyCorporationEinArgs = {
-  input: DeleteManyCorporationEinInput;
+export type MutationDeleteManyCompanyArgs = {
+  input: DeleteManyCompanyInput;
 };
 
 
-export type MutationCreateIrpRoadTaxesArgs = {
-  input: CreateIrpRoadTaxesInput;
+export type MutationCreateBarCodeIdentifierArgs = {
+  input: CreateBarCodeIdentifierInput;
 };
 
 
-export type MutationUpdateIrpRoadTaxesArgs = {
-  input: UpdateIrpRoadTaxesInput;
+export type MutationUpdateBarCodeIdentifierArgs = {
+  input: UpdateBarCodeIdentifierInput;
 };
 
 
-export type MutationDeleteIrpRoadTaxesArgs = {
-  input: DeleteIrpRoadTaxesInput;
+export type MutationDeleteBarCodeIdentifierArgs = {
+  input: DeleteBarCodeIdentifierInput;
 };
 
 
-export type MutationDeleteManyIrpRoadTaxesArgs = {
-  input: DeleteManyIrpRoadTaxesInput;
+export type MutationDeleteManyBarCodeIdentifierArgs = {
+  input: DeleteManyBarCodeIdentifierInput;
 };
 
 
-export type MutationCreateIftaFuelTaxesArgs = {
-  input: CreateIftaFuelTaxesInput;
+export type MutationCreateBillingResolutionArgs = {
+  input: CreateBillingResolutionInput;
 };
 
 
-export type MutationUpdateIftaFuelTaxesArgs = {
-  input: UpdateIftaFuelTaxesInput;
+export type MutationUpdateBillingResolutionArgs = {
+  input: UpdateBillingResolutionInput;
 };
 
 
-export type MutationDeleteIftaFuelTaxesArgs = {
-  input: DeleteIftaFuelTaxesInput;
+export type MutationDeleteBillingResolutionArgs = {
+  input: DeleteBillingResolutionInput;
 };
 
 
-export type MutationDeleteManyIftaFuelTaxesArgs = {
-  input: DeleteManyIftaFuelTaxesInput;
+export type MutationDeleteManyBillingResolutionArgs = {
+  input: DeleteManyBillingResolutionInput;
 };
 
 
-export type MutationCreateSubstanceComplianceClearinghouseArgs = {
-  input: CreateSubstanceComplianceClearinghouseInput;
+export type MutationCreateProductArgs = {
+  input: CreateProductInput;
 };
 
 
-export type MutationUpdateSubstanceComplianceClearinghouseArgs = {
-  input: UpdateSubstanceComplianceClearinghouseInput;
+export type MutationUpdateProductArgs = {
+  input: UpdateProductInput;
 };
 
 
-export type MutationDeleteSubstanceComplianceClearinghouseArgs = {
-  input: DeleteSubstanceComplianceClearinghouseInput;
+export type MutationDeleteProductArgs = {
+  input: DeleteProductInput;
 };
 
 
-export type MutationDeleteManySubstanceComplianceClearinghouseArgs = {
-  input: DeleteManySubstanceComplianceClearinghouseInput;
+export type MutationDeleteManyProductArgs = {
+  input: DeleteManyProductInput;
 };
 
 
-export type MutationCreateDriverFilesArgs = {
-  input: CreateDriverFilesInput;
+export type MutationCreateProductMenuArgs = {
+  input: CreateProductMenuInput;
 };
 
 
-export type MutationUpdateDriverFilesArgs = {
-  input: UpdateDriverFilesInput;
+export type MutationUpdateProductMenuArgs = {
+  input: UpdateProductMenuInput;
 };
 
 
-export type MutationDeleteDriverFilesArgs = {
-  input: DeleteDriverFilesInput;
+export type MutationDeleteProductMenuArgs = {
+  input: DeleteProductMenuInput;
 };
 
 
-export type MutationDeleteManyDriverFilesArgs = {
-  input: DeleteManyDriverFilesInput;
+export type MutationDeleteManyProductMenuArgs = {
+  input: DeleteManyProductMenuInput;
 };
 
 
-export type MutationCreateDotInfoArgs = {
-  input: CreateDotInfoInput;
+export type MutationCreateProductAreaArgs = {
+  input: CreateProductAreaInput;
 };
 
 
-export type MutationUpdateDotInfoArgs = {
-  input: UpdateDotInfoInput;
+export type MutationUpdateProductAreaArgs = {
+  input: UpdateProductAreaInput;
 };
 
 
-export type MutationDeleteDotInfoArgs = {
-  input: DeleteDotInfoInput;
+export type MutationDeleteProductAreaArgs = {
+  input: DeleteProductAreaInput;
 };
 
 
-export type MutationDeleteManyDotInfoArgs = {
-  input: DeleteManyDotInfoInput;
+export type MutationDeleteManyProductAreaArgs = {
+  input: DeleteManyProductAreaInput;
 };
 
 
-export type MutationCreateAnnualVehInspStateRermitsArgs = {
-  input: CreateAnnualVehInspStateRermitsInput;
+export type MutationCreateProductParamsArgs = {
+  input: CreateProductParamsInput;
 };
 
 
-export type MutationUpdateAnnualVehInspStateRermitsArgs = {
-  input: UpdateAnnualVehInspStateRermitsInput;
+export type MutationUpdateProductParamsArgs = {
+  input: UpdateProductParamsInput;
 };
 
 
-export type MutationDeleteAnnualVehInspStateRermitsArgs = {
-  input: DeleteAnnualVehInspStateRermitsInput;
+export type MutationDeleteProductParamsArgs = {
+  input: DeleteProductParamsInput;
 };
 
 
-export type MutationDeleteManyAnnualVehInspStateRermitsArgs = {
-  input: DeleteManyAnnualVehInspStateRermitsInput;
+export type MutationDeleteManyProductParamsArgs = {
+  input: DeleteManyProductParamsInput;
 };
 
 
-export type MutationCreateTrailerRentalArgs = {
-  input: CreateTrailerRentalInput;
+export type MutationCreateProductGroupArgs = {
+  input: CreateProductGroupInput;
 };
 
 
-export type MutationUpdateTrailerRentalArgs = {
-  input: UpdateTrailerRentalInput;
+export type MutationUpdateProductGroupArgs = {
+  input: UpdateProductGroupInput;
 };
 
 
-export type MutationDeleteTrailerRentalArgs = {
-  input: DeleteTrailerRentalInput;
+export type MutationDeleteProductGroupArgs = {
+  input: DeleteProductGroupInput;
 };
 
 
-export type MutationDeleteManyTrailerRentalArgs = {
-  input: DeleteManyTrailerRentalInput;
+export type MutationDeleteManyProductGroupArgs = {
+  input: DeleteManyProductGroupInput;
 };
 
 
-export type MutationCreateYardRentalArgs = {
-  input: CreateYardRentalInput;
+export type MutationCreateTaxesAndCostsArgs = {
+  input: CreateTaxesAndCostsInput;
 };
 
 
-export type MutationUpdateYardRentalArgs = {
-  input: UpdateYardRentalInput;
+export type MutationUpdateTaxesAndCostsArgs = {
+  input: UpdateTaxesAndCostsInput;
 };
 
 
-export type MutationDeleteYardRentalArgs = {
-  input: DeleteYardRentalInput;
+export type MutationDeleteTaxesAndCostsArgs = {
+  input: DeleteTaxesAndCostsInput;
 };
 
 
-export type MutationDeleteManyYardRentalArgs = {
-  input: DeleteManyYardRentalInput;
+export type MutationDeleteManyTaxesAndCostsArgs = {
+  input: DeleteManyTaxesAndCostsInput;
 };
 
 
-export type MutationCreateFinancedEquipmentArgs = {
-  input: CreateFinancedEquipmentInput;
+export type MutationCreateCompositionArgs = {
+  input: CreateCompositionInput;
 };
 
 
-export type MutationUpdateFinancedEquipmentArgs = {
-  input: UpdateFinancedEquipmentInput;
+export type MutationUpdateCompositionArgs = {
+  input: UpdateCompositionInput;
 };
 
 
-export type MutationDeleteFinancedEquipmentArgs = {
-  input: DeleteFinancedEquipmentInput;
+export type MutationDeleteCompositionArgs = {
+  input: DeleteCompositionInput;
 };
 
 
-export type MutationDeleteManyFinancedEquipmentArgs = {
-  input: DeleteManyFinancedEquipmentInput;
+export type MutationDeleteManyCompositionArgs = {
+  input: DeleteManyCompositionInput;
 };
 
 
-export type MutationCreateAccountingArgs = {
-  input: CreateAccountingInput;
+export type MutationCreateProductSalePriceArgs = {
+  input: CreateProductSalePriceInput;
 };
 
 
-export type MutationUpdateAccountingArgs = {
-  input: UpdateAccountingInput;
+export type MutationUpdateProductSalePriceArgs = {
+  input: UpdateProductSalePriceInput;
 };
 
 
-export type MutationDeleteAccountingArgs = {
-  input: DeleteAccountingInput;
+export type MutationDeleteProductSalePriceArgs = {
+  input: DeleteProductSalePriceInput;
 };
 
 
-export type MutationDeleteManyAccountingArgs = {
-  input: DeleteManyAccountingInput;
+export type MutationDeleteManyProductSalePriceArgs = {
+  input: DeleteManyProductSalePriceInput;
+};
+
+
+export type MutationCreatePreparationTypeArgs = {
+  input: CreatePreparationTypeInput;
+};
+
+
+export type MutationUpdatePreparationTypeArgs = {
+  input: UpdatePreparationTypeInput;
+};
+
+
+export type MutationDeletePreparationTypeArgs = {
+  input: DeletePreparationTypeInput;
+};
+
+
+export type MutationDeleteManyPreparationTypeArgs = {
+  input: DeleteManyPreparationTypeInput;
+};
+
+
+export type MutationCreateUnitMeasurementArgs = {
+  input: CreateUnitMeasurementInput;
+};
+
+
+export type MutationUpdateUnitMeasurementArgs = {
+  input: UpdateUnitMeasurementInput;
+};
+
+
+export type MutationDeleteUnitMeasurementArgs = {
+  input: DeleteUnitMeasurementInput;
+};
+
+
+export type MutationDeleteManyUnitMeasurementArgs = {
+  input: DeleteManyUnitMeasurementInput;
+};
+
+
+export type MutationCreateServicesArgs = {
+  input: CreateServicesInput;
+};
+
+
+export type MutationUpdateServicesArgs = {
+  input: UpdateServicesInput;
+};
+
+
+export type MutationDeleteServicesArgs = {
+  input: DeleteServicesInput;
+};
+
+
+export type MutationDeleteManyServicesArgs = {
+  input: DeleteManyServicesInput;
+};
+
+
+export type MutationCreatePartialTotalPhysicalInventoryArgs = {
+  input: CreatePartialTotalPhysicalInventoryInput;
+};
+
+
+export type MutationUpdatePartialTotalPhysicalInventoryArgs = {
+  input: UpdatePartialTotalPhysicalInventoryInput;
+};
+
+
+export type MutationDeletePartialTotalPhysicalInventoryArgs = {
+  input: DeletePartialTotalPhysicalInventoryInput;
+};
+
+
+export type MutationDeleteManyPartialTotalPhysicalInventoryArgs = {
+  input: DeleteManyPartialTotalPhysicalInventoryInput;
+};
+
+
+export type MutationCreatePartialInventoryItemsArgs = {
+  input: CreatePartialInventoryItemsInput;
+};
+
+
+export type MutationUpdatePartialInventoryItemsArgs = {
+  input: UpdatePartialInventoryItemsInput;
+};
+
+
+export type MutationDeletePartialInventoryItemsArgs = {
+  input: DeletePartialInventoryItemsInput;
+};
+
+
+export type MutationDeleteManyPartialInventoryItemsArgs = {
+  input: DeleteManyPartialInventoryItemsInput;
+};
+
+
+export type MutationCreateInitialPhysicalInventoryArgs = {
+  input: CreateInitialPhysicalInventoryInput;
+};
+
+
+export type MutationUpdateInitialPhysicalInventoryArgs = {
+  input: UpdateInitialPhysicalInventoryInput;
+};
+
+
+export type MutationDeleteInitialPhysicalInventoryArgs = {
+  input: DeleteInitialPhysicalInventoryInput;
+};
+
+
+export type MutationDeleteManyInitialPhysicalInventoryArgs = {
+  input: DeleteManyInitialPhysicalInventoryInput;
+};
+
+
+export type MutationCreateInventoryCovementConceptsArgs = {
+  input: CreateInventoryCovementConceptsInput;
+};
+
+
+export type MutationUpdateInventoryCovementConceptsArgs = {
+  input: UpdateInventoryCovementConceptsInput;
+};
+
+
+export type MutationDeleteInventoryCovementConceptsArgs = {
+  input: DeleteInventoryCovementConceptsInput;
+};
+
+
+export type MutationDeleteManyInventoryCovementConceptsArgs = {
+  input: DeleteManyInventoryCovementConceptsInput;
+};
+
+
+export type MutationCreateInventoryMovementArgs = {
+  input: CreateInventoryMovementInput;
+};
+
+
+export type MutationUpdateInventoryMovementArgs = {
+  input: UpdateInventoryMovementInput;
+};
+
+
+export type MutationDeleteInventoryMovementArgs = {
+  input: DeleteInventoryMovementInput;
+};
+
+
+export type MutationDeleteManyInventoryMovementArgs = {
+  input: DeleteManyInventoryMovementInput;
+};
+
+
+export type MutationCreateInventoryMovementItemsArgs = {
+  input: CreateInventoryMovementItemsInput;
+};
+
+
+export type MutationUpdateInventoryMovementItemsArgs = {
+  input: UpdateInventoryMovementItemsInput;
+};
+
+
+export type MutationDeleteInventoryMovementItemsArgs = {
+  input: DeleteInventoryMovementItemsInput;
+};
+
+
+export type MutationDeleteManyInventoryMovementItemsArgs = {
+  input: DeleteManyInventoryMovementItemsInput;
+};
+
+
+export type MutationCreateSerialMovementArgs = {
+  input: CreateSerialMovementInput;
+};
+
+
+export type MutationUpdateSerialMovementArgs = {
+  input: UpdateSerialMovementInput;
+};
+
+
+export type MutationDeleteSerialMovementArgs = {
+  input: DeleteSerialMovementInput;
+};
+
+
+export type MutationDeleteManySerialMovementArgs = {
+  input: DeleteManySerialMovementInput;
+};
+
+
+export type MutationCreateInventoryTransferArgs = {
+  input: CreateInventoryTransferInput;
+};
+
+
+export type MutationUpdateInventoryTransferArgs = {
+  input: UpdateInventoryTransferInput;
+};
+
+
+export type MutationDeleteInventoryTransferArgs = {
+  input: DeleteInventoryTransferInput;
+};
+
+
+export type MutationDeleteManyInventoryTransferArgs = {
+  input: DeleteManyInventoryTransferInput;
+};
+
+
+export type MutationCreateInventoryTransferItemsArgs = {
+  input: CreateInventoryTransferItemsInput;
+};
+
+
+export type MutationUpdateInventoryTransferItemsArgs = {
+  input: UpdateInventoryTransferItemsInput;
+};
+
+
+export type MutationDeleteInventoryTransferItemsArgs = {
+  input: DeleteInventoryTransferItemsInput;
+};
+
+
+export type MutationDeleteManyInventoryTransferItemsArgs = {
+  input: DeleteManyInventoryTransferItemsInput;
+};
+
+
+export type MutationCreateSerialTransferArgs = {
+  input: CreateSerialTransferInput;
+};
+
+
+export type MutationUpdateSerialTransferArgs = {
+  input: UpdateSerialTransferInput;
+};
+
+
+export type MutationDeleteSerialTransferArgs = {
+  input: DeleteSerialTransferInput;
+};
+
+
+export type MutationDeleteManySerialTransferArgs = {
+  input: DeleteManySerialTransferInput;
+};
+
+
+export type MutationCreatePaymentMethodArgs = {
+  input: CreatePaymentMethodInput;
+};
+
+
+export type MutationUpdatePaymentMethodArgs = {
+  input: UpdatePaymentMethodInput;
+};
+
+
+export type MutationDeletePaymentMethodArgs = {
+  input: DeletePaymentMethodInput;
+};
+
+
+export type MutationDeleteManyPaymentMethodArgs = {
+  input: DeleteManyPaymentMethodInput;
+};
+
+
+export type MutationCreateCreditCardArgs = {
+  input: CreateCreditCardInput;
+};
+
+
+export type MutationUpdateCreditCardArgs = {
+  input: UpdateCreditCardInput;
+};
+
+
+export type MutationDeleteCreditCardArgs = {
+  input: DeleteCreditCardInput;
+};
+
+
+export type MutationDeleteManyCreditCardArgs = {
+  input: DeleteManyCreditCardInput;
+};
+
+
+export type MutationCreateBanksArgs = {
+  input: CreateBanksInput;
+};
+
+
+export type MutationUpdateBanksArgs = {
+  input: UpdateBanksInput;
+};
+
+
+export type MutationDeleteBanksArgs = {
+  input: DeleteBanksInput;
+};
+
+
+export type MutationDeleteManyBanksArgs = {
+  input: DeleteManyBanksInput;
+};
+
+
+export type MutationCreateThirdPartiesArgs = {
+  input: CreateThirdPartiesInput;
+};
+
+
+export type MutationUpdateThirdPartiesArgs = {
+  input: UpdateThirdPartiesInput;
+};
+
+
+export type MutationDeleteThirdPartiesArgs = {
+  input: DeleteThirdPartiesInput;
+};
+
+
+export type MutationDeleteManyThirdPartiesArgs = {
+  input: DeleteManyThirdPartiesInput;
+};
+
+
+export type MutationCreateThirdPartyClassificationArgs = {
+  input: CreateThirdPartyClassificationInput;
+};
+
+
+export type MutationUpdateThirdPartyClassificationArgs = {
+  input: UpdateThirdPartyClassificationInput;
+};
+
+
+export type MutationDeleteThirdPartyClassificationArgs = {
+  input: DeleteThirdPartyClassificationInput;
+};
+
+
+export type MutationDeleteManyThirdPartyClassificationArgs = {
+  input: DeleteManyThirdPartyClassificationInput;
+};
+
+
+export type MutationCreateRegimeTypeArgs = {
+  input: CreateRegimeTypeInput;
+};
+
+
+export type MutationUpdateRegimeTypeArgs = {
+  input: UpdateRegimeTypeInput;
+};
+
+
+export type MutationDeleteRegimeTypeArgs = {
+  input: DeleteRegimeTypeInput;
+};
+
+
+export type MutationDeleteManyRegimeTypeArgs = {
+  input: DeleteManyRegimeTypeInput;
+};
+
+
+export type MutationCreateEconomicActivitiesArgs = {
+  input: CreateEconomicActivitiesInput;
+};
+
+
+export type MutationUpdateEconomicActivitiesArgs = {
+  input: UpdateEconomicActivitiesInput;
+};
+
+
+export type MutationDeleteEconomicActivitiesArgs = {
+  input: DeleteEconomicActivitiesInput;
+};
+
+
+export type MutationDeleteManyEconomicActivitiesArgs = {
+  input: DeleteManyEconomicActivitiesInput;
+};
+
+
+export type MutationCreateFiscalResponsibilityArgs = {
+  input: CreateFiscalResponsibilityInput;
+};
+
+
+export type MutationUpdateFiscalResponsibilityArgs = {
+  input: UpdateFiscalResponsibilityInput;
+};
+
+
+export type MutationDeleteFiscalResponsibilityArgs = {
+  input: DeleteFiscalResponsibilityInput;
+};
+
+
+export type MutationDeleteManyFiscalResponsibilityArgs = {
+  input: DeleteManyFiscalResponsibilityInput;
+};
+
+
+export type MutationCreateTributaryInformationArgs = {
+  input: CreateTributaryInformationInput;
+};
+
+
+export type MutationUpdateTributaryInformationArgs = {
+  input: UpdateTributaryInformationInput;
+};
+
+
+export type MutationDeleteTributaryInformationArgs = {
+  input: DeleteTributaryInformationInput;
+};
+
+
+export type MutationDeleteManyTributaryInformationArgs = {
+  input: DeleteManyTributaryInformationInput;
+};
+
+
+export type MutationCreateSerialArgs = {
+  input: CreateSerialInput;
+};
+
+
+export type MutationUpdateSerialArgs = {
+  input: UpdateSerialInput;
+};
+
+
+export type MutationDeleteSerialArgs = {
+  input: DeleteSerialInput;
+};
+
+
+export type MutationDeleteManySerialArgs = {
+  input: DeleteManySerialInput;
+};
+
+
+export type MutationCreatePurchaseReturnsArgs = {
+  input: CreatePurchaseReturnsInput;
+};
+
+
+export type MutationUpdatePurchaseReturnsArgs = {
+  input: UpdatePurchaseReturnsInput;
+};
+
+
+export type MutationDeletePurchaseReturnsArgs = {
+  input: DeletePurchaseReturnsInput;
+};
+
+
+export type MutationDeleteManyPurchaseReturnsArgs = {
+  input: DeleteManyPurchaseReturnsInput;
+};
+
+
+export type MutationCreateMonetaryDenominationArgs = {
+  input: CreateMonetaryDenominationInput;
+};
+
+
+export type MutationUpdateMonetaryDenominationArgs = {
+  input: UpdateMonetaryDenominationInput;
+};
+
+
+export type MutationDeleteMonetaryDenominationArgs = {
+  input: DeleteMonetaryDenominationInput;
+};
+
+
+export type MutationDeleteManyMonetaryDenominationArgs = {
+  input: DeleteManyMonetaryDenominationInput;
+};
+
+
+export type MutationCreateCompositionDecompositionArgs = {
+  input: CreateCompositionDecompositionInput;
+};
+
+
+export type MutationUpdateCompositionDecompositionArgs = {
+  input: UpdateCompositionDecompositionInput;
+};
+
+
+export type MutationDeleteCompositionDecompositionArgs = {
+  input: DeleteCompositionDecompositionInput;
+};
+
+
+export type MutationDeleteManyCompositionDecompositionArgs = {
+  input: DeleteManyCompositionDecompositionInput;
 };
 
 export type NotificationFilterFilter = {
@@ -1857,37 +3534,63 @@ export type NotificationTypeFilterComparison = {
   notIn?: Maybe<Array<NotificationType>>;
 };
 
-export type OrderByAccountingInput = {
+export type OrderByBanksInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByAnnualVehInspStateRermitsInput = {
+export type OrderByBarCodeIdentifierInput = {
+  code?: Maybe<OrderByType>;
+  price?: Maybe<OrderByType>;
+  currency?: Maybe<OrderByType>;
+  quantity?: Maybe<OrderByType>;
+  identifier?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByBillingResolutionInput = {
+  resolutionNumber?: Maybe<OrderByType>;
+  prefix?: Maybe<OrderByType>;
+  initialNumber?: Maybe<OrderByType>;
+  finalNumber?: Maybe<OrderByType>;
+  from?: Maybe<OrderByType>;
+  to?: Maybe<OrderByType>;
+  resolutionClass?: Maybe<OrderByType>;
+  resolutionType?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByCompanyInput = {
+  name?: Maybe<OrderByType>;
+  country?: Maybe<OrderByType>;
+  city?: Maybe<OrderByType>;
+  webSite?: Maybe<OrderByType>;
+  address?: Maybe<OrderByType>;
+  phoneNumber?: Maybe<OrderByType>;
+  email?: Maybe<OrderByType>;
+  nit?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByCompositionDecompositionInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByClientInput = {
+export type OrderByCompositionInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByCorporationEinInput = {
+export type OrderByCreditCardInput = {
   name?: Maybe<OrderByType>;
-  description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByDotInfoInput = {
-  name?: Maybe<OrderByType>;
-  description?: Maybe<OrderByType>;
-  createdAt?: Maybe<OrderByType>;
-};
-
-export type OrderByDriverFilesInput = {
+export type OrderByEconomicActivitiesInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
@@ -1899,19 +3602,55 @@ export type OrderByFilesInput = {
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByFinancedEquipmentInput = {
+export type OrderByFiscalResponsibilityInput = {
+  codeDian?: Maybe<OrderByType>;
+  taxDescription?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByGroupInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByIftaFuelTaxesInput = {
+export type OrderByInitialPhysicalInventoryInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByIrpRoadTaxesInput = {
+export type OrderByInventoryCovementConceptsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByInventoryMovementInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByInventoryMovementItemsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByInventoryTransferInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByInventoryTransferItemsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByMonetaryDenominationInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
@@ -1922,13 +3661,108 @@ export type OrderByNotificationInput = {
   createdAt?: Maybe<OrderByType>;
 };
 
+export type OrderByPartialInventoryItemsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByPartialTotalPhysicalInventoryInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByPaymentMethodInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByPreparationTypeInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductAreaInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductGroupInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductMenuInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductParamsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByProductSalePriceInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByPurchaseReturnsInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByRegimeTypeInput = {
+  name?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
 export type OrderByRoleInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderBySubstanceComplianceClearinghouseInput = {
+export type OrderBySerialInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderBySerialMovementInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderBySerialTransferInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByServicesInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByTaxesAndCostsInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
@@ -1951,7 +3785,19 @@ export type OrderByTenantInput = {
   email?: Maybe<OrderByType>;
 };
 
-export type OrderByTrailerRentalInput = {
+export type OrderByThirdPartiesInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByThirdPartyClassificationInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderByTributaryInformationInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
@@ -1961,6 +3807,12 @@ export enum OrderByType {
   Asc = 'ASC',
   Desc = 'DESC'
 }
+
+export type OrderByUnitMeasurementInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
 
 export type OrderByUserAreaInput = {
   name?: Maybe<OrderByType>;
@@ -1985,9 +3837,11 @@ export type OrderByUserPositionInput = {
   createdAt?: Maybe<OrderByType>;
 };
 
-export type OrderByYardRentalInput = {
+export type OrderByWarehouseInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
+  location?: Maybe<OrderByType>;
+  code?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
 };
 
@@ -1996,48 +3850,64 @@ export enum Provider {
   Google = 'GOOGLE'
 }
 
-export type PaginatedAccountingResponse = {
-  items: Array<AccountingResponse>;
+export type PaginatedBanksResponse = {
+  items: Array<BanksResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedAnnualVehInspStateRermitsResponse = {
-  items: Array<AnnualVehInspStateRermitsResponse>;
+export type PaginatedBarCodeIdentifierResponse = {
+  items: Array<BarCodeIdentifierResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedClientResponse = {
-  items: Array<ClientResponse>;
+export type PaginatedBillingResolutionResponse = {
+  items: Array<BillingResolutionResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedCorporationEinResponse = {
-  items: Array<CorporationEinResponse>;
+export type PaginatedCompanyResponse = {
+  items: Array<CompanyResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedDotInfoResponse = {
-  items: Array<DotInfoResponse>;
+export type PaginatedCompositionDecompositionResponse = {
+  items: Array<CompositionDecompositionResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedDriverFilesResponse = {
-  items: Array<DriverFilesResponse>;
+export type PaginatedCompositionResponse = {
+  items: Array<CompositionResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedCreditCardResponse = {
+  items: Array<CreditCardResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedEconomicActivitiesResponse = {
+  items: Array<EconomicActivitiesResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -2052,24 +3922,72 @@ export type PaginatedFilesResponse = {
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedFinancedEquipmentResponse = {
-  items: Array<FinancedEquipmentResponse>;
+export type PaginatedFiscalResponsibilityResponse = {
+  items: Array<FiscalResponsibilityResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedIftaFuelTaxesResponse = {
-  items: Array<IftaFuelTaxesResponse>;
+export type PaginatedGroupResponse = {
+  items: Array<GroupResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedIrpRoadTaxesResponse = {
-  items: Array<IrpRoadTaxesResponse>;
+export type PaginatedInitialPhysicalInventoryResponse = {
+  items: Array<InitialPhysicalInventoryResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedInventoryCovementConceptsResponse = {
+  items: Array<InventoryCovementConceptsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedInventoryMovementItemsResponse = {
+  items: Array<InventoryMovementItemsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedInventoryMovementResponse = {
+  items: Array<InventoryMovementResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedInventoryTransferItemsResponse = {
+  items: Array<InventoryTransferItemsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedInventoryTransferResponse = {
+  items: Array<InventoryTransferResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedMonetaryDenominationResponse = {
+  items: Array<MonetaryDenominationResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -2084,6 +4002,102 @@ export type PaginatedNotificationResponse = {
   currentPage: Scalars['Int'];
 };
 
+export type PaginatedPartialInventoryItemsResponse = {
+  items: Array<PartialInventoryItemsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedPartialTotalPhysicalInventoryResponse = {
+  items: Array<PartialTotalPhysicalInventoryResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedPaymentMethodResponse = {
+  items: Array<PaymentMethodResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedPreparationTypeResponse = {
+  items: Array<PreparationTypeResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductAreaResponse = {
+  items: Array<ProductAreaResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductGroupResponse = {
+  items: Array<ProductGroupResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductMenuResponse = {
+  items: Array<ProductMenuResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductParamsResponse = {
+  items: Array<ProductParamsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductResponse = {
+  items: Array<ProductResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedProductSalePriceResponse = {
+  items: Array<ProductSalePriceResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedPurchaseReturnsResponse = {
+  items: Array<PurchaseReturnsResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedRegimeTypeResponse = {
+  items: Array<RegimeTypeResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
 export type PaginatedRoleResponse = {
   items: Array<RoleResponse>;
   total: Scalars['Int'];
@@ -2092,8 +4106,40 @@ export type PaginatedRoleResponse = {
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedSubstanceComplianceClearinghouseResponse = {
-  items: Array<SubstanceComplianceClearinghouseResponse>;
+export type PaginatedSerialMovementResponse = {
+  items: Array<SerialMovementResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedSerialResponse = {
+  items: Array<SerialResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedSerialTransferResponse = {
+  items: Array<SerialTransferResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedServicesResponse = {
+  items: Array<ServicesResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedTaxesAndCostsResponse = {
+  items: Array<TaxesAndCostsResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -2116,8 +4162,32 @@ export type PaginatedTenantResponse = {
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedTrailerRentalResponse = {
-  items: Array<TrailerRentalResponse>;
+export type PaginatedThirdPartiesResponse = {
+  items: Array<ThirdPartiesResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedThirdPartyClassificationResponse = {
+  items: Array<ThirdPartyClassificationResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedTributaryInformationResponse = {
+  items: Array<TributaryInformationResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedUnitMeasurementResponse = {
+  items: Array<UnitMeasurementResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -2148,8 +4218,8 @@ export type PaginatedUsers = {
   currentPage: Scalars['Int'];
 };
 
-export type PaginatedYardRentalResponse = {
-  items: Array<YardRentalResponse>;
+export type PaginatedWarehouseResponse = {
+  items: Array<WarehouseResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -2161,117 +4231,80 @@ export type PaginatorParams = {
   limit?: Maybe<Scalars['Int']>;
 };
 
-export type PartialAccountingInput = {
-  date?: Maybe<Scalars['DateTime']>;
-  paymentAmount?: Maybe<Scalars['Float']>;
-  achDate?: Maybe<Scalars['String']>;
-  file?: Maybe<Scalars['ID']>;
-};
-
-export type PartialAnnualVehInspStateRermitsInput = {
-  annualVehInspReport?: Maybe<Scalars['String']>;
-  annualVehInspReportUnbound?: Maybe<Scalars['String']>;
-  annualVehInspReportFile?: Maybe<Scalars['ID']>;
-  statePermits?: Maybe<Scalars['String']>;
-  statePermitsUnbound?: Maybe<Scalars['String']>;
-  statePermitsExpiration?: Maybe<Scalars['DateTime']>;
-  statePermitsFile?: Maybe<Scalars['ID']>;
-  newMexicoLogin?: Maybe<Scalars['String']>;
-  newMexicoLoginUnbound?: Maybe<Scalars['String']>;
-  newMexicoLoginFile?: Maybe<Scalars['ID']>;
-  newMexicoPassword?: Maybe<Scalars['String']>;
-  newMexicoPasswordUnbound?: Maybe<Scalars['String']>;
-  newMexicoPasswordFile?: Maybe<Scalars['ID']>;
-  otherPermitInfo?: Maybe<Scalars['String']>;
-  otherPermitInfoUnbound?: Maybe<Scalars['String']>;
-  otherPermitInfoFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
-};
-
-export type PartialClientInput = {
-  clientSince?: Maybe<Scalars['String']>;
-  companyName?: Maybe<Scalars['String']>;
-  customerName?: Maybe<Scalars['String']>;
-  tax?: Maybe<Scalars['ID']>;
-  mc?: Maybe<Scalars['String']>;
-  ofTrucks?: Maybe<Scalars['String']>;
-  street?: Maybe<Scalars['String']>;
-  city?: Maybe<Scalars['String']>;
-  stateProvince?: Maybe<Scalars['String']>;
-  zipPostalCode?: Maybe<Scalars['String']>;
-  contacEmail?: Maybe<Scalars['String']>;
-  conactOficePhone?: Maybe<Scalars['String']>;
-  mobilePhone?: Maybe<Scalars['String']>;
-};
-
-export type PartialCorporationEinInput = {
-  client?: Maybe<Scalars['ID']>;
-  documentType?: Maybe<DocumentType>;
-  expiration?: Maybe<Scalars['DateTime']>;
-  expires?: Maybe<Scalars['Boolean']>;
-  description?: Maybe<Scalars['String']>;
-};
-
-export type PartialDotInfoInput = {
-  dot?: Maybe<Scalars['String']>;
-  dotDetail?: Maybe<Scalars['String']>;
-  dotExpiration?: Maybe<Scalars['DateTime']>;
-  dotFile?: Maybe<Scalars['ID']>;
-  mc?: Maybe<Scalars['String']>;
-  mcDetail?: Maybe<Scalars['String']>;
-  mcFile?: Maybe<Scalars['ID']>;
-  taxId?: Maybe<Scalars['String']>;
-  taxIdDetail?: Maybe<Scalars['String']>;
-  taxIdFile?: Maybe<Scalars['ID']>;
-  dotPin?: Maybe<Scalars['String']>;
-  dotPinDetail?: Maybe<Scalars['String']>;
-  dotPinFile?: Maybe<Scalars['ID']>;
-  mcPin?: Maybe<Scalars['String']>;
-  mcPinDetail?: Maybe<Scalars['String']>;
-  mcPinFile?: Maybe<Scalars['ID']>;
-  scac?: Maybe<Scalars['String']>;
-  scacDetail?: Maybe<Scalars['String']>;
-  scacExpiration?: Maybe<Scalars['DateTime']>;
-  scacFile?: Maybe<Scalars['ID']>;
-  ucr?: Maybe<Scalars['String']>;
-  ucrDetail?: Maybe<Scalars['String']>;
-  ucrExpiration?: Maybe<Scalars['DateTime']>;
-  ucrFile?: Maybe<Scalars['ID']>;
-  bocThree?: Maybe<Scalars['String']>;
-  bocThreeDetail?: Maybe<Scalars['String']>;
-  bocThreeFile?: Maybe<Scalars['ID']>;
-  docRoadInspection?: Maybe<Scalars['String']>;
-  docRoadInspectionDetail?: Maybe<Scalars['String']>;
-  docRoadInspectionFile?: Maybe<Scalars['ID']>;
-  docAudits?: Maybe<Scalars['String']>;
-  docAuditsDetail?: Maybe<Scalars['String']>;
-  docAuditsFile?: Maybe<Scalars['ID']>;
-  otherDotDocument?: Maybe<Scalars['String']>;
-  otherDotDocumentDetail?: Maybe<Scalars['String']>;
-  otherDotDocumentFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
-};
-
-export type PartialDriverFilesInput = {
+export type PartialBanksInput = {
   name?: Maybe<Scalars['String']>;
-  dni?: Maybe<Scalars['String']>;
-  driveLicense?: Maybe<Scalars['String']>;
-  driveLicenseFile?: Maybe<Scalars['ID']>;
-  driveLicenseExpiration?: Maybe<Scalars['DateTime']>;
-  medicalCardFile?: Maybe<Scalars['ID']>;
-  medicalCardExpiration?: Maybe<Scalars['DateTime']>;
-  mvrFile?: Maybe<Scalars['ID']>;
-  mvrExpiration?: Maybe<Scalars['DateTime']>;
-  socialSecurityFile?: Maybe<Scalars['ID']>;
-  socialSecurityExpiration?: Maybe<Scalars['DateTime']>;
-  driverFile?: Maybe<Scalars['ID']>;
-  driverSignedContractFile?: Maybe<Scalars['ID']>;
-  inquiryToPreviousEmployerFile?: Maybe<Scalars['ID']>;
-  drugsTestFile?: Maybe<Scalars['ID']>;
-  clearingHouseFile?: Maybe<Scalars['ID']>;
-  clearingHouseExpiration?: Maybe<Scalars['DateTime']>;
-  readInspectionsNoaFile?: Maybe<Scalars['ID']>;
-  otherDocuments?: Maybe<Scalars['ID']>;
+  accountingAccount?: Maybe<Scalars['Int']>;
+};
+
+export type PartialBarCodeIdentifierInput = {
+  code?: Maybe<Scalars['String']>;
+  price?: Maybe<Scalars['Float']>;
+  currency?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  identifier?: Maybe<BarCodeIdentifier>;
+  barCodeFormat?: Maybe<BarCodeFormat>;
+  warehouse?: Maybe<Scalars['ID']>;
+  company?: Maybe<Scalars['ID']>;
+};
+
+export type PartialBillingResolutionInput = {
+  resolutionNumber?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  initialNumber?: Maybe<Scalars['Int']>;
+  finalNumber?: Maybe<Scalars['Int']>;
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  resolutionClass?: Maybe<ResolutionClass>;
+  resolutionType?: Maybe<ResolutionType>;
+  localBilling?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialCompanyInput = {
+  name?: Maybe<Scalars['String']>;
+  country?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  webSite?: Maybe<Scalars['String']>;
+  address?: Maybe<Scalars['String']>;
+  phoneNumber?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  nit?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  contact?: Maybe<Scalars['ID']>;
+};
+
+export type PartialCompositionDecompositionInput = {
+  warehouse?: Maybe<Scalars['ID']>;
+  userAdmin?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+  compositionType?: Maybe<CompositionType>;
+  code?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+};
+
+export type PartialCompositionInput = {
+  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  compound?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialCreditCardInput = {
+  name?: Maybe<Scalars['String']>;
+  commission?: Maybe<Scalars['Float']>;
+  photoFile?: Maybe<Scalars['ID']>;
+};
+
+export type PartialEconomicActivitiesInput = {
+  codeCiu?: Maybe<Scalars['Int']>;
+  codeActivity?: Maybe<Scalars['Int']>;
+  rate?: Maybe<Scalars['Int']>;
+  nameActivity?: Maybe<Scalars['String']>;
 };
 
 export type PartialFilesInput = {
@@ -2283,72 +4316,259 @@ export type PartialFilesInput = {
   status?: Maybe<FileStatus>;
 };
 
-export type PartialFinancedEquipmentInput = {
-  saleAmount?: Maybe<Scalars['String']>;
-  saleDate?: Maybe<Scalars['String']>;
-  monthlyPayment?: Maybe<Scalars['String']>;
-  lastPaymentDate?: Maybe<Scalars['String']>;
-  financeAgreementDocuments?: Maybe<Scalars['ID']>;
-  repairsCostReceiptsText?: Maybe<Scalars['String']>;
-  repairsCostReceiptsFile?: Maybe<Scalars['ID']>;
-  truckVin?: Maybe<Scalars['String']>;
-  payOffList?: Maybe<Scalars['ID']>;
+export type PartialFiscalResponsibilityInput = {
+  codeDian?: Maybe<Scalars['Int']>;
+  taxDescription?: Maybe<Scalars['String']>;
 };
 
-export type PartialIftaFuelTaxesInput = {
-  iftaAccount?: Maybe<Scalars['String']>;
-  iftaAccountDetail?: Maybe<Scalars['String']>;
-  iftaAccountExpiration?: Maybe<Scalars['DateTime']>;
-  iftaAccountFile?: Maybe<Scalars['ID']>;
-  iftaApplRenewalsChanges?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesDetail?: Maybe<Scalars['String']>;
-  iftaApplRenewalsChangesFile?: Maybe<Scalars['ID']>;
-  fuelTaxes?: Maybe<Scalars['String']>;
-  fuelTaxesDetail?: Maybe<Scalars['String']>;
-  fuelTaxesExpiration?: Maybe<Scalars['DateTime']>;
-  fuelTaxesFile?: Maybe<Scalars['ID']>;
-  otherIftaRequest?: Maybe<Scalars['String']>;
-  otherIftaRequestDetail?: Maybe<Scalars['String']>;
-  otherIftaRequestExpiration?: Maybe<Scalars['DateTime']>;
-  otherIftaRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type PartialGroupInput = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  area?: Maybe<Scalars['ID']>;
+  leader?: Maybe<Scalars['ID']>;
+  members?: Maybe<Array<Scalars['ID']>>;
 };
 
-export type PartialIrpRoadTaxesInput = {
-  irpAccount?: Maybe<Scalars['String']>;
-  irpAccountDetail?: Maybe<Scalars['String']>;
-  irpExpiration?: Maybe<Scalars['DateTime']>;
-  irpFile?: Maybe<Scalars['ID']>;
-  certificateTitle?: Maybe<Scalars['String']>;
-  certificateTitleDetail?: Maybe<Scalars['String']>;
-  certificateTitleFile?: Maybe<Scalars['ID']>;
-  tag?: Maybe<Scalars['String']>;
-  tagDetail?: Maybe<Scalars['String']>;
-  tagExpiration?: Maybe<Scalars['DateTime']>;
-  tagFile?: Maybe<Scalars['ID']>;
-  roadTax?: Maybe<Scalars['String']>;
-  roadTaxDetail?: Maybe<Scalars['String']>;
-  roadTaxExpiration?: Maybe<Scalars['DateTime']>;
-  roadTaxFile?: Maybe<Scalars['ID']>;
-  leaseAgreement?: Maybe<Scalars['String']>;
-  leaseAgreementDetail?: Maybe<Scalars['String']>;
-  leaseAgreementFile?: Maybe<Scalars['ID']>;
-  irpApplicationsRenewals?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsDetail?: Maybe<Scalars['String']>;
-  irpApplicationsRenewalsFile?: Maybe<Scalars['ID']>;
-  otherIrpRequest?: Maybe<Scalars['String']>;
-  otherIrpRequestDetail?: Maybe<Scalars['String']>;
-  otherIrpRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type PartialInitialPhysicalInventoryInput = {
+  currentquantity?: Maybe<Scalars['Float']>;
+  previousQuantity?: Maybe<Scalars['Float']>;
+  newQuantity?: Maybe<Scalars['Float']>;
+  unitCost?: Maybe<Scalars['Float']>;
+  unitPrice?: Maybe<Scalars['Float']>;
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  partialInventory?: Maybe<Scalars['ID']>;
+};
+
+export type PartialInventoryCovementConceptsInput = {
+  name?: Maybe<Scalars['String']>;
+  requestThird?: Maybe<Scalars['Boolean']>;
+  loadAllProducts?: Maybe<Scalars['Boolean']>;
+  valueType?: Maybe<ValueTypes>;
+  movementType?: Maybe<MovementType>;
+};
+
+export type PartialInventoryItemsFilterFilter = {
+  and?: Maybe<Array<PartialInventoryItemsFilterFilter>>;
+  or?: Maybe<Array<PartialInventoryItemsFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PartialInventoryItemsResponse = {
+  id: Scalars['ID'];
+  currentquantity: Scalars['Float'];
+  previousQuantity: Scalars['Float'];
+  newQuantity: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitPrice: Scalars['Float'];
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<SolvedEntityResponse>;
+  partialInventory?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PartialInventoryMovementInput = {
+  concepts?: Maybe<Scalars['ID']>;
+  warehouse?: Maybe<Scalars['ID']>;
+  third?: Maybe<Scalars['ID']>;
+  settingNumber?: Maybe<Scalars['Int']>;
+  detail?: Maybe<Scalars['String']>;
+  movementDate?: Maybe<Scalars['DateTime']>;
+  movementStatus?: Maybe<MovementStatus>;
+};
+
+export type PartialInventoryMovementItemsInput = {
+  currentquantity?: Maybe<Scalars['Float']>;
+  previousQuantity?: Maybe<Scalars['Float']>;
+  newQuantity?: Maybe<Scalars['Float']>;
+  unitCost?: Maybe<Scalars['Float']>;
+  unitPrice?: Maybe<Scalars['Float']>;
+  entry?: Maybe<Scalars['Float']>;
+  output?: Maybe<Scalars['Float']>;
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  movementInventory?: Maybe<Scalars['ID']>;
+};
+
+export type PartialInventoryTransferInput = {
+  originWarehouse?: Maybe<Scalars['ID']>;
+  destinationWarehouse?: Maybe<Scalars['ID']>;
+  transfertDate?: Maybe<Scalars['DateTime']>;
+  transferNumber?: Maybe<Scalars['Int']>;
+  document?: Maybe<Scalars['String']>;
+  detail?: Maybe<Scalars['String']>;
+  transferStatus?: Maybe<TransferStatus>;
+};
+
+export type PartialInventoryTransferItemsInput = {
+  originQuantity?: Maybe<Scalars['Float']>;
+  totalTransfer?: Maybe<Scalars['Float']>;
+  originRestant?: Maybe<Scalars['Float']>;
+  destinationBalance?: Maybe<Scalars['Float']>;
+  transfer?: Maybe<Scalars['Float']>;
+  destinationBalanceTotal?: Maybe<Scalars['Float']>;
+  movementTransfer?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+};
+
+export type PartialMonetaryDenominationInput = {
+  value?: Maybe<Scalars['Float']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  monetaryDenominationTypes?: Maybe<MonetaryDenominationTypes>;
 };
 
 export type PartialNotificationInput = {
   isRead?: Maybe<Scalars['Boolean']>;
 };
 
+export type PartialPartialInventoryItemsInput = {
+  currentquantity?: Maybe<Scalars['Float']>;
+  previousQuantity?: Maybe<Scalars['Float']>;
+  newQuantity?: Maybe<Scalars['Float']>;
+  unitCost?: Maybe<Scalars['Float']>;
+  unitPrice?: Maybe<Scalars['Float']>;
+  barCode?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  partialInventory?: Maybe<Scalars['ID']>;
+};
+
+export type PartialPartialTotalPhysicalInventoryInput = {
+  detail?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['Int']>;
+  warehouse?: Maybe<Scalars['ID']>;
+  isConfirmed?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialPaymentMethodInput = {
+  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  cashOnHand?: Maybe<Scalars['Boolean']>;
+  credit?: Maybe<Scalars['Boolean']>;
+  divideIntoInstallments?: Maybe<Scalars['Boolean']>;
+  paycheck?: Maybe<Scalars['Boolean']>;
+  deferPayment?: Maybe<Scalars['Boolean']>;
+  days?: Maybe<Scalars['Int']>;
+  accounting?: Maybe<Accounting>;
+  alwaysLinkedWith?: Maybe<AlwaysLinkedWith>;
+  accountingAccount?: Maybe<Scalars['String']>;
+  askBank?: Maybe<Scalars['Boolean']>;
+  askBoucherNumber?: Maybe<Scalars['Boolean']>;
+  askDocumentDate?: Maybe<Scalars['Boolean']>;
+  askCardType?: Maybe<Scalars['Boolean']>;
+  paymentMethodDian?: Maybe<Scalars['ID']>;
+  paymentMethodDianType?: Maybe<PaymentMethodDianType>;
+  administersDominicilios?: Maybe<Scalars['Boolean']>;
+  administersBonuses?: Maybe<Scalars['Boolean']>;
+  administersAdvanceReservationsOrders?: Maybe<Scalars['Boolean']>;
+  affectVouchersConsignmentsThirds?: Maybe<Scalars['Boolean']>;
+  showIva?: Maybe<Scalars['Boolean']>;
+  iva?: Maybe<Scalars['ID']>;
+  confirmReturns?: Maybe<Scalars['Boolean']>;
+  confirmCreditCut?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+};
+
 export type PartialPermitsInput = {
   module?: Maybe<App_Modules>;
   action?: Maybe<Action_List>;
+};
+
+export type PartialPreparationTypeInput = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type PartialProductAreaInput = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  attentionArea?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialProductGroupInput = {
+  name?: Maybe<Scalars['String']>;
+  sortingToOrders?: Maybe<Scalars['Boolean']>;
+  source?: Maybe<Scalars['String']>;
+  tipInOrder?: Maybe<Scalars['Boolean']>;
+  warehouses?: Maybe<Array<Scalars['ID']>>;
+  taxAppliedToPurchases?: Maybe<Array<Scalars['ID']>>;
+  taxAppliedToSales?: Maybe<Array<Scalars['ID']>>;
+  timeTax?: Maybe<Scalars['Boolean']>;
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialProductInput = {
+  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  compound?: Maybe<Scalars['Boolean']>;
+  shoppingAssistant?: Maybe<Scalars['Boolean']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  composition?: Maybe<Scalars['ID']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  barCode?: Maybe<Array<Scalars['ID']>>;
+  groups?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type PartialProductMenuInput = {
+  name?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type PartialProductParamsInput = {
+  updatePriceInInvoice?: Maybe<Scalars['Boolean']>;
+  belongsToWarehouse?: Maybe<Scalars['Boolean']>;
+  releaseToMenu?: Maybe<Scalars['Boolean']>;
+  invoicePriceRangeFrom?: Maybe<Scalars['Float']>;
+  invoicePriceRangeTo?: Maybe<Scalars['Float']>;
+  maxDiscount?: Maybe<Scalars['Int']>;
+  maxStock?: Maybe<Scalars['Int']>;
+  minStock?: Maybe<Scalars['Int']>;
+  replenishIn?: Maybe<Scalars['String']>;
+  additional?: Maybe<Scalars['String']>;
+  unitPoints?: Maybe<Scalars['String']>;
+  warehouse?: Maybe<Scalars['ID']>;
+  attentionTimeServiceOrders?: Maybe<Scalars['String']>;
+  calculatePriceInvoicePercentage?: Maybe<Scalars['String']>;
+  pointsPerUnit?: Maybe<Scalars['String']>;
+  menu?: Maybe<Scalars['ID']>;
+  product?: Maybe<Scalars['ID']>;
+  options?: Maybe<Array<Scalars['String']>>;
+  gourmetQualify?: Maybe<Array<Scalars['String']>>;
+  productWithPreparation?: Maybe<Scalars['Boolean']>;
+  preparationType?: Maybe<Scalars['ID']>;
+  inventoryAccount?: Maybe<Scalars['String']>;
+  salesAccount?: Maybe<Scalars['String']>;
+  costSaleAccount?: Maybe<Scalars['String']>;
+  fixedAsset?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialProductSalePriceInput = {
+  product?: Maybe<Scalars['ID']>;
+  generalValueTax?: Maybe<Scalars['ID']>;
+  generalValue?: Maybe<Scalars['Float']>;
+  generalUtilityValue?: Maybe<Scalars['Float']>;
+  ncTax?: Maybe<Scalars['ID']>;
+  commission?: Maybe<Scalars['Float']>;
+  specialOneValueTax?: Maybe<Scalars['ID']>;
+  specialOneValue?: Maybe<Scalars['Float']>;
+  specialOneUtilityValue?: Maybe<Scalars['Float']>;
+  specialTwoValueTax?: Maybe<Scalars['ID']>;
+  specialTwoValue?: Maybe<Scalars['Float']>;
+  specialTwoUtilityValue?: Maybe<Scalars['Float']>;
 };
 
 export type PartialProfileInput = {
@@ -2369,40 +4589,83 @@ export type PartialProfileInput = {
   position?: Maybe<Scalars['ID']>;
 };
 
+export type PartialPurchaseReturnsInput = {
+  thirdSupplier?: Maybe<Scalars['ID']>;
+  purchase?: Maybe<Scalars['ID']>;
+  purchaseReturnsNumber?: Maybe<Scalars['Float']>;
+  purchaseReturnsDate?: Maybe<Scalars['DateTime']>;
+  purchaseDateNow?: Maybe<Scalars['DateTime']>;
+  totalPurchaseReturnsValue?: Maybe<Scalars['Float']>;
+  subTotalPurchaseReturnsValue?: Maybe<Scalars['Float']>;
+  discount?: Maybe<Scalars['Float']>;
+  otherTaxes?: Maybe<Scalars['Float']>;
+  reference?: Maybe<Scalars['String']>;
+  purchaseReturnsStatus?: Maybe<PurchaseReturnsStatus>;
+  taxes?: Maybe<Array<Scalars['ID']>>;
+  details?: Maybe<Scalars['String']>;
+};
+
+export type PartialRegimeTypeInput = {
+  name?: Maybe<Scalars['String']>;
+};
+
 export type PartialRoleInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   permits?: Maybe<Array<PartialPermitsInput>>;
 };
 
-export type PartialSubstanceComplianceClearinghouseInput = {
-  drugRandomEnrollment?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentDetail?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentExpiration?: Maybe<Scalars['DateTime']>;
-  drugRandomEnrollmentFile?: Maybe<Scalars['ID']>;
-  reasonableSuspicious?: Maybe<Scalars['String']>;
-  reasonableSuspiciousDetail?: Maybe<Scalars['String']>;
-  reasonableSuspiciousExpiration?: Maybe<Scalars['DateTime']>;
-  reasonableSuspiciousFile?: Maybe<Scalars['ID']>;
-  clearingHouseLogin?: Maybe<Scalars['String']>;
-  clearingHouseLoginDetail?: Maybe<Scalars['String']>;
-  clearingHouseLoginFile?: Maybe<Scalars['ID']>;
-  clearingHousePassword?: Maybe<Scalars['String']>;
-  clearingHousePasswordDetail?: Maybe<Scalars['String']>;
-  clearingHousePasswordFile?: Maybe<Scalars['ID']>;
-  clearingHouseRegQueries?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesDetail?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesFile?: Maybe<Scalars['ID']>;
-  otherSubstanceRequest?: Maybe<Scalars['String']>;
-  otherSubstanceRequestDetail?: Maybe<Scalars['String']>;
-  otherSubstanceRequestFile?: Maybe<Scalars['ID']>;
-  notes?: Maybe<Scalars['String']>;
+export type PartialSerialInput = {
+  serial?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+};
+
+export type PartialSerialMovementInput = {
+  serial?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  movementInventory?: Maybe<Scalars['ID']>;
+};
+
+export type PartialSerialTransferInput = {
+  serial?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['ID']>;
+  transferInventory?: Maybe<Scalars['ID']>;
+};
+
+export type PartialServicesInput = {
+  code?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  iva?: Maybe<Scalars['ID']>;
+  um?: Maybe<Scalars['ID']>;
+  area?: Maybe<Scalars['ID']>;
+  groups?: Maybe<Array<Scalars['ID']>>;
+  cost?: Maybe<Scalars['Float']>;
+  price?: Maybe<Scalars['Float']>;
+  ultCost?: Maybe<Scalars['Boolean']>;
+  loadOrderScreen?: Maybe<Scalars['Boolean']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialTaxesAndCostsInput = {
+  product?: Maybe<Scalars['ID']>;
+  shoppingTax?: Maybe<Scalars['ID']>;
+  applyIco?: Maybe<Scalars['Boolean']>;
+  valueIco?: Maybe<Scalars['Float']>;
+  includeIcoInCost?: Maybe<Scalars['Boolean']>;
+  productCost?: Maybe<Scalars['Float']>;
+  unitCost?: Maybe<Scalars['Float']>;
+  unitTaxCost?: Maybe<Scalars['ID']>;
+  valueUnitTaxCost?: Maybe<Scalars['Float']>;
+  totalUnitCost?: Maybe<Scalars['Float']>;
+  volumePrice?: Maybe<Array<Scalars['String']>>;
 };
 
 export type PartialTaxesInput = {
   name?: Maybe<Scalars['String']>;
   tax?: Maybe<Scalars['Float']>;
   description?: Maybe<Scalars['String']>;
+  taxType?: Maybe<TaxType>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -2412,16 +4675,91 @@ export type PartialTenantInput = {
   info?: Maybe<TenantInfoInput>;
 };
 
-export type PartialTrailerRentalInput = {
-  unit?: Maybe<Scalars['String']>;
-  vin?: Maybe<Scalars['String']>;
-  tag?: Maybe<Scalars['String']>;
-  year?: Maybe<Scalars['String']>;
-  make?: Maybe<Scalars['String']>;
-  model?: Maybe<Scalars['String']>;
-  rentalDate?: Maybe<Scalars['DateTime']>;
-  rentalAmount?: Maybe<Scalars['Float']>;
-  file?: Maybe<Scalars['ID']>;
+export type PartialThirdPartiesInput = {
+  identificationDocument?: Maybe<Scalars['String']>;
+  verificationDigit?: Maybe<Scalars['String']>;
+  identificationDocumentType?: Maybe<IdentificationDocumentType>;
+  personType?: Maybe<PersonType>;
+  barCode?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  firstSurname?: Maybe<Scalars['String']>;
+  secondSurname?: Maybe<Scalars['String']>;
+  businessName?: Maybe<Scalars['String']>;
+  tradename?: Maybe<Scalars['String']>;
+  address?: Maybe<Scalars['String']>;
+  phoneNumber?: Maybe<Scalars['String']>;
+  secondPhoneNumber?: Maybe<Scalars['String']>;
+  birthday?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  department?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  neighborhood?: Maybe<Scalars['String']>;
+  thirdPartyClassification?: Maybe<Scalars['ID']>;
+  nationality?: Maybe<Scalars['String']>;
+  regime?: Maybe<RegimeType>;
+  isClient?: Maybe<Scalars['Boolean']>;
+  isEmployee?: Maybe<Scalars['Boolean']>;
+  isSupplier?: Maybe<Scalars['Boolean']>;
+  isOtherSellers?: Maybe<Scalars['Boolean']>;
+  isPosBilling?: Maybe<Scalars['Boolean']>;
+  photoFile?: Maybe<Scalars['ID']>;
+  assignDebtQuota?: Maybe<Scalars['Boolean']>;
+  debtQuota?: Maybe<Scalars['String']>;
+  isSetPrices?: Maybe<Scalars['Boolean']>;
+  priceType?: Maybe<PriceType>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  enablePoints?: Maybe<Scalars['Boolean']>;
+  baseRetention?: Maybe<Scalars['String']>;
+  percentageRetention?: Maybe<Scalars['Float']>;
+  seller?: Maybe<Scalars['ID']>;
+  products?: Maybe<Array<Scalars['ID']>>;
+  restrictPaymentMethod?: Maybe<Scalars['Boolean']>;
+  restrictAllPaymentMethod?: Maybe<Scalars['Boolean']>;
+  paymentMethod?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type PartialThirdPartyClassificationInput = {
+  name?: Maybe<Scalars['String']>;
+  assignDebtQuota?: Maybe<Scalars['Boolean']>;
+  debtQuota?: Maybe<Scalars['Float']>;
+  gourmetConnection?: Maybe<Scalars['Boolean']>;
+  includeServiceOrders?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialTotalPhysicalInventoryFilterFilter = {
+  and?: Maybe<Array<PartialTotalPhysicalInventoryFilterFilter>>;
+  or?: Maybe<Array<PartialTotalPhysicalInventoryFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PartialTotalPhysicalInventoryResponse = {
+  id: Scalars['ID'];
+  detail: Scalars['String'];
+  number: Scalars['Float'];
+  warehouse?: Maybe<SolvedEntityResponse>;
+  isConfirmed: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PartialTributaryInformationInput = {
+  third?: Maybe<Scalars['ID']>;
+  regimeType?: Maybe<Scalars['ID']>;
+  economicActivities?: Maybe<Scalars['ID']>;
+  retention?: Maybe<Retention>;
+  registrationNumber?: Maybe<Scalars['Int']>;
+  taxDetail?: Maybe<Array<Scalars['ID']>>;
+  fiscalResponsibility?: Maybe<Array<Scalars['ID']>>;
+};
+
+export type PartialUnitMeasurementInput = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type PartialUserAreaInput = {
@@ -2448,13 +4786,56 @@ export type PartialUserPositionInput = {
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
-export type PartialYardRentalInput = {
-  truck?: Maybe<Scalars['String']>;
-  truckColor?: Maybe<Scalars['String']>;
-  tag?: Maybe<Scalars['String']>;
-  rentalDate?: Maybe<Scalars['DateTime']>;
-  rentalAmount?: Maybe<Scalars['Float']>;
-  file?: Maybe<Scalars['ID']>;
+export type PartialWarehouseInput = {
+  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export enum PaymentMethodDianType {
+  Credito = 'CREDITO',
+  Debit = 'DEBIT'
+}
+
+export type PaymentMethodFilterFilter = {
+  and?: Maybe<Array<PaymentMethodFilterFilter>>;
+  or?: Maybe<Array<PaymentMethodFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PaymentMethodResponse = {
+  name: Scalars['String'];
+  code: Scalars['String'];
+  cashOnHand: Scalars['Boolean'];
+  credit: Scalars['Boolean'];
+  divideIntoInstallments: Scalars['Boolean'];
+  paycheck: Scalars['Boolean'];
+  deferPayment: Scalars['Boolean'];
+  days: Scalars['Int'];
+  accounting: Accounting;
+  alwaysLinkedWith: AlwaysLinkedWith;
+  accountingAccount: Scalars['String'];
+  askBank: Scalars['Boolean'];
+  askBoucherNumber: Scalars['Boolean'];
+  askDocumentDate: Scalars['Boolean'];
+  askCardType: Scalars['Boolean'];
+  paymentMethodDian?: Maybe<SolvedEntityResponse>;
+  paymentMethodDianType: PaymentMethodDianType;
+  administersDominicilios: Scalars['Boolean'];
+  administersBonuses: Scalars['Boolean'];
+  administersAdvanceReservationsOrders: Scalars['Boolean'];
+  affectVouchersConsignmentsThirds: Scalars['Boolean'];
+  showIva: Scalars['Boolean'];
+  iva?: Maybe<SolvedEntityResponse>;
+  confirmReturns: Scalars['Boolean'];
+  confirmCreditCut: Scalars['Boolean'];
+  photoFile?: Maybe<CloudFileResponse>;
 };
 
 export type PermitsInput = {
@@ -2465,6 +4846,227 @@ export type PermitsInput = {
 export type PermitsResponse = {
   module: App_Modules;
   action: Action_List;
+};
+
+export enum PersonType {
+  NaturalPerson = 'NATURAL_PERSON',
+  LegalPerson = 'LEGAL_PERSON'
+}
+
+export type PreparationTypeFilterFilter = {
+  and?: Maybe<Array<PreparationTypeFilterFilter>>;
+  or?: Maybe<Array<PreparationTypeFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PreparationTypeResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum PriceType {
+  NormalPrice = 'NORMAL_PRICE',
+  SpecialPriceOne = 'SPECIAL_PRICE_ONE',
+  SpecialPriceTwo = 'SPECIAL_PRICE_TWO',
+  CostLastPurchase = 'COST_LAST_PURCHASE'
+}
+
+export type ProductAreaFilterFilter = {
+  and?: Maybe<Array<ProductAreaFilterFilter>>;
+  or?: Maybe<Array<ProductAreaFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductAreaResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  isActive: Scalars['Boolean'];
+  attentionArea: Scalars['Boolean'];
+  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProductFilterFilter = {
+  and?: Maybe<Array<ProductFilterFilter>>;
+  or?: Maybe<Array<ProductFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductGroupFilterFilter = {
+  and?: Maybe<Array<ProductGroupFilterFilter>>;
+  or?: Maybe<Array<ProductGroupFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductGroupResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  sortingToOrders: Scalars['Boolean'];
+  source: Scalars['String'];
+  tipInOrder: Scalars['Boolean'];
+  warehouses: Array<SolvedEntityResponse>;
+  taxAppliedToPurchases: Array<SolvedEntityResponse>;
+  taxAppliedToSales: Array<SolvedEntityResponse>;
+  timeTax?: Maybe<Scalars['Boolean']>;
+  from?: Maybe<Scalars['DateTime']>;
+  to?: Maybe<Scalars['DateTime']>;
+  isActive: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProductMenuFilterFilter = {
+  and?: Maybe<Array<ProductMenuFilterFilter>>;
+  or?: Maybe<Array<ProductMenuFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductMenuResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  product: SolvedEntityResponse;
+  products?: Maybe<Array<SolvedEntityResponse>>;
+  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProductParamsFilterFilter = {
+  and?: Maybe<Array<ProductParamsFilterFilter>>;
+  or?: Maybe<Array<ProductParamsFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  updatePriceInInvoice?: Maybe<StringFieldComparison>;
+  belongsToWarehouse?: Maybe<StringFieldComparison>;
+  releaseToMenu?: Maybe<StringFieldComparison>;
+  invoicePriceRangeFrom?: Maybe<StringFieldComparison>;
+  invoicePriceRangeTo?: Maybe<StringFieldComparison>;
+  maxDiscount?: Maybe<StringFieldComparison>;
+  maxStock?: Maybe<StringFieldComparison>;
+  minStock?: Maybe<StringFieldComparison>;
+  replenishIn?: Maybe<StringFieldComparison>;
+  additional?: Maybe<StringFieldComparison>;
+  unitPoints?: Maybe<StringFieldComparison>;
+  warehouse?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  attentionTimeServiceOrders?: Maybe<StringFieldComparison>;
+  calculatePriceInvoicePercentage?: Maybe<StringFieldComparison>;
+  pointsPerUnit?: Maybe<StringFieldComparison>;
+  menu?: Maybe<StringFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
+  options?: Maybe<StringFieldComparison>;
+  gourmetQualify?: Maybe<StringFieldComparison>;
+  productWithPreparation?: Maybe<StringFieldComparison>;
+  inventoryAccount?: Maybe<StringFieldComparison>;
+  salesAccount?: Maybe<StringFieldComparison>;
+  costSaleAccount?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductParamsResponse = {
+  id: Scalars['ID'];
+  updatePriceInInvoice: Scalars['Boolean'];
+  belongsToWarehouse: Scalars['Boolean'];
+  releaseToMenu: Scalars['Boolean'];
+  invoicePriceRangeFrom?: Maybe<Scalars['Float']>;
+  invoicePriceRangeTo?: Maybe<Scalars['Float']>;
+  maxDiscount?: Maybe<Scalars['Float']>;
+  maxStock?: Maybe<Scalars['Float']>;
+  minStock?: Maybe<Scalars['Float']>;
+  replenishIn?: Maybe<Scalars['String']>;
+  additional?: Maybe<Scalars['String']>;
+  unitPoints?: Maybe<Scalars['String']>;
+  attentionTimeServiceOrders?: Maybe<Scalars['String']>;
+  calculatePriceInvoicePercentage?: Maybe<Scalars['String']>;
+  pointsPerUnit?: Maybe<Scalars['String']>;
+  warehouse?: Maybe<SolvedEntityResponse>;
+  menu?: Maybe<SolvedEntityResponse>;
+  product?: Maybe<SolvedEntityResponse>;
+  options: Array<Scalars['String']>;
+  gourmetQualify: Array<Scalars['String']>;
+  productWithPreparation: Scalars['Boolean'];
+  preparationType?: Maybe<SolvedEntityResponse>;
+  inventoryAccount?: Maybe<Scalars['String']>;
+  salesAccount?: Maybe<Scalars['String']>;
+  costSaleAccount?: Maybe<Scalars['String']>;
+  fixedAsset: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  menuId?: Maybe<Array<SolvedEntityResponse>>;
+};
+
+export type ProductResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  code: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  ref: Scalars['String'];
+  isActive?: Maybe<Scalars['Boolean']>;
+  shoppingAssistant: Scalars['Boolean'];
+  compound?: Maybe<Scalars['Boolean']>;
+  um?: Maybe<SolvedEntityResponse>;
+  composition?: Maybe<SolvedEntityResponse>;
+  area?: Maybe<SolvedEntityResponse>;
+  photoFile?: Maybe<CloudFileResponse>;
+  groups: Array<SolvedEntityResponse>;
+  barCode: Array<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProductSalePriceFilterFilter = {
+  and?: Maybe<Array<ProductSalePriceFilterFilter>>;
+  or?: Maybe<Array<ProductSalePriceFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
+  generalValueTax?: Maybe<StringFieldComparison>;
+  generalValue?: Maybe<StringFieldComparison>;
+  generalUtilityValue?: Maybe<StringFieldComparison>;
+  ncTax?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductSalePriceResponse = {
+  id: Scalars['ID'];
+  product: SolvedEntityResponse;
+  generalValueTax: SolvedEntityResponse;
+  generalValue: Scalars['Float'];
+  generalUtilityValue: Scalars['Float'];
+  ncTax: SolvedEntityResponse;
+  commission: Scalars['Float'];
+  specialOneValueTax: SolvedEntityResponse;
+  specialOneValue: Scalars['Float'];
+  specialOneUtilityValue: Scalars['Float'];
+  specialTwoValueTax: SolvedEntityResponse;
+  specialTwoValue: Scalars['Float'];
+  specialTwoUtilityValue: Scalars['Float'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type ProfileFilterFilter = {
@@ -2523,12 +5125,49 @@ export type ProfileResponse = {
   position?: Maybe<SolvedEntityResponse>;
 };
 
+export type PurchaseReturnsFilterFilter = {
+  and?: Maybe<Array<PurchaseReturnsFilterFilter>>;
+  or?: Maybe<Array<PurchaseReturnsFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PurchaseReturnsResponse = {
+  id: Scalars['ID'];
+  thirdSupplier?: Maybe<SolvedEntityResponse>;
+  purchase?: Maybe<SolvedEntityResponse>;
+  purchaseReturnsNumber: Scalars['Float'];
+  purchaseReturnsDate: Scalars['DateTime'];
+  purchaseDateNow: Scalars['DateTime'];
+  totalPurchaseReturnsValue: Scalars['Float'];
+  subTotalPurchaseReturnsValue: Scalars['Float'];
+  discount: Scalars['Float'];
+  otherTaxes: Scalars['Float'];
+  reference?: Maybe<Scalars['String']>;
+  purchaseReturnsStatus: PurchaseReturnsStatus;
+  taxes?: Maybe<Array<SolvedEntityResponse>>;
+  details?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export enum PurchaseReturnsStatus {
+  Approved = 'APPROVED',
+  NotApproved = 'NOT_APPROVED',
+  Pending = 'PENDING',
+  Canceled = 'CANCELED'
+}
+
 export type Query = {
   getAllTenant?: Maybe<Array<TenantResponse>>;
   getRequestTenant?: Maybe<TenantResponse>;
   getOneTenant?: Maybe<TenantResponse>;
   getAllSimplifiedTenantsInfo?: Maybe<Array<SimplifiedTenantResponse>>;
   getPaginatedTenant: PaginatedTenantResponse;
+  getTenantRequest?: Maybe<SimplifiedTenantResponse>;
   getAllUsers: Array<UserResponse>;
   getOneUser: UserResponse;
   getPaginatedUser: PaginatedUsers;
@@ -2552,45 +5191,126 @@ export type Query = {
   getWriteSignedUrl: CloudFileIdResponse;
   getOneFiles?: Maybe<FilesResponse>;
   getPaginatedFiles?: Maybe<PaginatedFilesResponse>;
-  getAllClient: Array<ClientResponse>;
-  getOneClient?: Maybe<ClientResponse>;
-  getPaginatedClient?: Maybe<PaginatedClientResponse>;
+  getAllGroup?: Maybe<Array<GroupResponse>>;
+  getOneGroup?: Maybe<GroupResponse>;
+  getPaginatedGroup?: Maybe<PaginatedGroupResponse>;
+  getAllWarehouse: Array<WarehouseResponse>;
+  getOneWarehouse?: Maybe<WarehouseResponse>;
+  getPaginatedWarehouse?: Maybe<PaginatedWarehouseResponse>;
   getAllTaxes: Array<TaxesResponse>;
   getOneTaxes?: Maybe<TaxesResponse>;
   getPaginatedTaxes?: Maybe<PaginatedTaxesResponse>;
-  getAllCorporationEin: Array<CorporationEinResponse>;
-  getOneCorporationEin?: Maybe<CorporationEinResponse>;
-  getPaginatedCorporationEin?: Maybe<PaginatedCorporationEinResponse>;
-  getAllIrpRoadTaxes: Array<IrpRoadTaxesResponse>;
-  getOneIrpRoadTaxes?: Maybe<IrpRoadTaxesResponse>;
-  getPaginatedIrpRoadTaxes?: Maybe<PaginatedIrpRoadTaxesResponse>;
-  getAllIftaFuelTaxes: Array<IftaFuelTaxesResponse>;
-  getOneIftaFuelTaxes?: Maybe<IftaFuelTaxesResponse>;
-  getPaginatedIftaFuelTaxes?: Maybe<PaginatedIftaFuelTaxesResponse>;
-  getAllSubstanceComplianceClearinghouse: Array<SubstanceComplianceClearinghouseResponse>;
-  getOneSubstanceComplianceClearinghouse?: Maybe<SubstanceComplianceClearinghouseResponse>;
-  getPaginatedSubstanceComplianceClearinghouse?: Maybe<PaginatedSubstanceComplianceClearinghouseResponse>;
-  getAllDriverFiles: Array<DriverFilesResponse>;
-  getOneDriverFiles?: Maybe<DriverFilesResponse>;
-  getPaginatedDriverFiles?: Maybe<PaginatedDriverFilesResponse>;
-  getAllDotInfo: Array<DotInfoResponse>;
-  getOneDotInfo?: Maybe<DotInfoResponse>;
-  getPaginatedDotInfo?: Maybe<PaginatedDotInfoResponse>;
-  getAllAnnualVehInspStateRermits: Array<AnnualVehInspStateRermitsResponse>;
-  getOneAnnualVehInspStateRermits?: Maybe<AnnualVehInspStateRermitsResponse>;
-  getPaginatedAnnualVehInspStateRermits?: Maybe<PaginatedAnnualVehInspStateRermitsResponse>;
-  getAllTrailerRental: Array<TrailerRentalResponse>;
-  getOneTrailerRental?: Maybe<TrailerRentalResponse>;
-  getPaginatedTrailerRental?: Maybe<PaginatedTrailerRentalResponse>;
-  getAllYardRental: Array<YardRentalResponse>;
-  getOneYardRental?: Maybe<YardRentalResponse>;
-  getPaginatedYardRental?: Maybe<PaginatedYardRentalResponse>;
-  getAllFinancedEquipment: Array<FinancedEquipmentResponse>;
-  getOneFinancedEquipment?: Maybe<FinancedEquipmentResponse>;
-  getPaginatedFinancedEquipment?: Maybe<PaginatedFinancedEquipmentResponse>;
-  getAllAccounting: Array<AccountingResponse>;
-  getOneAccounting?: Maybe<AccountingResponse>;
-  getPaginatedAccounting?: Maybe<PaginatedAccountingResponse>;
+  getAllCompany: Array<CompanyResponse>;
+  getOneCompany?: Maybe<CompanyResponse>;
+  getPaginatedCompany?: Maybe<PaginatedCompanyResponse>;
+  getAllBarCodeIdentifier: Array<BarCodeIdentifierResponse>;
+  getOneBarCodeIdentifier?: Maybe<BarCodeIdentifierResponse>;
+  getPaginatedBarCodeIdentifier?: Maybe<PaginatedBarCodeIdentifierResponse>;
+  getAllBillingResolution: Array<BillingResolutionResponse>;
+  getOneBillingResolution?: Maybe<BillingResolutionResponse>;
+  getPaginatedBillingResolution?: Maybe<PaginatedBillingResolutionResponse>;
+  getAllProduct: Array<ProductResponse>;
+  getOneProduct?: Maybe<ProductResponse>;
+  getPaginatedProduct?: Maybe<PaginatedProductResponse>;
+  getAllProductMenu: Array<ProductMenuResponse>;
+  getOneProductMenu?: Maybe<ProductMenuResponse>;
+  getPaginatedProductMenu?: Maybe<PaginatedProductMenuResponse>;
+  getAllProductArea: Array<ProductAreaResponse>;
+  getOneProductArea?: Maybe<ProductAreaResponse>;
+  getPaginatedProductArea?: Maybe<PaginatedProductAreaResponse>;
+  getAllProductParams: Array<ProductParamsResponse>;
+  getOneProductParams?: Maybe<ProductParamsResponse>;
+  getPaginatedProductParams?: Maybe<PaginatedProductParamsResponse>;
+  getAllProductGroup: Array<ProductGroupResponse>;
+  getOneProductGroup?: Maybe<ProductGroupResponse>;
+  getPaginatedProductGroup?: Maybe<PaginatedProductGroupResponse>;
+  getAllTaxesAndCosts: Array<TaxesAndCostsResponse>;
+  getOneTaxesAndCosts?: Maybe<TaxesAndCostsResponse>;
+  getPaginatedTaxesAndCosts?: Maybe<PaginatedTaxesAndCostsResponse>;
+  getAllComposition: Array<CompositionResponse>;
+  getOneComposition?: Maybe<CompositionResponse>;
+  getPaginatedComposition?: Maybe<PaginatedCompositionResponse>;
+  getAllProductSalePrice: Array<ProductSalePriceResponse>;
+  getOneProductSalePrice?: Maybe<ProductSalePriceResponse>;
+  getPaginatedProductSalePrice?: Maybe<PaginatedProductSalePriceResponse>;
+  getAllPreparationType: Array<PreparationTypeResponse>;
+  getOnePreparationType?: Maybe<PreparationTypeResponse>;
+  getPaginatedPreparationType?: Maybe<PaginatedPreparationTypeResponse>;
+  getAllUnitMeasurement: Array<UnitMeasurementResponse>;
+  getOneUnitMeasurement?: Maybe<UnitMeasurementResponse>;
+  getPaginatedUnitMeasurement?: Maybe<PaginatedUnitMeasurementResponse>;
+  getAllServices: Array<ServicesResponse>;
+  getOneServices?: Maybe<ServicesResponse>;
+  getPaginatedServices?: Maybe<PaginatedServicesResponse>;
+  getAllPartialTotalPhysicalInventory: Array<PartialTotalPhysicalInventoryResponse>;
+  getOnePartialTotalPhysicalInventory?: Maybe<PartialTotalPhysicalInventoryResponse>;
+  getPaginatedPartialTotalPhysicalInventory?: Maybe<PaginatedPartialTotalPhysicalInventoryResponse>;
+  getAllPartialInventoryItems: Array<PartialInventoryItemsResponse>;
+  getOnePartialInventoryItems?: Maybe<PartialInventoryItemsResponse>;
+  getPaginatedPartialInventoryItems?: Maybe<PaginatedPartialInventoryItemsResponse>;
+  getAllInitialPhysicalInventory: Array<InitialPhysicalInventoryResponse>;
+  getOneInitialPhysicalInventory?: Maybe<InitialPhysicalInventoryResponse>;
+  getPaginatedInitialPhysicalInventory?: Maybe<PaginatedInitialPhysicalInventoryResponse>;
+  getAllInventoryCovementConcepts: Array<InventoryCovementConceptsResponse>;
+  getOneInventoryCovementConcepts?: Maybe<InventoryCovementConceptsResponse>;
+  getPaginatedInventoryCovementConcepts?: Maybe<PaginatedInventoryCovementConceptsResponse>;
+  getAllInventoryMovement: Array<InventoryMovementResponse>;
+  getOneInventoryMovement?: Maybe<InventoryMovementResponse>;
+  getPaginatedInventoryMovement?: Maybe<PaginatedInventoryMovementResponse>;
+  getAllInventoryMovementItems: Array<InventoryMovementItemsResponse>;
+  getOneInventoryMovementItems?: Maybe<InventoryMovementItemsResponse>;
+  getPaginatedInventoryMovementItems?: Maybe<PaginatedInventoryMovementItemsResponse>;
+  getAllSerialMovement: Array<SerialMovementResponse>;
+  getOneSerialMovement?: Maybe<SerialMovementResponse>;
+  getPaginatedSerialMovement?: Maybe<PaginatedSerialMovementResponse>;
+  getAllInventoryTransfer: Array<InventoryTransferResponse>;
+  getOneInventoryTransfer?: Maybe<InventoryTransferResponse>;
+  getPaginatedInventoryTransfer?: Maybe<PaginatedInventoryTransferResponse>;
+  getAllInventoryTransferItems: Array<InventoryTransferItemsResponse>;
+  getOneInventoryTransferItems?: Maybe<InventoryTransferItemsResponse>;
+  getPaginatedInventoryTransferItems?: Maybe<PaginatedInventoryTransferItemsResponse>;
+  getAllSerialTransfer: Array<SerialTransferResponse>;
+  getOneSerialTransfer?: Maybe<SerialTransferResponse>;
+  getPaginatedSerialTransfer?: Maybe<PaginatedSerialTransferResponse>;
+  getAllPaymentMethod: Array<PaymentMethodResponse>;
+  getOnePaymentMethod?: Maybe<PaymentMethodResponse>;
+  getPaginatedPaymentMethod?: Maybe<PaginatedPaymentMethodResponse>;
+  getAllCreditCard: Array<CreditCardResponse>;
+  getOneCreditCard?: Maybe<CreditCardResponse>;
+  getPaginatedCreditCard?: Maybe<PaginatedCreditCardResponse>;
+  getAllBanks: Array<BanksResponse>;
+  getOneBanks?: Maybe<BanksResponse>;
+  getPaginatedBanks?: Maybe<PaginatedBanksResponse>;
+  getAllThirdParties: Array<ThirdPartiesResponse>;
+  getOneThirdParties?: Maybe<ThirdPartiesResponse>;
+  getPaginatedThirdParties?: Maybe<PaginatedThirdPartiesResponse>;
+  getAllThirdPartyClassification: Array<ThirdPartyClassificationResponse>;
+  getOneThirdPartyClassification?: Maybe<ThirdPartyClassificationResponse>;
+  getPaginatedThirdPartyClassification?: Maybe<PaginatedThirdPartyClassificationResponse>;
+  getAllRegimeType: Array<RegimeTypeResponse>;
+  getOneRegimeType?: Maybe<RegimeTypeResponse>;
+  getPaginatedRegimeType?: Maybe<PaginatedRegimeTypeResponse>;
+  getAllEconomicActivities: Array<EconomicActivitiesResponse>;
+  getOneEconomicActivities?: Maybe<EconomicActivitiesResponse>;
+  getPaginatedEconomicActivities?: Maybe<PaginatedEconomicActivitiesResponse>;
+  getAllFiscalResponsibility: Array<FiscalResponsibilityResponse>;
+  getOneFiscalResponsibility?: Maybe<FiscalResponsibilityResponse>;
+  getPaginatedFiscalResponsibility?: Maybe<PaginatedFiscalResponsibilityResponse>;
+  getAllTributaryInformation: Array<TributaryInformationResponse>;
+  getOneTributaryInformation?: Maybe<TributaryInformationResponse>;
+  getPaginatedTributaryInformation?: Maybe<PaginatedTributaryInformationResponse>;
+  getAllSerial: Array<SerialResponse>;
+  getOneSerial?: Maybe<SerialResponse>;
+  getPaginatedSerial?: Maybe<PaginatedSerialResponse>;
+  getAllPurchaseReturns: Array<PurchaseReturnsResponse>;
+  getOnePurchaseReturns?: Maybe<PurchaseReturnsResponse>;
+  getPaginatedPurchaseReturns?: Maybe<PaginatedPurchaseReturnsResponse>;
+  getAllMonetaryDenomination: Array<MonetaryDenominationResponse>;
+  getOneMonetaryDenomination?: Maybe<MonetaryDenominationResponse>;
+  getPaginatedMonetaryDenomination?: Maybe<PaginatedMonetaryDenominationResponse>;
+  getAllCompositionDecomposition: Array<CompositionDecompositionResponse>;
+  getOneCompositionDecomposition?: Maybe<CompositionDecompositionResponse>;
+  getPaginatedCompositionDecomposition?: Maybe<PaginatedCompositionDecompositionResponse>;
 };
 
 
@@ -2714,18 +5434,33 @@ export type QueryGetPaginatedFilesArgs = {
 };
 
 
-export type QueryGetAllClientArgs = {
-  input?: Maybe<GetAllClientInput>;
+export type QueryGetAllGroupArgs = {
+  input?: Maybe<GetAllGroupInput>;
 };
 
 
-export type QueryGetOneClientArgs = {
-  input?: Maybe<GetOneClientInput>;
+export type QueryGetOneGroupArgs = {
+  input?: Maybe<GetOneGroupInput>;
 };
 
 
-export type QueryGetPaginatedClientArgs = {
-  input?: Maybe<GetPaginatedClientInput>;
+export type QueryGetPaginatedGroupArgs = {
+  input?: Maybe<GetPaginatedGroupInput>;
+};
+
+
+export type QueryGetAllWarehouseArgs = {
+  input?: Maybe<GetAllWarehouseInput>;
+};
+
+
+export type QueryGetOneWarehouseArgs = {
+  input?: Maybe<GetOneWarehouseInput>;
+};
+
+
+export type QueryGetPaginatedWarehouseArgs = {
+  input?: Maybe<GetPaginatedWarehouseInput>;
 };
 
 
@@ -2744,173 +5479,605 @@ export type QueryGetPaginatedTaxesArgs = {
 };
 
 
-export type QueryGetAllCorporationEinArgs = {
-  input?: Maybe<GetAllCorporationEinInput>;
+export type QueryGetAllCompanyArgs = {
+  input?: Maybe<GetAllCompanyInput>;
 };
 
 
-export type QueryGetOneCorporationEinArgs = {
-  input?: Maybe<GetOneCorporationEinInput>;
+export type QueryGetOneCompanyArgs = {
+  input?: Maybe<GetOneCompanyInput>;
 };
 
 
-export type QueryGetPaginatedCorporationEinArgs = {
-  input?: Maybe<GetPaginatedCorporationEinInput>;
+export type QueryGetPaginatedCompanyArgs = {
+  input?: Maybe<GetPaginatedCompanyInput>;
 };
 
 
-export type QueryGetAllIrpRoadTaxesArgs = {
-  input?: Maybe<GetAllIrpRoadTaxesInput>;
+export type QueryGetAllBarCodeIdentifierArgs = {
+  input?: Maybe<GetAllBarCodeIdentifierInput>;
 };
 
 
-export type QueryGetOneIrpRoadTaxesArgs = {
-  input?: Maybe<GetOneIrpRoadTaxesInput>;
+export type QueryGetOneBarCodeIdentifierArgs = {
+  input?: Maybe<GetOneBarCodeIdentifierInput>;
 };
 
 
-export type QueryGetPaginatedIrpRoadTaxesArgs = {
-  input?: Maybe<GetPaginatedIrpRoadTaxesInput>;
+export type QueryGetPaginatedBarCodeIdentifierArgs = {
+  input?: Maybe<GetPaginatedBarCodeIdentifierInput>;
 };
 
 
-export type QueryGetAllIftaFuelTaxesArgs = {
-  input?: Maybe<GetAllIftaFuelTaxesInput>;
+export type QueryGetAllBillingResolutionArgs = {
+  input?: Maybe<GetAllBillingResolutionInput>;
 };
 
 
-export type QueryGetOneIftaFuelTaxesArgs = {
-  input?: Maybe<GetOneIftaFuelTaxesInput>;
+export type QueryGetOneBillingResolutionArgs = {
+  input?: Maybe<GetOneBillingResolutionInput>;
 };
 
 
-export type QueryGetPaginatedIftaFuelTaxesArgs = {
-  input?: Maybe<GetPaginatedIftaFuelTaxesInput>;
+export type QueryGetPaginatedBillingResolutionArgs = {
+  input?: Maybe<GetPaginatedBillingResolutionInput>;
 };
 
 
-export type QueryGetAllSubstanceComplianceClearinghouseArgs = {
-  input?: Maybe<GetAllSubstanceComplianceClearinghouseInput>;
+export type QueryGetAllProductArgs = {
+  input?: Maybe<GetAllProductInput>;
 };
 
 
-export type QueryGetOneSubstanceComplianceClearinghouseArgs = {
-  input?: Maybe<GetOneSubstanceComplianceClearinghouseInput>;
+export type QueryGetOneProductArgs = {
+  input?: Maybe<GetOneProductInput>;
 };
 
 
-export type QueryGetPaginatedSubstanceComplianceClearinghouseArgs = {
-  input?: Maybe<GetPaginatedSubstanceComplianceClearinghouseInput>;
+export type QueryGetPaginatedProductArgs = {
+  input?: Maybe<GetPaginatedProductInput>;
 };
 
 
-export type QueryGetAllDriverFilesArgs = {
-  input?: Maybe<GetAllDriverFilesInput>;
+export type QueryGetAllProductMenuArgs = {
+  input?: Maybe<GetAllProductMenuInput>;
 };
 
 
-export type QueryGetOneDriverFilesArgs = {
-  input?: Maybe<GetOneDriverFilesInput>;
+export type QueryGetOneProductMenuArgs = {
+  input?: Maybe<GetOneProductMenuInput>;
 };
 
 
-export type QueryGetPaginatedDriverFilesArgs = {
-  input?: Maybe<GetPaginatedDriverFilesInput>;
+export type QueryGetPaginatedProductMenuArgs = {
+  input?: Maybe<GetPaginatedProductMenuInput>;
 };
 
 
-export type QueryGetAllDotInfoArgs = {
-  input?: Maybe<GetAllDotInfoInput>;
+export type QueryGetAllProductAreaArgs = {
+  input?: Maybe<GetAllProductAreaInput>;
 };
 
 
-export type QueryGetOneDotInfoArgs = {
-  input?: Maybe<GetOneDotInfoInput>;
+export type QueryGetOneProductAreaArgs = {
+  input?: Maybe<GetOneProductAreaInput>;
 };
 
 
-export type QueryGetPaginatedDotInfoArgs = {
-  input?: Maybe<GetPaginatedDotInfoInput>;
+export type QueryGetPaginatedProductAreaArgs = {
+  input?: Maybe<GetPaginatedProductAreaInput>;
 };
 
 
-export type QueryGetAllAnnualVehInspStateRermitsArgs = {
-  input?: Maybe<GetAllAnnualVehInspStateRermitsInput>;
+export type QueryGetAllProductParamsArgs = {
+  input?: Maybe<GetAllProductParamsInput>;
 };
 
 
-export type QueryGetOneAnnualVehInspStateRermitsArgs = {
-  input?: Maybe<GetOneAnnualVehInspStateRermitsInput>;
+export type QueryGetOneProductParamsArgs = {
+  input?: Maybe<GetOneProductParamsInput>;
 };
 
 
-export type QueryGetPaginatedAnnualVehInspStateRermitsArgs = {
-  input?: Maybe<GetPaginatedAnnualVehInspStateRermitsInput>;
+export type QueryGetPaginatedProductParamsArgs = {
+  input?: Maybe<GetPaginatedProductParamsInput>;
 };
 
 
-export type QueryGetAllTrailerRentalArgs = {
-  input?: Maybe<GetAllTrailerRentalInput>;
+export type QueryGetAllProductGroupArgs = {
+  input?: Maybe<GetAllProductGroupInput>;
 };
 
 
-export type QueryGetOneTrailerRentalArgs = {
-  input?: Maybe<GetOneTrailerRentalInput>;
+export type QueryGetOneProductGroupArgs = {
+  input?: Maybe<GetOneProductGroupInput>;
 };
 
 
-export type QueryGetPaginatedTrailerRentalArgs = {
-  input?: Maybe<GetPaginatedTrailerRentalInput>;
+export type QueryGetPaginatedProductGroupArgs = {
+  input?: Maybe<GetPaginatedProductGroupInput>;
 };
 
 
-export type QueryGetAllYardRentalArgs = {
-  input?: Maybe<GetAllYardRentalInput>;
+export type QueryGetAllTaxesAndCostsArgs = {
+  input?: Maybe<GetAllTaxesAndCostsInput>;
 };
 
 
-export type QueryGetOneYardRentalArgs = {
-  input?: Maybe<GetOneYardRentalInput>;
+export type QueryGetOneTaxesAndCostsArgs = {
+  input?: Maybe<GetOneTaxesAndCostsInput>;
 };
 
 
-export type QueryGetPaginatedYardRentalArgs = {
-  input?: Maybe<GetPaginatedYardRentalInput>;
+export type QueryGetPaginatedTaxesAndCostsArgs = {
+  input?: Maybe<GetPaginatedTaxesAndCostsInput>;
 };
 
 
-export type QueryGetAllFinancedEquipmentArgs = {
-  input?: Maybe<GetAllFinancedEquipmentInput>;
+export type QueryGetAllCompositionArgs = {
+  input?: Maybe<GetAllCompositionInput>;
 };
 
 
-export type QueryGetOneFinancedEquipmentArgs = {
-  input?: Maybe<GetOneFinancedEquipmentInput>;
+export type QueryGetOneCompositionArgs = {
+  input?: Maybe<GetOneCompositionInput>;
 };
 
 
-export type QueryGetPaginatedFinancedEquipmentArgs = {
-  input?: Maybe<GetPaginatedFinancedEquipmentInput>;
+export type QueryGetPaginatedCompositionArgs = {
+  input?: Maybe<GetPaginatedCompositionInput>;
 };
 
 
-export type QueryGetAllAccountingArgs = {
-  input?: Maybe<GetAllAccountingInput>;
+export type QueryGetAllProductSalePriceArgs = {
+  input?: Maybe<GetAllProductSalePriceInput>;
 };
 
 
-export type QueryGetOneAccountingArgs = {
-  input?: Maybe<GetOneAccountingInput>;
+export type QueryGetOneProductSalePriceArgs = {
+  input?: Maybe<GetOneProductSalePriceInput>;
 };
 
 
-export type QueryGetPaginatedAccountingArgs = {
-  input?: Maybe<GetPaginatedAccountingInput>;
+export type QueryGetPaginatedProductSalePriceArgs = {
+  input?: Maybe<GetPaginatedProductSalePriceInput>;
+};
+
+
+export type QueryGetAllPreparationTypeArgs = {
+  input?: Maybe<GetAllPreparationTypeInput>;
+};
+
+
+export type QueryGetOnePreparationTypeArgs = {
+  input?: Maybe<GetOnePreparationTypeInput>;
+};
+
+
+export type QueryGetPaginatedPreparationTypeArgs = {
+  input?: Maybe<GetPaginatedPreparationTypeInput>;
+};
+
+
+export type QueryGetAllUnitMeasurementArgs = {
+  input?: Maybe<GetAllUnitMeasurementInput>;
+};
+
+
+export type QueryGetOneUnitMeasurementArgs = {
+  input?: Maybe<GetOneUnitMeasurementInput>;
+};
+
+
+export type QueryGetPaginatedUnitMeasurementArgs = {
+  input?: Maybe<GetPaginatedUnitMeasurementInput>;
+};
+
+
+export type QueryGetAllServicesArgs = {
+  input?: Maybe<GetAllServicesInput>;
+};
+
+
+export type QueryGetOneServicesArgs = {
+  input?: Maybe<GetOneServicesInput>;
+};
+
+
+export type QueryGetPaginatedServicesArgs = {
+  input?: Maybe<GetPaginatedServicesInput>;
+};
+
+
+export type QueryGetAllPartialTotalPhysicalInventoryArgs = {
+  input?: Maybe<GetAllPartialTotalPhysicalInventoryInput>;
+};
+
+
+export type QueryGetOnePartialTotalPhysicalInventoryArgs = {
+  input?: Maybe<GetOnePartialTotalPhysicalInventoryInput>;
+};
+
+
+export type QueryGetPaginatedPartialTotalPhysicalInventoryArgs = {
+  input?: Maybe<GetPaginatedPartialTotalPhysicalInventoryInput>;
+};
+
+
+export type QueryGetAllPartialInventoryItemsArgs = {
+  input?: Maybe<GetAllPartialInventoryItemsInput>;
+};
+
+
+export type QueryGetOnePartialInventoryItemsArgs = {
+  input?: Maybe<GetOnePartialInventoryItemsInput>;
+};
+
+
+export type QueryGetPaginatedPartialInventoryItemsArgs = {
+  input?: Maybe<GetPaginatedPartialInventoryItemsInput>;
+};
+
+
+export type QueryGetAllInitialPhysicalInventoryArgs = {
+  input?: Maybe<GetAllInitialPhysicalInventoryInput>;
+};
+
+
+export type QueryGetOneInitialPhysicalInventoryArgs = {
+  input?: Maybe<GetOneInitialPhysicalInventoryInput>;
+};
+
+
+export type QueryGetPaginatedInitialPhysicalInventoryArgs = {
+  input?: Maybe<GetPaginatedInitialPhysicalInventoryInput>;
+};
+
+
+export type QueryGetAllInventoryCovementConceptsArgs = {
+  input?: Maybe<GetAllInventoryCovementConceptsInput>;
+};
+
+
+export type QueryGetOneInventoryCovementConceptsArgs = {
+  input?: Maybe<GetOneInventoryCovementConceptsInput>;
+};
+
+
+export type QueryGetPaginatedInventoryCovementConceptsArgs = {
+  input?: Maybe<GetPaginatedInventoryCovementConceptsInput>;
+};
+
+
+export type QueryGetAllInventoryMovementArgs = {
+  input?: Maybe<GetAllInventoryMovementInput>;
+};
+
+
+export type QueryGetOneInventoryMovementArgs = {
+  input?: Maybe<GetOneInventoryMovementInput>;
+};
+
+
+export type QueryGetPaginatedInventoryMovementArgs = {
+  input?: Maybe<GetPaginatedInventoryMovementInput>;
+};
+
+
+export type QueryGetAllInventoryMovementItemsArgs = {
+  input?: Maybe<GetAllInventoryMovementItemsInput>;
+};
+
+
+export type QueryGetOneInventoryMovementItemsArgs = {
+  input?: Maybe<GetOneInventoryMovementItemsInput>;
+};
+
+
+export type QueryGetPaginatedInventoryMovementItemsArgs = {
+  input?: Maybe<GetPaginatedInventoryMovementItemsInput>;
+};
+
+
+export type QueryGetAllSerialMovementArgs = {
+  input?: Maybe<GetAllSerialMovementInput>;
+};
+
+
+export type QueryGetOneSerialMovementArgs = {
+  input?: Maybe<GetOneSerialMovementInput>;
+};
+
+
+export type QueryGetPaginatedSerialMovementArgs = {
+  input?: Maybe<GetPaginatedSerialMovementInput>;
+};
+
+
+export type QueryGetAllInventoryTransferArgs = {
+  input?: Maybe<GetAllInventoryTransferInput>;
+};
+
+
+export type QueryGetOneInventoryTransferArgs = {
+  input?: Maybe<GetOneInventoryTransferInput>;
+};
+
+
+export type QueryGetPaginatedInventoryTransferArgs = {
+  input?: Maybe<GetPaginatedInventoryTransferInput>;
+};
+
+
+export type QueryGetAllInventoryTransferItemsArgs = {
+  input?: Maybe<GetAllInventoryTransferItemsInput>;
+};
+
+
+export type QueryGetOneInventoryTransferItemsArgs = {
+  input?: Maybe<GetOneInventoryTransferItemsInput>;
+};
+
+
+export type QueryGetPaginatedInventoryTransferItemsArgs = {
+  input?: Maybe<GetPaginatedInventoryTransferItemsInput>;
+};
+
+
+export type QueryGetAllSerialTransferArgs = {
+  input?: Maybe<GetAllSerialTransferInput>;
+};
+
+
+export type QueryGetOneSerialTransferArgs = {
+  input?: Maybe<GetOneSerialTransferInput>;
+};
+
+
+export type QueryGetPaginatedSerialTransferArgs = {
+  input?: Maybe<GetPaginatedSerialTransferInput>;
+};
+
+
+export type QueryGetAllPaymentMethodArgs = {
+  input?: Maybe<GetAllPaymentMethodInput>;
+};
+
+
+export type QueryGetOnePaymentMethodArgs = {
+  input?: Maybe<GetOnePaymentMethodInput>;
+};
+
+
+export type QueryGetPaginatedPaymentMethodArgs = {
+  input?: Maybe<GetPaginatedPaymentMethodInput>;
+};
+
+
+export type QueryGetAllCreditCardArgs = {
+  input?: Maybe<GetAllCreditCardInput>;
+};
+
+
+export type QueryGetOneCreditCardArgs = {
+  input?: Maybe<GetOneCreditCardInput>;
+};
+
+
+export type QueryGetPaginatedCreditCardArgs = {
+  input?: Maybe<GetPaginatedCreditCardInput>;
+};
+
+
+export type QueryGetAllBanksArgs = {
+  input?: Maybe<GetAllBanksInput>;
+};
+
+
+export type QueryGetOneBanksArgs = {
+  input?: Maybe<GetOneBanksInput>;
+};
+
+
+export type QueryGetPaginatedBanksArgs = {
+  input?: Maybe<GetPaginatedBanksInput>;
+};
+
+
+export type QueryGetAllThirdPartiesArgs = {
+  input?: Maybe<GetAllThirdPartiesInput>;
+};
+
+
+export type QueryGetOneThirdPartiesArgs = {
+  input?: Maybe<GetOneThirdPartiesInput>;
+};
+
+
+export type QueryGetPaginatedThirdPartiesArgs = {
+  input?: Maybe<GetPaginatedThirdPartiesInput>;
+};
+
+
+export type QueryGetAllThirdPartyClassificationArgs = {
+  input?: Maybe<GetAllThirdPartyClassificationInput>;
+};
+
+
+export type QueryGetOneThirdPartyClassificationArgs = {
+  input?: Maybe<GetOneThirdPartyClassificationInput>;
+};
+
+
+export type QueryGetPaginatedThirdPartyClassificationArgs = {
+  input?: Maybe<GetPaginatedThirdPartyClassificationInput>;
+};
+
+
+export type QueryGetAllRegimeTypeArgs = {
+  input?: Maybe<GetAllRegimeTypeInput>;
+};
+
+
+export type QueryGetOneRegimeTypeArgs = {
+  input?: Maybe<GetOneRegimeTypeInput>;
+};
+
+
+export type QueryGetPaginatedRegimeTypeArgs = {
+  input?: Maybe<GetPaginatedRegimeTypeInput>;
+};
+
+
+export type QueryGetAllEconomicActivitiesArgs = {
+  input?: Maybe<GetAllEconomicActivitiesInput>;
+};
+
+
+export type QueryGetOneEconomicActivitiesArgs = {
+  input?: Maybe<GetOneEconomicActivitiesInput>;
+};
+
+
+export type QueryGetPaginatedEconomicActivitiesArgs = {
+  input?: Maybe<GetPaginatedEconomicActivitiesInput>;
+};
+
+
+export type QueryGetAllFiscalResponsibilityArgs = {
+  input?: Maybe<GetAllFiscalResponsibilityInput>;
+};
+
+
+export type QueryGetOneFiscalResponsibilityArgs = {
+  input?: Maybe<GetOneFiscalResponsibilityInput>;
+};
+
+
+export type QueryGetPaginatedFiscalResponsibilityArgs = {
+  input?: Maybe<GetPaginatedFiscalResponsibilityInput>;
+};
+
+
+export type QueryGetAllTributaryInformationArgs = {
+  input?: Maybe<GetAllTributaryInformationInput>;
+};
+
+
+export type QueryGetOneTributaryInformationArgs = {
+  input?: Maybe<GetOneTributaryInformationInput>;
+};
+
+
+export type QueryGetPaginatedTributaryInformationArgs = {
+  input?: Maybe<GetPaginatedTributaryInformationInput>;
+};
+
+
+export type QueryGetAllSerialArgs = {
+  input?: Maybe<GetAllSerialInput>;
+};
+
+
+export type QueryGetOneSerialArgs = {
+  input?: Maybe<GetOneSerialInput>;
+};
+
+
+export type QueryGetPaginatedSerialArgs = {
+  input?: Maybe<GetPaginatedSerialInput>;
+};
+
+
+export type QueryGetAllPurchaseReturnsArgs = {
+  input?: Maybe<GetAllPurchaseReturnsInput>;
+};
+
+
+export type QueryGetOnePurchaseReturnsArgs = {
+  input?: Maybe<GetOnePurchaseReturnsInput>;
+};
+
+
+export type QueryGetPaginatedPurchaseReturnsArgs = {
+  input?: Maybe<GetPaginatedPurchaseReturnsInput>;
+};
+
+
+export type QueryGetAllMonetaryDenominationArgs = {
+  input?: Maybe<GetAllMonetaryDenominationInput>;
+};
+
+
+export type QueryGetOneMonetaryDenominationArgs = {
+  input?: Maybe<GetOneMonetaryDenominationInput>;
+};
+
+
+export type QueryGetPaginatedMonetaryDenominationArgs = {
+  input?: Maybe<GetPaginatedMonetaryDenominationInput>;
+};
+
+
+export type QueryGetAllCompositionDecompositionArgs = {
+  input?: Maybe<GetAllCompositionDecompositionInput>;
+};
+
+
+export type QueryGetOneCompositionDecompositionArgs = {
+  input?: Maybe<GetOneCompositionDecompositionInput>;
+};
+
+
+export type QueryGetPaginatedCompositionDecompositionArgs = {
+  input?: Maybe<GetPaginatedCompositionDecompositionInput>;
+};
+
+export enum RegimeType {
+  Common = 'COMMON',
+  Simplified = 'SIMPLIFIED',
+  GreatContributor = 'GREAT_CONTRIBUTOR'
+}
+
+export type RegimeTypeFilterFilter = {
+  and?: Maybe<Array<RegimeTypeFilterFilter>>;
+  or?: Maybe<Array<RegimeTypeFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type RegimeTypeResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type ResetPasswordInput = {
   password: Scalars['String'];
 };
+
+export enum ResolutionClass {
+  Class1 = 'CLASS1',
+  Class2 = 'CLASS2',
+  Class3 = 'CLASS3'
+}
+
+export enum ResolutionType {
+  ResolutionType1 = 'RESOLUTION_TYPE1',
+  ResolutionType2 = 'RESOLUTION_TYPE2',
+  ResolutionType3 = 'RESOLUTION_TYPE3'
+}
+
+export enum Retention {
+  Exempt = 'EXEMPT',
+  SelfRetainer = 'SELF_RETAINER',
+  ChronicWithoutNursing = 'CHRONIC_WITHOUT_NURSING',
+  NotDeclarant = 'NOT_DECLARANT',
+  Declarant = 'DECLARANT'
+}
 
 export type RoleFilterFilter = {
   and?: Maybe<Array<RoleFilterFilter>>;
@@ -2927,6 +6094,90 @@ export type RoleResponse = {
   name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   permits: Array<PermitsResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type SerialFilterFilter = {
+  and?: Maybe<Array<SerialFilterFilter>>;
+  or?: Maybe<Array<SerialFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type SerialMovementFilterFilter = {
+  and?: Maybe<Array<SerialMovementFilterFilter>>;
+  or?: Maybe<Array<SerialMovementFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type SerialMovementResponse = {
+  id: Scalars['ID'];
+  serial: Scalars['String'];
+  product?: Maybe<SolvedEntityResponse>;
+  movementInventory?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type SerialResponse = {
+  id: Scalars['ID'];
+  serial: Scalars['String'];
+  product?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type SerialTransferFilterFilter = {
+  and?: Maybe<Array<SerialTransferFilterFilter>>;
+  or?: Maybe<Array<SerialTransferFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type SerialTransferResponse = {
+  id: Scalars['ID'];
+  serial: Scalars['String'];
+  product?: Maybe<SolvedEntityResponse>;
+  transferInventory?: Maybe<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ServicesFilterFilter = {
+  and?: Maybe<Array<ServicesFilterFilter>>;
+  or?: Maybe<Array<ServicesFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ServicesResponse = {
+  id: Scalars['ID'];
+  code: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  ref: Scalars['String'];
+  iva: SolvedEntityResponse;
+  um: SolvedEntityResponse;
+  area: SolvedEntityResponse;
+  groups: Array<SolvedEntityResponse>;
+  cost: Scalars['Float'];
+  price: Scalars['Float'];
+  ultCost: Scalars['Boolean'];
+  loadOrderScreen: Scalars['Boolean'];
+  isActive: Scalars['Boolean'];
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -2950,6 +6201,7 @@ export type SimplifiedTenantResponse = {
   id: Scalars['ID'];
   code: Scalars['String'];
   name: Scalars['String'];
+  isActive: Scalars['Boolean'];
 };
 
 export type SolvedEntityResponse = {
@@ -2985,43 +6237,35 @@ export type SubscriptionOnCreateNotificationArgs = {
   toUser: Scalars['String'];
 };
 
-export type SubstanceComplianceClearinghouseFilterFilter = {
-  and?: Maybe<Array<SubstanceComplianceClearinghouseFilterFilter>>;
-  or?: Maybe<Array<SubstanceComplianceClearinghouseFilterFilter>>;
+export enum TaxType {
+  IncludedInPrice = 'INCLUDED_IN_PRICE',
+  ConsumptionTax = 'CONSUMPTION_TAX',
+  GeneralTax = 'GENERAL_TAX'
+}
+
+export type TaxesAndCostsFilterFilter = {
+  and?: Maybe<Array<TaxesAndCostsFilterFilter>>;
+  or?: Maybe<Array<TaxesAndCostsFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
-  drugRandomEnrollment?: Maybe<StringFieldComparison>;
-  reasonableSuspicious?: Maybe<StringFieldComparison>;
-  clearingHouseLogin?: Maybe<StringFieldComparison>;
-  clearingHousePassword?: Maybe<StringFieldComparison>;
-  clearingHouseRegQueries?: Maybe<StringFieldComparison>;
-  otherSubstanceRequest?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type SubstanceComplianceClearinghouseResponse = {
+export type TaxesAndCostsResponse = {
   id: Scalars['ID'];
-  drugRandomEnrollment?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentDetail?: Maybe<Scalars['String']>;
-  drugRandomEnrollmentExpiration?: Maybe<Scalars['DateTime']>;
-  drugRandomEnrollmentFile?: Maybe<CloudFileResponse>;
-  reasonableSuspicious?: Maybe<Scalars['String']>;
-  reasonableSuspiciousDetail?: Maybe<Scalars['String']>;
-  reasonableSuspiciousExpiration?: Maybe<Scalars['DateTime']>;
-  reasonableSuspiciousFile?: Maybe<CloudFileResponse>;
-  clearingHouseLogin?: Maybe<Scalars['String']>;
-  clearingHouseLoginDetail?: Maybe<Scalars['String']>;
-  clearingHouseLoginFile?: Maybe<CloudFileResponse>;
-  clearingHousePassword?: Maybe<Scalars['String']>;
-  clearingHousePasswordDetail?: Maybe<Scalars['String']>;
-  clearingHousePasswordFile?: Maybe<CloudFileResponse>;
-  clearingHouseRegQueries?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesDetail?: Maybe<Scalars['String']>;
-  clearingHouseRegQueriesFile?: Maybe<CloudFileResponse>;
-  otherSubstanceRequest?: Maybe<Scalars['String']>;
-  otherSubstanceRequestDetail?: Maybe<Scalars['String']>;
-  otherSubstanceRequestFile?: Maybe<CloudFileResponse>;
-  notes?: Maybe<Scalars['String']>;
+  product: SolvedEntityResponse;
+  shoppingTax: SolvedEntityResponse;
+  applyIco?: Maybe<Scalars['Boolean']>;
+  valueIco: Scalars['Float'];
+  includeIcoInCost?: Maybe<Scalars['Boolean']>;
+  productCost: Scalars['Float'];
+  unitCost: Scalars['Float'];
+  unitTaxCost: SolvedEntityResponse;
+  valueUnitTaxCost: Scalars['Float'];
+  totalUnitCost: Scalars['Float'];
+  volumePrice: Array<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -3043,6 +6287,7 @@ export type TaxesResponse = {
   name: Scalars['String'];
   tax: Scalars['Float'];
   isActive: Scalars['Boolean'];
+  taxType: TaxType;
   description?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -3115,9 +6360,9 @@ export type TenantResponsibleResponse = {
   phoneNumber?: Maybe<Scalars['String']>;
 };
 
-export type TrailerRentalFilterFilter = {
-  and?: Maybe<Array<TrailerRentalFilterFilter>>;
-  or?: Maybe<Array<TrailerRentalFilterFilter>>;
+export type ThirdPartiesFilterFilter = {
+  and?: Maybe<Array<ThirdPartiesFilterFilter>>;
+  or?: Maybe<Array<ThirdPartiesFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
   description?: Maybe<StringFieldComparison>;
@@ -3125,49 +6370,160 @@ export type TrailerRentalFilterFilter = {
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type TrailerRentalResponse = {
+export type ThirdPartiesResponse = {
   id: Scalars['ID'];
-  unit: Scalars['String'];
-  vin: Scalars['String'];
-  tag: Scalars['String'];
-  year: Scalars['String'];
-  make: Scalars['String'];
-  model: Scalars['String'];
-  rentalDate: Scalars['DateTime'];
-  rentalAmount: Scalars['Float'];
-  file?: Maybe<CloudFileResponse>;
+  identificationDocument?: Maybe<Scalars['String']>;
+  verificationDigit?: Maybe<Scalars['String']>;
+  identificationDocumentType: IdentificationDocumentType;
+  personType: PersonType;
+  barCode?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  firstSurname?: Maybe<Scalars['String']>;
+  secondSurname?: Maybe<Scalars['String']>;
+  businessName?: Maybe<Scalars['String']>;
+  tradename?: Maybe<Scalars['String']>;
+  address?: Maybe<Scalars['String']>;
+  phoneNumber?: Maybe<Scalars['String']>;
+  secondPhoneNumber?: Maybe<Scalars['String']>;
+  birthday?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  department?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  neighborhood?: Maybe<Scalars['String']>;
+  thirdPartyClassification?: Maybe<SolvedEntityResponse>;
+  nationality?: Maybe<Scalars['String']>;
+  regime: RegimeType;
+  isClient: Scalars['Boolean'];
+  isEmployee: Scalars['Boolean'];
+  isSupplier: Scalars['Boolean'];
+  isOtherSellers: Scalars['Boolean'];
+  isPosBilling: Scalars['Boolean'];
+  photoFile?: Maybe<CloudFileResponse>;
+  assignDebtQuota: Scalars['Boolean'];
+  debtQuota?: Maybe<Scalars['Float']>;
+  isSetPrices: Scalars['Boolean'];
+  priceType: PriceType;
+  isActive: Scalars['Boolean'];
+  enablePoints: Scalars['Boolean'];
+  baseRetention?: Maybe<Scalars['Float']>;
+  percentageRetention?: Maybe<Scalars['Float']>;
+  seller: SolvedEntityResponse;
+  products: Array<SolvedEntityResponse>;
+  restrictPaymentMethod: Scalars['Boolean'];
+  restrictAllPaymentMethod: Scalars['Boolean'];
+  paymentMethod: Array<SolvedEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type UpdateAccountingInput = {
-  entityId: Scalars['ID'];
-  update: PartialAccountingInput;
+export type ThirdPartyClassificationFilterFilter = {
+  and?: Maybe<Array<ThirdPartyClassificationFilterFilter>>;
+  or?: Maybe<Array<ThirdPartyClassificationFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type UpdateAnnualVehInspStateRermitsInput = {
-  entityId: Scalars['ID'];
-  update: PartialAnnualVehInspStateRermitsInput;
+export type ThirdPartyClassificationResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  assignDebtQuota: Scalars['Boolean'];
+  debtQuota: Scalars['Float'];
+  gourmetConnection: Scalars['Boolean'];
+  includeServiceOrders: Scalars['Boolean'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type UpdateClientInput = {
-  entityId: Scalars['ID'];
-  update: PartialClientInput;
+export enum TransferStatus {
+  Confirmed = 'CONFIRMED',
+  Cancelled = 'CANCELLED',
+  Pending = 'PENDING',
+  Approved = 'APPROVED'
+}
+
+export type TributaryInformationFilterFilter = {
+  and?: Maybe<Array<TributaryInformationFilterFilter>>;
+  or?: Maybe<Array<TributaryInformationFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type UpdateCorporationEinInput = {
-  entityId: Scalars['ID'];
-  update: PartialCorporationEinInput;
+export type TributaryInformationResponse = {
+  id: Scalars['ID'];
+  third?: Maybe<SolvedEntityResponse>;
+  regimeType?: Maybe<SolvedEntityResponse>;
+  economicActivities?: Maybe<SolvedEntityResponse>;
+  retention?: Maybe<Retention>;
+  registrationNumber: Scalars['Int'];
+  taxDetail: Array<SolvedEntityResponse>;
+  fiscalResponsibility: Array<SolvedEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type UpdateDotInfoInput = {
-  entityId: Scalars['ID'];
-  update: PartialDotInfoInput;
+export type UnitMeasurementFilterFilter = {
+  and?: Maybe<Array<UnitMeasurementFilterFilter>>;
+  or?: Maybe<Array<UnitMeasurementFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type UpdateDriverFilesInput = {
+export type UnitMeasurementResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type UpdateBanksInput = {
   entityId: Scalars['ID'];
-  update: PartialDriverFilesInput;
+  update: PartialBanksInput;
+};
+
+export type UpdateBarCodeIdentifierInput = {
+  entityId: Scalars['ID'];
+  update: PartialBarCodeIdentifierInput;
+};
+
+export type UpdateBillingResolutionInput = {
+  entityId: Scalars['ID'];
+  update: PartialBillingResolutionInput;
+};
+
+export type UpdateCompanyInput = {
+  entityId: Scalars['ID'];
+  update: PartialCompanyInput;
+};
+
+export type UpdateCompositionDecompositionInput = {
+  entityId: Scalars['ID'];
+  update: PartialCompositionDecompositionInput;
+};
+
+export type UpdateCompositionInput = {
+  entityId: Scalars['ID'];
+  update: PartialCompositionInput;
+};
+
+export type UpdateCreditCardInput = {
+  entityId: Scalars['ID'];
+  update: PartialCreditCardInput;
+};
+
+export type UpdateEconomicActivitiesInput = {
+  entityId: Scalars['ID'];
+  update: PartialEconomicActivitiesInput;
 };
 
 export type UpdateFilesInput = {
@@ -3175,19 +6531,44 @@ export type UpdateFilesInput = {
   update: PartialFilesInput;
 };
 
-export type UpdateFinancedEquipmentInput = {
+export type UpdateFiscalResponsibilityInput = {
   entityId: Scalars['ID'];
-  update: PartialFinancedEquipmentInput;
+  update: PartialFiscalResponsibilityInput;
 };
 
-export type UpdateIftaFuelTaxesInput = {
+export type UpdateGroupInput = {
   entityId: Scalars['ID'];
-  update: PartialIftaFuelTaxesInput;
+  update: PartialGroupInput;
 };
 
-export type UpdateIrpRoadTaxesInput = {
+export type UpdateInitialPhysicalInventoryInput = {
   entityId: Scalars['ID'];
-  update: PartialIrpRoadTaxesInput;
+  update: PartialInitialPhysicalInventoryInput;
+};
+
+export type UpdateInventoryCovementConceptsInput = {
+  entityId: Scalars['ID'];
+  update: PartialInventoryCovementConceptsInput;
+};
+
+export type UpdateInventoryMovementInput = {
+  entityId: Scalars['ID'];
+  update: PartialInventoryMovementInput;
+};
+
+export type UpdateInventoryMovementItemsInput = {
+  entityId: Scalars['ID'];
+  update: PartialInventoryMovementItemsInput;
+};
+
+export type UpdateInventoryTransferInput = {
+  entityId: Scalars['ID'];
+  update: PartialInventoryTransferInput;
+};
+
+export type UpdateInventoryTransferItemsInput = {
+  entityId: Scalars['ID'];
+  update: PartialInventoryTransferItemsInput;
 };
 
 export type UpdateMeInput = {
@@ -3198,9 +6579,74 @@ export type UpdateMeInput = {
   profile?: Maybe<PartialProfileInput>;
 };
 
+export type UpdateMonetaryDenominationInput = {
+  entityId: Scalars['ID'];
+  update: PartialMonetaryDenominationInput;
+};
+
 export type UpdateNotificationInput = {
   entityId: Scalars['ID'];
   update: PartialNotificationInput;
+};
+
+export type UpdatePartialInventoryItemsInput = {
+  entityId: Scalars['ID'];
+  update: PartialPartialInventoryItemsInput;
+};
+
+export type UpdatePartialTotalPhysicalInventoryInput = {
+  entityId: Scalars['ID'];
+  update: PartialPartialTotalPhysicalInventoryInput;
+};
+
+export type UpdatePaymentMethodInput = {
+  entityId: Scalars['ID'];
+  update: PartialPaymentMethodInput;
+};
+
+export type UpdatePreparationTypeInput = {
+  entityId: Scalars['ID'];
+  update: PartialPreparationTypeInput;
+};
+
+export type UpdateProductAreaInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductAreaInput;
+};
+
+export type UpdateProductGroupInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductGroupInput;
+};
+
+export type UpdateProductInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductInput;
+};
+
+export type UpdateProductMenuInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductMenuInput;
+};
+
+export type UpdateProductParamsInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductParamsInput;
+};
+
+export type UpdateProductSalePriceInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductSalePriceInput;
+};
+
+export type UpdatePurchaseReturnsInput = {
+  entityId: Scalars['ID'];
+  update: PartialPurchaseReturnsInput;
+};
+
+export type UpdateRegimeTypeInput = {
+  entityId: Scalars['ID'];
+  update: PartialRegimeTypeInput;
 };
 
 export type UpdateRoleInput = {
@@ -3208,9 +6654,29 @@ export type UpdateRoleInput = {
   update: PartialRoleInput;
 };
 
-export type UpdateSubstanceComplianceClearinghouseInput = {
+export type UpdateSerialInput = {
   entityId: Scalars['ID'];
-  update: PartialSubstanceComplianceClearinghouseInput;
+  update: PartialSerialInput;
+};
+
+export type UpdateSerialMovementInput = {
+  entityId: Scalars['ID'];
+  update: PartialSerialMovementInput;
+};
+
+export type UpdateSerialTransferInput = {
+  entityId: Scalars['ID'];
+  update: PartialSerialTransferInput;
+};
+
+export type UpdateServicesInput = {
+  entityId: Scalars['ID'];
+  update: PartialServicesInput;
+};
+
+export type UpdateTaxesAndCostsInput = {
+  entityId: Scalars['ID'];
+  update: PartialTaxesAndCostsInput;
 };
 
 export type UpdateTaxesInput = {
@@ -3223,9 +6689,24 @@ export type UpdateTenantInput = {
   update: PartialTenantInput;
 };
 
-export type UpdateTrailerRentalInput = {
+export type UpdateThirdPartiesInput = {
   entityId: Scalars['ID'];
-  update: PartialTrailerRentalInput;
+  update: PartialThirdPartiesInput;
+};
+
+export type UpdateThirdPartyClassificationInput = {
+  entityId: Scalars['ID'];
+  update: PartialThirdPartyClassificationInput;
+};
+
+export type UpdateTributaryInformationInput = {
+  entityId: Scalars['ID'];
+  update: PartialTributaryInformationInput;
+};
+
+export type UpdateUnitMeasurementInput = {
+  entityId: Scalars['ID'];
+  update: PartialUnitMeasurementInput;
 };
 
 export type UpdateUserAreaInput = {
@@ -3243,9 +6724,9 @@ export type UpdateUserPositionInput = {
   update: PartialUserPositionInput;
 };
 
-export type UpdateYardRentalInput = {
+export type UpdateWarehouseInput = {
   entityId: Scalars['ID'];
-  update: PartialYardRentalInput;
+  update: PartialWarehouseInput;
 };
 
 export type UserAreaFilterFilter = {
@@ -3327,25 +6808,32 @@ export type UserResponse = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export enum ValueTypes {
+  CostLastPurchase = 'COST_LAST_PURCHASE',
+  WeightedAverageCost = 'WEIGHTED_AVERAGE_COST',
+  SalePrice = 'SALE_PRICE'
+}
 
-export type YardRentalFilterFilter = {
-  and?: Maybe<Array<YardRentalFilterFilter>>;
-  or?: Maybe<Array<YardRentalFilterFilter>>;
+
+export type WarehouseFilterFilter = {
+  and?: Maybe<Array<WarehouseFilterFilter>>;
+  or?: Maybe<Array<WarehouseFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
+  location?: Maybe<StringFieldComparison>;
+  code?: Maybe<StringFieldComparison>;
   description?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
 
-export type YardRentalResponse = {
+export type WarehouseResponse = {
   id: Scalars['ID'];
-  truck: Scalars['String'];
-  truckColor: Scalars['String'];
-  tag: Scalars['String'];
-  rentalDate: Scalars['DateTime'];
-  rentalAmount: Scalars['Float'];
-  file?: Maybe<CloudFileResponse>;
+  name: Scalars['String'];
+  code: Scalars['String'];
+  location: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  isActive: Scalars['Boolean'];
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
