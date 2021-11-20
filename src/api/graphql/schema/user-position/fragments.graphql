@@ -1,0 +1,8 @@
+fragment UserPositionFragment on UserPositionResponse {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+}
+
