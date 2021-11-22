@@ -19,8 +19,12 @@ const locale = {
 	TRAILER_RENTAL:'Alquiler de remolques',
 	YARD_RENTAL:'Alquiler de patio',
 	POSITIONS: 'Cargo',
-
-
+	BILLING:'Facturación',
+	TAXES:'Impuestos',
+	BANKS:'Bancos',
+	UNIT_MEASUREMENT:'Unidades De Medida',
+	MONETARY_DENOMINATION : 'Denominaciones',
+	WAREHOUSE:'Almacenes'
 
 
 };

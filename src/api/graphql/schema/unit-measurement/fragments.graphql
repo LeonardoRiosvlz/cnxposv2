@@ -1,0 +1,8 @@
+fragment UnitMeasurementFragment on UnitMeasurementResponse {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+}
+

@@ -1,0 +1,16 @@
+mutation createBanks($input: CreateBanksInput!){
+    createBanks(input: $input)
+}
+
+mutation updateBanks($input: UpdateBanksInput!){
+    updateBanks(input: $input)
+}
+
+mutation deleteBanks($input: DeleteBanksInput!){
+    deleteBanks(input: $input)
+}
+
+mutation deleteManyBanks($input: DeleteManyBanksInput!){
+    deleteManyBanks(input: $input)
+}
+

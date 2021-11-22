@@ -703,7 +703,7 @@ export type CreateTaxesInput = {
   name: Scalars['String'];
   tax: Scalars['Float'];
   description?: Maybe<Scalars['String']>;
-  taxType: TaxType;
+  taxType?: Maybe<Array<TaxType>>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -817,6 +817,7 @@ export type CreateWarehouseInput = {
   name: Scalars['String'];
   code: Scalars['String'];
   location: Scalars['String'];
+  warehouseTypes: WarehouseTypes;
   description?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
@@ -4665,7 +4666,7 @@ export type PartialTaxesInput = {
   name?: Maybe<Scalars['String']>;
   tax?: Maybe<Scalars['Float']>;
   description?: Maybe<Scalars['String']>;
-  taxType?: Maybe<TaxType>;
+  taxType?: Maybe<Array<TaxType>>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -4790,6 +4791,7 @@ export type PartialWarehouseInput = {
   name?: Maybe<Scalars['String']>;
   code?: Maybe<Scalars['String']>;
   location?: Maybe<Scalars['String']>;
+  warehouseTypes?: Maybe<WarehouseTypes>;
   description?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
@@ -6287,7 +6289,7 @@ export type TaxesResponse = {
   name: Scalars['String'];
   tax: Scalars['Float'];
   isActive: Scalars['Boolean'];
-  taxType: TaxType;
+  taxType: Array<TaxType>;
   description?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -6834,6 +6836,12 @@ export type WarehouseResponse = {
   location: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   isActive: Scalars['Boolean'];
+  warehouseTypes: WarehouseTypes;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
+
+export enum WarehouseTypes {
+  Billing = 'BILLING',
+  Store = 'STORE'
+}

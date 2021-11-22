@@ -58,23 +58,6 @@ const navigationConfig: Array<MenuItem> = [
                         url: '/user/roles',
                         exact: true
                     }
-                    /* {
-                         id: App_Modules.UserPosition,
-                         title: 'Positions',
-                         translate: 'POSITIONS',
-                         type: 'item',
-                         url: '/user/positions',
-                         exact: true
-                     },
- 
-                     {
-                         id: App_Modules.UserArea,
-                         title: 'Areas',
-                         translate: 'AREAS',
-                         type: 'item',
-                         url: '/user/areas',
-                         exact: true
-                     },*/
 
                 ]
 
@@ -107,112 +90,54 @@ const navigationConfig: Array<MenuItem> = [
         ]
     },
     {
-        id: 'PROCESS',
-        title: 'Process',
-        translate: 'PROCESS',
+        id: 'BILLING',
+        title: 'Billing',
+        translate: 'BILLING',
         type: 'collapse',
-        icon: 'electric_car',
+        icon: 'attach_money',
         children: [
             {
-                id: App_Modules.UserPosition,
-                title: 'Customer Information',
-                translate: 'CUSTOMER_INFORMATION',
+                id: App_Modules.Taxes,
+                title: 'Taxes',
+                translate: 'TAXES',
                 type: 'item',
-                url: '/user-position',
-                icon: 'recent_actors',
+                url: '/taxes',
                 exact: true
             },
             {
                 id: App_Modules.UserPosition,
-                title: 'Corporation/Ein',
-                translate: 'CORPORATION_EIN',
+                title: 'Banks',
+                translate: 'BANKS',
                 type: 'item',
-                url: '/user-position',
-                icon: 'corporate_fare',
+                url: '/banks',
                 exact: true
             },
             {
-                id: App_Modules.UserPosition,
-                title: 'IRP/ROAD',
-                translate: 'IRP_ROAD',
+                id: App_Modules.UnitMeasurement,
+                title: 'Unit Measurement',
+                translate: 'UNIT_MEASUREMENT',
                 type: 'item',
-                url: '/user-position',
-                icon: 'local_atm',
+                url: '/unit-measurement',
                 exact: true
             },
             {
-                id: App_Modules.UserPosition,
-                title: 'IFTA Fuel',
-                translate: 'IFTA_FUEL',
+                id: App_Modules.MonetaryDenomination,
+                title: 'Monetary Denomination',
+                translate: 'MONETARY_DENOMINATION',
                 type: 'item',
-                url: '/user-position',
-                icon: 'local_atm',
+                url: '/monetary-denomination',
                 exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'DOT Info',
-                translate: 'IFTA_FUEL',
-                type: 'item',
-                url: '/user-position',
-                icon: 'adjust',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Substances Compliance',
-                translate: 'SUBSTANCES_COMPLIANCE',
-                type: 'item',
-                url: '/user-position',
-                icon: 'science',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Driver Files',
-                translate: 'DRIVER_FILES',
-                type: 'item',
-                url: '/user-position',
-                icon: 'contact_page',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Annual Vehicles Inspection',
-                translate: 'ANNUAL_VEHICLES_INSPECTION',
-                type: 'item',
-                url: '/user-position',
-                icon: 'departure_board',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Invoices And Payments',
-                translate: 'INVOICES_AND_PAYMENTS',
-                type: 'item',
-                url: '/user-position',
-                icon: 'credit_card',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Trailer Rental',
-                translate: 'TRAILER_RENTAL',
-                type: 'item',
-                url: '/user-position',
-                icon: 'rv_hookup',
-                exact: true
-            },
-            {
-                id: App_Modules.UserPosition,
-                title: 'Yard Rental',
-                translate: 'YARD_RENTAL',
-                type: 'item',
-                url: '/user-position',
-                icon: '6_ft_apart',
-                exact: true
-            },
+            }
         ]
+    },
+    {
+        id: App_Modules.Warehouse,
+        title: 'Warehouse',
+        translate: 'WAREHOUSE',
+        type: 'collapse',
+        icon: 'store',
+        url: '/warehouse',
+        exact: true
     }
 ]
 

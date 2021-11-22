@@ -1,0 +1,24 @@
+query getAllMonetaryDenomination($input: GetAllMonetaryDenominationInput! ){
+    getAllMonetaryDenomination(input: $input){
+        ...MonetaryDenominationFragment
+    }
+}
+
+query getPaginatedMonetaryDenomination($input: GetPaginatedMonetaryDenominationInput!){
+    getPaginatedMonetaryDenomination(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...MonetaryDenominationFragment
+        }
+    }
+}
+
+query getOneMonetaryDenomination($input: GetOneMonetaryDenominationInput! ){
+    getOneMonetaryDenomination(input: $input){
+        ...MonetaryDenominationFragment
+    }
+}
+
+

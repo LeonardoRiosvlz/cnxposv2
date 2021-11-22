@@ -1,0 +1,16 @@
+mutation createMonetaryDenomination($input: CreateMonetaryDenominationInput!){
+    createMonetaryDenomination(input: $input)
+}
+
+mutation updateMonetaryDenomination($input: UpdateMonetaryDenominationInput!){
+    updateMonetaryDenomination(input: $input)
+}
+
+mutation deleteMonetaryDenomination($input: DeleteMonetaryDenominationInput!){
+    deleteMonetaryDenomination(input: $input)
+}
+
+mutation deleteManyMonetaryDenomination($input: DeleteManyMonetaryDenominationInput!){
+    deleteManyMonetaryDenomination(input: $input)
+}
+

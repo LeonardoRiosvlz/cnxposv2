@@ -1,0 +1,8 @@
+fragment BanksFragment on BanksResponse {
+    id
+    name
+    accountingAccount
+    createdAt
+    updatedAt
+}
+

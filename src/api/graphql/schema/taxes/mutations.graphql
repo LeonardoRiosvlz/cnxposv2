@@ -1,0 +1,16 @@
+mutation createTaxes($input: CreateTaxesInput!){
+    createTaxes(input: $input)
+}
+
+mutation updateTaxes($input: UpdateTaxesInput!){
+    updateTaxes(input: $input)
+}
+
+mutation deleteTaxes($input: DeleteTaxesInput!){
+    deleteTaxes(input: $input)
+}
+
+mutation deleteManyTaxes($input: DeleteManyTaxesInput!){
+    deleteManyTaxes(input: $input)
+}
+

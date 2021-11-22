@@ -1,0 +1,16 @@
+mutation createWarehouse($input: CreateWarehouseInput!){
+    createWarehouse(input: $input)
+}
+
+mutation updateWarehouse($input: UpdateWarehouseInput!){
+    updateWarehouse(input: $input)
+}
+
+mutation deleteWarehouse($input: DeleteWarehouseInput!){
+    deleteWarehouse(input: $input)
+}
+
+mutation deleteManyWarehouse($input: DeleteManyWarehouseInput!){
+    deleteManyWarehouse(input: $input)
+}
+

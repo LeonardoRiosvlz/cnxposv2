@@ -1,0 +1,24 @@
+query getAllWarehouse($input: GetAllWarehouseInput! ){
+    getAllWarehouse(input: $input){
+        ...WarehouseFragment
+    }
+}
+
+query getPaginatedWarehouse($input: GetPaginatedWarehouseInput!){
+    getPaginatedWarehouse(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...WarehouseFragment
+        }
+    }
+}
+
+query getOneWarehouse($input: GetOneWarehouseInput! ){
+    getOneWarehouse(input: $input){
+        ...WarehouseFragment
+    }
+}
+
+

@@ -1,0 +1,24 @@
+query getAllBanks($input: GetAllBanksInput! ){
+    getAllBanks(input: $input){
+        ...BanksFragment
+    }
+}
+
+query getPaginatedBanks($input: GetPaginatedBanksInput!){
+    getPaginatedBanks(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...BanksFragment
+        }
+    }
+}
+
+query getOneBanks($input: GetOneBanksInput! ){
+    getOneBanks(input: $input){
+        ...BanksFragment
+    }
+}
+
+

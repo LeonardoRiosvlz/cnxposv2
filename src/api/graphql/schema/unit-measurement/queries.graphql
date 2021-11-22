@@ -1,0 +1,24 @@
+query getAllUnitMeasurement($input: GetAllUnitMeasurementInput! ){
+    getAllUnitMeasurement(input: $input){
+        ...UnitMeasurementFragment
+    }
+}
+
+query getPaginatedUnitMeasurement($input: GetPaginatedUnitMeasurementInput!){
+    getPaginatedUnitMeasurement(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...UnitMeasurementFragment
+        }
+    }
+}
+
+query getOneUnitMeasurement($input: GetOneUnitMeasurementInput! ){
+    getOneUnitMeasurement(input: $input){
+        ...UnitMeasurementFragment
+    }
+}
+
+

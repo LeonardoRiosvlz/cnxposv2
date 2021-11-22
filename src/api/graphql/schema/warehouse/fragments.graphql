@@ -1,0 +1,12 @@
+fragment WarehouseFragment on WarehouseResponse {
+    id
+    name
+    code
+    location
+    description
+    warehouseTypes
+    isActive
+    createdAt
+    updatedAt
+}
+

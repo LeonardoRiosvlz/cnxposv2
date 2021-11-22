@@ -1,0 +1,11 @@
+fragment TaxesFragment on TaxesResponse {
+    id
+    name
+    tax
+    description
+    taxType
+    isActive
+    createdAt
+    updatedAt
+}
+

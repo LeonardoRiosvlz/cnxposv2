@@ -1,0 +1,16 @@
+mutation createUnitMeasurement($input: CreateUnitMeasurementInput!){
+    createUnitMeasurement(input: $input)
+}
+
+mutation updateUnitMeasurement($input: UpdateUnitMeasurementInput!){
+    updateUnitMeasurement(input: $input)
+}
+
+mutation deleteUnitMeasurement($input: DeleteUnitMeasurementInput!){
+    deleteUnitMeasurement(input: $input)
+}
+
+mutation deleteManyUnitMeasurement($input: DeleteManyUnitMeasurementInput!){
+    deleteManyUnitMeasurement(input: $input)
+}
+

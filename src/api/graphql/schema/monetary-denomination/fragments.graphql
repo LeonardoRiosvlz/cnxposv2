@@ -1,0 +1,11 @@
+fragment MonetaryDenominationFragment on MonetaryDenominationResponse {
+    id
+    value
+    monetaryDenominationTypes
+    photoFile{
+        ...CloudFileFragment
+    }
+    createdAt
+    updatedAt
+}
+

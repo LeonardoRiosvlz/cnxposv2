@@ -18,7 +18,15 @@ const locale = {
 	ANNUAL_VEHICLES_INSPECTION:'Annual Vehicles Inspection',
 	INVOICES_AND_PAYMENTS:'Invoices And Payments',
 	TRAILER_RENTAL:'Trailer Rental',
-	YARD_RENTAL:'Yard Rental'
+	YARD_RENTAL:'Yard Rental',
+	BILLING:'Billing',
+	TAXES:'Taxes',
+	BANKS:'Banks',
+	UNIT_MEASUREMENT:'Unit Measurement',
+	MONETARY_DENOMINATION:'Monetary Denomination',
+	WAREHOUSE:'Warehouse'
+	
+
 };
 
 export default locale;
