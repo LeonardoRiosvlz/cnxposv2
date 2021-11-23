@@ -1,0 +1,24 @@
+query getAllPreparation($input: GetAllPreparationInput! ){
+    getAllPreparation(input: $input){
+        ...PreparationFragment
+    }
+}
+
+query getPaginatedPreparation($input: GetPaginatedPreparationInput!){
+    getPaginatedPreparation(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...PreparationFragment
+        }
+    }
+}
+
+query getOnePreparation($input: GetOnePreparationInput! ){
+    getOnePreparation(input: $input){
+        ...PreparationFragment
+    }
+}
+
+

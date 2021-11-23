@@ -1,0 +1,8 @@
+fragment PreparationFragment on PreparationResponse {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+}
+

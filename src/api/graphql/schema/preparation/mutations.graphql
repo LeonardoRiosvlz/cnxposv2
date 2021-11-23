@@ -1,0 +1,16 @@
+mutation createPreparation($input: CreatePreparationInput!){
+    createPreparation(input: $input)
+}
+
+mutation updatePreparation($input: UpdatePreparationInput!){
+    updatePreparation(input: $input)
+}
+
+mutation deletePreparation($input: DeletePreparationInput!){
+    deletePreparation(input: $input)
+}
+
+mutation deleteManyPreparation($input: DeleteManyPreparationInput!){
+    deleteManyPreparation(input: $input)
+}
+

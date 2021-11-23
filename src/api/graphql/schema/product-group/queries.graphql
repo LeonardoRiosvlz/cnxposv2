@@ -1,0 +1,24 @@
+query getAllProductGroup($input: GetAllProductGroupInput! ){
+    getAllProductGroup(input: $input){
+        ...ProductGroupFragment
+    }
+}
+
+query getPaginatedProductGroup($input: GetPaginatedProductGroupInput!){
+    getPaginatedProductGroup(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductGroupFragment
+        }
+    }
+}
+
+query getOneProductGroup($input: GetOneProductGroupInput! ){
+    getOneProductGroup(input: $input){
+        ...ProductGroupFragment
+    }
+}
+
+

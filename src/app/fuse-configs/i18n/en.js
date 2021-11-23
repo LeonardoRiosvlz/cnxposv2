@@ -24,8 +24,15 @@ const locale = {
 	BANKS:'Banks',
 	UNIT_MEASUREMENT:'Unit Measurement',
 	MONETARY_DENOMINATION:'Monetary Denomination',
-	WAREHOUSE:'Warehouse'
-	
+	WAREHOUSE:'Warehouse',
+	PRODUCT_AREA:'Product Area',
+	PRODUCT_ARCHITECTURE:'Product Architecture',
+	PRODUCT_AREA:'Product Area',
+	PRODUCT_CATEGORY:'Product Category',
+	PRODUCT_GROUP:'Product Groups',
+	PREPARATION:'Preparation',
+	PREPARATION_TYPE:'PreparationT Type'
+
 
 };
 

@@ -138,7 +138,56 @@ const navigationConfig: Array<MenuItem> = [
         icon: 'store',
         url: '/warehouse',
         exact: true
-    }
+    },
+    {
+        id: 'Product Architecture',
+        title: 'PRODUCT ARCHITECTURE',
+        translate: 'PRODUCT_ARCHITECTURE',
+        type: 'collapse',
+        icon: 'qr_code_scanner',
+        children: [
+            {
+                id: App_Modules.ProductArea,
+                title: 'Product Area',
+                translate: 'PRODUCT_AREA',
+                type: 'item',
+                url: '/product-area',
+                exact: true
+            },
+            {
+                id: App_Modules.ProductCategory,
+                title: 'Product Category',
+                translate: 'PRODUCT_CATEGORY',
+                type: 'item',
+                url: '/product-category',
+                exact: true
+            },
+            {
+                id: App_Modules.ProductGroup,
+                title: 'Product Group',
+                translate: 'PRODUCT_GROUP',
+                type: 'item',
+                url: '/product-group',
+                exact: true
+            },
+            {
+                id: App_Modules.Preparation,
+                title: 'Preparation',
+                translate: 'PREPARATION',
+                type: 'item',
+                url: '/preparation',
+                exact: true
+            },
+            {
+                id: App_Modules.PreparationType,
+                title: 'Preparation Type',
+                translate: 'PREPARATION_TYPE',
+                type: 'item',
+                url: '/preparation-type',
+                exact: true
+            }
+        ]
+    },
 ]
 
 

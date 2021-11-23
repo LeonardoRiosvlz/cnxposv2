@@ -1,0 +1,16 @@
+mutation createProductGroup($input: CreateProductGroupInput!){
+    createProductGroup(input: $input)
+}
+
+mutation updateProductGroup($input: UpdateProductGroupInput!){
+    updateProductGroup(input: $input)
+}
+
+mutation deleteProductGroup($input: DeleteProductGroupInput!){
+    deleteProductGroup(input: $input)
+}
+
+mutation deleteManyProductGroup($input: DeleteManyProductGroupInput!){
+    deleteManyProductGroup(input: $input)
+}
+

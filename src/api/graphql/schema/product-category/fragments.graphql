@@ -1,0 +1,8 @@
+fragment ProductCategoryFragment on ProductCategoryResponse {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+}
+

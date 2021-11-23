@@ -2,6 +2,6 @@ const locale = {
 	HELLO: 'Hola',
 	WAREHOUSE_TYPES:'Tipo de almacen',
 	BILLING :'Facturación',
-	STORE :'Almacen',
+	STORE :'Bodega',
 };
 export default locale;

@@ -1,0 +1,10 @@
+fragment ProductAreaFragment on ProductAreaResponse {
+    id
+    name
+    description
+    isActive
+    attentionArea
+    createdAt
+    updatedAt
+}
+

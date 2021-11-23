@@ -9,6 +9,11 @@ import BanksModuleConfig from './banks/banksModuleConfig';
 import UnitMeasurementModuleConfig from './unit-measurement/unit-measurementModuleConfig';
 import MonetaryDenominationModuleConfig from './monetary-denomination/monetary-denominationModuleConfig';
 import WarehouseModuleConfig from './warehouse/warehouseModuleConfig';
+import ProductAreaModuleConfig from './product-area/product-areaModuleConfig';
+import ProductGroupModuleConfig from './product-group/product-groupModuleConfig';
+import ProductCategoryModuleConfig from './product-category/product-categoryModuleConfig';
+import PreparationTypeModuleConfig from './preparation-type/preparation-typeModuleConfig';
+import PreparationModuleConfig from './preparation/preparationModuleConfig';
 
 const modulesConfigs: any[] = [
     AuthModuleConfig,
@@ -20,6 +25,11 @@ const modulesConfigs: any[] = [
     UnitMeasurementModuleConfig,
     WarehouseModuleConfig,
     MonetaryDenominationModuleConfig,
+    ProductGroupModuleConfig,
+    ProductAreaModuleConfig,
+    ProductCategoryModuleConfig,
+    PreparationTypeModuleConfig,
+    PreparationModuleConfig,
     //Home should Be last
     HomeModuleConfig
 ];

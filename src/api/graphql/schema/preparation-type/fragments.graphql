@@ -1,0 +1,11 @@
+fragment PreparationTypeFragment on PreparationTypeResponse {
+    id
+    name
+    description
+    preparation{
+      ...SolvedEntityFragment
+    }
+    createdAt
+    updatedAt
+}
+

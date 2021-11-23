@@ -24,7 +24,14 @@ const locale = {
 	BANKS:'Bancos',
 	UNIT_MEASUREMENT:'Unidades De Medida',
 	MONETARY_DENOMINATION : 'Denominaciones',
-	WAREHOUSE:'Almacenes'
+	WAREHOUSE:'Almacenes',
+	PRODUCT_AREA:'Area del producto',
+	PRODUCT_ARCHITECTURE:'Arquitectura de productos',
+	PRODUCT_AREA:'Areas de productos',
+	PRODUCT_CATEGORY:'Categoría de producto',
+	PRODUCT_GROUP:'Grupos de productos',
+	PREPARATION:'Preparación',
+	PREPARATION_TYPE:'Tipo de preparación'
 
 
 };

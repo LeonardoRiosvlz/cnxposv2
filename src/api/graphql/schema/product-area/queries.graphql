@@ -1,0 +1,24 @@
+query getAllProductArea($input: GetAllProductAreaInput! ){
+    getAllProductArea(input: $input){
+        ...ProductAreaFragment
+    }
+}
+
+query getPaginatedProductArea($input: GetPaginatedProductAreaInput!){
+    getPaginatedProductArea(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductAreaFragment
+        }
+    }
+}
+
+query getOneProductArea($input: GetOneProductAreaInput! ){
+    getOneProductArea(input: $input){
+        ...ProductAreaFragment
+    }
+}
+
+

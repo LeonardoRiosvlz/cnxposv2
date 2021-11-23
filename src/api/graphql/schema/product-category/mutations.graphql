@@ -1,0 +1,16 @@
+mutation createProductCategory($input: CreateProductCategoryInput!){
+    createProductCategory(input: $input)
+}
+
+mutation updateProductCategory($input: UpdateProductCategoryInput!){
+    updateProductCategory(input: $input)
+}
+
+mutation deleteProductCategory($input: DeleteProductCategoryInput!){
+    deleteProductCategory(input: $input)
+}
+
+mutation deleteManyProductCategory($input: DeleteManyProductCategoryInput!){
+    deleteManyProductCategory(input: $input)
+}
+

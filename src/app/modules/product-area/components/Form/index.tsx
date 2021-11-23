@@ -6,17 +6,13 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import {Switch} from '@material-ui/core';
-import { WarehouseTypes } from 'api/graphql/schema/types';
-import EnumSelector from 'app/modules/common/components/EnumSelector';
+import BooleanSelector from 'app/modules/common/components/BooleanSelector';
 
-
-export type WarehouseFormField = {
-    name: string;
-    code: string;
-    location: string;
-    description?: string;
-    warehouseTypes: WarehouseTypes;
-    isActive?: boolean;
+export type ProductAreaFormField = {
+   name: string;
+   description?: string;
+   isActive?: boolean;
+   attentionArea?: boolean;
 }
 
 
@@ -26,32 +22,33 @@ type SelectorData = {
     //processCategories: Array<ProcessCategory>
 }
 
-type WarehouseFormFiles = {
+type ProductAreaFormFiles = {
     //resolutionFile?: CloudFile,
     //programFile?: CloudFile
 }
 
 type Props = {
-    submitAction: (data: WarehouseFormField) => unknown
+    submitAction: (data: ProductAreaFormField) => unknown
     formId: string
-    initialData?: WarehouseFormField
-    initialFiles?: WarehouseFormFiles,
+    initialData?: ProductAreaFormField
+    initialFiles?: ProductAreaFormFiles,
     upLoading?: () => void,
 }
-const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, formId, initialData}: Props) => {
+const ProductAreaForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, formId, initialData}: Props) => {
 
-    const {t} = useTranslation(['warehouse', 'common']);
+    const {t} = useTranslation(['product-area', 'common']);
     //	const { processFile } = useFile();
     const schema = yup.object().shape({
         name: yup.string().required(t('common:NAME_REQUIRED')),
         isActive: yup.boolean(),
+        attentionArea: yup.boolean(),
     });
 
-    const defaultValues: WarehouseFormField | {} = initialData ? {
+    const defaultValues: ProductAreaFormField | {} = initialData ? {
         ...initialData
-    } : {isActive: true};
+    } : {isActive: true,attentionArea: true,};
 
-    const {handleSubmit, control, formState: {errors, dirtyFields, isValid}} = useForm<WarehouseFormField>({
+    const {handleSubmit, control, formState: {errors, dirtyFields, isValid}} = useForm<ProductAreaFormField>({
         mode: 'onChange',
         // @ts-ignore
         resolver: yupResolver(schema),
@@ -60,7 +57,7 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
     });
 
 
-    //const [files, setFiles] = React.useState<{ [K in keyof WarehouseFormFiles]?: File }>({});
+    //const [files, setFiles] = React.useState<{ [K in keyof ProductAreaFormFiles]?: File }>({});
 
     /*const [selectorData, setSelectorData] = React.useState<SelectorData>({taxes: [], processCategories: []})
 
@@ -84,7 +81,7 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
     }, [])*/
 
 
-    const onSubmit = (data: WarehouseFormField) => {
+    const onSubmit = (data: ProductAreaFormField) => {
 
         /*let resolutionFile;
       if (isValid && files.resolutionFile) {
@@ -142,62 +139,20 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
                             required
                         />)}/>
             </Grid>
-            <Grid item xs={6} className='w-full p-16'>
 
+            <Grid item xs={12} md={6} className='w-full p-16'>
                 <Controller
-                    name="code"
+                    name="attentionArea"
                     control={control}
-                    render={({field}) => (
-                        <TextField
+                    render={({ field }) => (
+                        <BooleanSelector
                             {...field}
                             size='small'
-                            label={t('common:CODE')}
-                            autoFocus
+                            label={t('ATTENTION_AREA')}
                             variant="outlined"
                             fullWidth
-                            error={!!errors.code}
-                            helperText={errors?.code?.message}
-                            required
-                        />)}/>
+                        />)} />
             </Grid>
-            <Grid item xs={6} className='w-full p-16'>
-
-                <Controller
-                    name="location"
-                    control={control}
-                    render={({field}) => (
-                        <TextField
-                            {...field}
-                            size='small'
-                            label={t('common:LOCATION')}
-                            autoFocus
-                            variant="outlined"
-                            fullWidth
-                            error={!!errors.location}
-                            helperText={errors?.location?.message}
-                            required
-                        />)}/>
-            </Grid>
-            <Grid item xs={6} md={6} className='w-full p-16'>
-                <Controller
-                name="warehouseTypes"
-                control={control}
-                render={({ field }) => (
-                    <EnumSelector<WarehouseTypes>
-                    enumerator={WarehouseTypes}
-                    {...field}
-                    size='small'
-                    label={t('WAREHOUSE_TYPES')}
-                    autoFocus
-                    variant="outlined"
-                    fullWidth
-                    i18n={{
-                        enabled: true,
-                        ns: 'warehouse'
-                    }}
-                    />)} />
-            </Grid>
-
             {/*
               <Grid item xs={12} md={6} className='w-full p-16'>
                 <Controller
@@ -254,4 +209,4 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
 };
 
 
-export default WarehouseForm;
+export default ProductAreaForm;
