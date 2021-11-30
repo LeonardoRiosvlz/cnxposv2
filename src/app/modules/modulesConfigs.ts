@@ -14,6 +14,9 @@ import ProductGroupModuleConfig from './product-group/product-groupModuleConfig'
 import ProductCategoryModuleConfig from './product-category/product-categoryModuleConfig';
 import PreparationTypeModuleConfig from './preparation-type/preparation-typeModuleConfig';
 import PreparationModuleConfig from './preparation/preparationModuleConfig';
+import BillingResolutionModuleConfig from './billing-resolution/billing-resolutionModuleConfig';
+import CompanyModuleConfig from './company/companyModuleConfig';
+import ProductStructureModuleConfig from './product-structure/product-structureModuleConfig';
 
 const modulesConfigs: any[] = [
     AuthModuleConfig,
@@ -30,6 +33,9 @@ const modulesConfigs: any[] = [
     ProductCategoryModuleConfig,
     PreparationTypeModuleConfig,
     PreparationModuleConfig,
+    BillingResolutionModuleConfig,
+    ProductStructureModuleConfig,
+    CompanyModuleConfig,
     //Home should Be last
     HomeModuleConfig
 ];

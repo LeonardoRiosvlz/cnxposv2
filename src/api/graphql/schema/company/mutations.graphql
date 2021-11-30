@@ -1,0 +1,16 @@
+mutation createCompany($input: CreateCompanyInput!){
+    createCompany(input: $input)
+}
+
+mutation updateCompany($input: UpdateCompanyInput!){
+    updateCompany(input: $input)
+}
+
+mutation deleteCompany($input: DeleteCompanyInput!){
+    deleteCompany(input: $input)
+}
+
+mutation deleteManyCompany($input: DeleteManyCompanyInput!){
+    deleteManyCompany(input: $input)
+}
+

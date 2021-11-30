@@ -1,0 +1,24 @@
+query getAllProductLine($input: GetAllProductLineInput! ){
+    getAllProductLine(input: $input){
+        ...ProductLineFragment
+    }
+}
+
+query getPaginatedProductLine($input: GetPaginatedProductLineInput!){
+    getPaginatedProductLine(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductLineFragment
+        }
+    }
+}
+
+query getOneProductLine($input: GetOneProductLineInput! ){
+    getOneProductLine(input: $input){
+        ...ProductLineFragment
+    }
+}
+
+

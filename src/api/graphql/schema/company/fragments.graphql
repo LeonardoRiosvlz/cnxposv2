@@ -1,0 +1,21 @@
+fragment CompanyFragment on CompanyResponse {
+    id
+    name
+    country
+    city
+    webSite
+    address
+    phoneNumber
+    email
+    nit
+    isActive
+    photoFile{
+        ...CloudFileFragment
+    }
+    contact{
+        ...SolvedEntityFragment
+    }
+    createdAt
+    updatedAt
+} 
+

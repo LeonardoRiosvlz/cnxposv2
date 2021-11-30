@@ -1,0 +1,24 @@
+query getAllProductStructure($input: GetAllProductStructureInput! ){
+    getAllProductStructure(input: $input){
+        ...ProductStructureFragment
+    }
+}
+
+query getPaginatedProductStructure($input: GetPaginatedProductStructureInput!){
+    getPaginatedProductStructure(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductStructureFragment
+        }
+    }
+}
+
+query getOneProductStructure($input: GetOneProductStructureInput! ){
+    getOneProductStructure(input: $input){
+        ...ProductStructureFragment
+    }
+}
+
+

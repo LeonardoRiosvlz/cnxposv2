@@ -31,7 +31,9 @@ const locale = {
 	PRODUCT_CATEGORY:'Product Category',
 	PRODUCT_GROUP:'Product Groups',
 	PREPARATION:'Preparation',
-	PREPARATION_TYPE:'PreparationT Type'
+	PREPARATION_TYPE:'PreparationT Type',
+	BILLING_RESOLUTION:'Billing Resolution',
+	
 
 
 };

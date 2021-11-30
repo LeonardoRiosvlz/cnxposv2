@@ -6,6 +6,9 @@ fragment WarehouseFragment on WarehouseResponse {
     description
     warehouseTypes
     isActive
+    billingResolution{
+        ...SolvedEntityFragment
+    }
     createdAt
     updatedAt
 }

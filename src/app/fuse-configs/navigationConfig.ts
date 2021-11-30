@@ -97,6 +97,14 @@ const navigationConfig: Array<MenuItem> = [
         icon: 'attach_money',
         children: [
             {
+                id: App_Modules.BillingResolution,
+                title: 'Billing Resolution',
+                translate: 'BILLING_RESOLUTION',
+                type: 'item',
+                url: '/billing-resolution',
+                exact: true
+            },
+            {
                 id: App_Modules.Taxes,
                 title: 'Taxes',
                 translate: 'TAXES',
@@ -146,6 +154,14 @@ const navigationConfig: Array<MenuItem> = [
         type: 'collapse',
         icon: 'qr_code_scanner',
         children: [
+            {
+                id: App_Modules.ProductStructure,
+                title: 'Product Structure',
+                translate: 'PRODUCT_STRUCTURE',
+                type: 'item',
+                url: '/product-structure',
+                exact: true
+            },
             {
                 id: App_Modules.ProductArea,
                 title: 'Product Area',

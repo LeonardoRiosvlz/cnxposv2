@@ -1,0 +1,16 @@
+mutation createProductStructure($input: CreateProductStructureInput!){
+    createProductStructure(input: $input)
+}
+
+mutation updateProductStructure($input: UpdateProductStructureInput!){
+    updateProductStructure(input: $input)
+}
+
+mutation deleteProductStructure($input: DeleteProductStructureInput!){
+    deleteProductStructure(input: $input)
+}
+
+mutation deleteManyProductStructure($input: DeleteManyProductStructureInput!){
+    deleteManyProductStructure(input: $input)
+}
+

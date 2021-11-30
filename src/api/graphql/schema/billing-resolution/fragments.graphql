@@ -1,0 +1,14 @@
+fragment BillingResolutionFragment on BillingResolutionResponse {
+    id
+    resolutionClass
+    resolutionType
+    resolutionNumber
+    from
+    to
+    prefix
+    initialNumber
+    finalNumber
+    createdAt
+    updatedAt
+}
+

@@ -1,0 +1,24 @@
+query getAllCompany($input: GetAllCompanyInput! ){
+    getAllCompany(input: $input){
+        ...CompanyFragment
+    }
+}
+
+query getPaginatedCompany($input: GetPaginatedCompanyInput!){
+    getPaginatedCompany(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...CompanyFragment
+        }
+    }
+}
+
+query getOneCompany($input: GetOneCompanyInput! ){
+    getOneCompany(input: $input){
+        ...CompanyFragment
+    }
+}
+
+

@@ -1,0 +1,8 @@
+fragment ProductStructureFragment on ProductStructureResponse {
+    id
+    name
+    code
+    createdAt
+    updatedAt
+}
+

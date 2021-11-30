@@ -1,0 +1,11 @@
+fragment ProductLineFragment on ProductLineResponse {
+    id
+    productStructure{
+        ...SolvedEntityFragment
+    }
+    name
+    code
+    createdAt
+    updatedAt
+}
+

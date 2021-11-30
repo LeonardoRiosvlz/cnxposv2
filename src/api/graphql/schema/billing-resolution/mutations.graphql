@@ -1,0 +1,16 @@
+mutation createBillingResolution($input: CreateBillingResolutionInput!){
+    createBillingResolution(input: $input)
+}
+
+mutation updateBillingResolution($input: UpdateBillingResolutionInput!){
+    updateBillingResolution(input: $input)
+}
+
+mutation deleteBillingResolution($input: DeleteBillingResolutionInput!){
+    deleteBillingResolution(input: $input)
+}
+
+mutation deleteManyBillingResolution($input: DeleteManyBillingResolutionInput!){
+    deleteManyBillingResolution(input: $input)
+}
+

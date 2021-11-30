@@ -8,7 +8,11 @@ import Grid from '@material-ui/core/Grid';
 import {Switch} from '@material-ui/core';
 import { WarehouseTypes } from 'api/graphql/schema/types';
 import EnumSelector from 'app/modules/common/components/EnumSelector';
-
+import { BillingResolution } from 'api/repositories/billing-resolution/types/billing-resolution.types';
+import useRepository from 'app/modules/common/hooks/use-repository';
+import { BillingResolutionRepository } from 'api/repositories/billing-resolution/billing-resolution.repository';
+import { toast } from 'react-toastify';
+import GenericSelector from 'app/modules/common/components/GenericSelector';
 
 export type WarehouseFormField = {
     name: string;
@@ -17,12 +21,13 @@ export type WarehouseFormField = {
     description?: string;
     warehouseTypes: WarehouseTypes;
     isActive?: boolean;
+    billingResolution?:string;
 }
 
 
 
 type SelectorData = {
-    //taxes: Array<Tax>
+    billingResolution: Array<BillingResolution>
     //processCategories: Array<ProcessCategory>
 }
 
@@ -62,18 +67,17 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
 
     //const [files, setFiles] = React.useState<{ [K in keyof WarehouseFormFiles]?: File }>({});
 
-    /*const [selectorData, setSelectorData] = React.useState<SelectorData>({taxes: [], processCategories: []})
+    const [selectorData, setSelectorData] = React.useState<SelectorData>({billingResolution: []})
 
-    const taxRepo = useRepository(TaxRepository)
-    const processCategoryRepo = useRepository(ProcessCategoryRepository)
+    const billingResolutionRepo = useRepository(BillingResolutionRepository)
+
 
 
     const loadSelectorData = async () => {
 
         try {
-            const taxes = await taxRepo.findAll({input: {where: {}}})
-            const processCategories = await processCategoryRepo.findAll({input: {where: {}}})
-            setSelectorData({taxes, processCategories})
+            const billingResolution = await billingResolutionRepo.findAll({input: {where: {}}})
+            setSelectorData({billingResolution})
         } catch (err) {
             toast.error(err?.toString())
         }
@@ -81,7 +85,7 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
 
     React.useEffect(() => {
         loadSelectorData().then()
-    }, [])*/
+    }, [])
 
 
     const onSubmit = (data: WarehouseFormField) => {
@@ -196,6 +200,24 @@ const WarehouseForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, 
                         ns: 'warehouse'
                     }}
                     />)} />
+            </Grid>
+            <Grid item xs={12} md={12} className='w-full p-16'>
+                <Controller
+                    name="billingResolution"
+                    control={control}
+                    render={({ field }) => (
+                        <GenericSelector<BillingResolution>
+                            {...field}
+                            param={'id'}
+                            displayField={'resolutionNumber'}
+                            values={selectorData.billingResolution}
+                            render={(item) => <label>{item.resolutionNumber}</label>}
+                            size='small'
+                            label={t('BILLING_RESOLUTION')}
+                            variant="outlined"
+                            fullWidth
+                        />
+                    )} />
             </Grid>
 
             {/*

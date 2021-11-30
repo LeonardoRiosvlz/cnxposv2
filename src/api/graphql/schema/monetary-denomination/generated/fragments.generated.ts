@@ -1,8 +1,8 @@
 import * as Types from '../../types';
 
-import { CloudFileFragmentFragment } from '../../common/generated/fragments.generated';
+import { CloudFileFragmentFragment, SolvedEntityFragmentFragment } from '../../common/generated/fragments.generated';
 import { gql } from '@apollo/client';
-import { CloudFileFragmentFragmentDoc } from '../../common/generated/fragments.generated';
+import { CloudFileFragmentFragmentDoc, SolvedEntityFragmentFragmentDoc } from '../../common/generated/fragments.generated';
 export const MonetaryDenominationFragmentFragmentDoc = gql`
     fragment MonetaryDenominationFragment on MonetaryDenominationResponse {
   id

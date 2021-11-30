@@ -1,0 +1,24 @@
+query getAllBillingResolution($input: GetAllBillingResolutionInput! ){
+    getAllBillingResolution(input: $input){
+        ...BillingResolutionFragment
+    }
+}
+
+query getPaginatedBillingResolution($input: GetPaginatedBillingResolutionInput!){
+    getPaginatedBillingResolution(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...BillingResolutionFragment
+        }
+    }
+}
+
+query getOneBillingResolution($input: GetOneBillingResolutionInput! ){
+    getOneBillingResolution(input: $input){
+        ...BillingResolutionFragment
+    }
+}
+
+
