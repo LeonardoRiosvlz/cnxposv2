@@ -1,0 +1,24 @@
+query getAllPriceByVolume($input: GetAllPriceByVolumeInput! ){
+    getAllPriceByVolume(input: $input){
+        ...PriceByVolumeFragment
+    }
+}
+
+query getPaginatedPriceByVolume($input: GetPaginatedPriceByVolumeInput!){
+    getPaginatedPriceByVolume(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...PriceByVolumeFragment
+        }
+    }
+}
+
+query getOnePriceByVolume($input: GetOnePriceByVolumeInput! ){
+    getOnePriceByVolume(input: $input){
+        ...PriceByVolumeFragment
+    }
+}
+
+

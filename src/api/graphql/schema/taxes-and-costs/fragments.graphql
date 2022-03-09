@@ -1,0 +1,25 @@
+fragment TaxesAndCostsFragment on TaxesAndCostsResponse {
+    id
+    product{
+        ...SolvedEntityFragment
+    }
+    shoppingTax{
+        ...SolvedEntityFragment
+    }
+    applyIco 
+    valueIco 
+    includeIcoInCost 
+    productCost 
+    unitCost 
+    valueUnitTaxCost{
+        ...SolvedEntityFragment
+    }
+    totalUnitCost{
+        ...SolvedEntityFragment
+    }
+    unitTaxCost{
+        ...SolvedEntityFragment
+    }
+    updatedAt
+}
+

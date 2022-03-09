@@ -1,0 +1,16 @@
+mutation createTaxesAndCosts($input: CreateTaxesAndCostsInput!){
+    createTaxesAndCosts(input: $input)
+}
+
+mutation updateTaxesAndCosts($input: UpdateTaxesAndCostsInput!){
+    updateTaxesAndCosts(input: $input)
+}
+
+mutation deleteTaxesAndCosts($input: DeleteTaxesAndCostsInput!){
+    deleteTaxesAndCosts(input: $input)
+}
+
+mutation deleteManyTaxesAndCosts($input: DeleteManyTaxesAndCostsInput!){
+    deleteManyTaxesAndCosts(input: $input)
+}
+

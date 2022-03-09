@@ -1,0 +1,37 @@
+fragment ProductFragment on ProductResponse {
+    id
+    name
+    code
+    description
+    ref
+    productLine{
+        ...SolvedEntityFragment
+    }
+    structure{
+        ...SolvedEntityFragment
+    }
+    um{
+        ...SolvedEntityFragment
+    }
+    area{
+        ...SolvedEntityFragment
+    }
+    composition{
+        ...SolvedEntityFragment
+    }
+    photoFile{
+        ...CloudFileFragment
+    }
+    groups{
+        ...SolvedEntityFragment
+    }
+    barCode{
+        ...SolvedEntityFragment
+    }
+    barCodeProduct
+    isActive
+    compound
+    createdAt
+    updatedAt
+}
+

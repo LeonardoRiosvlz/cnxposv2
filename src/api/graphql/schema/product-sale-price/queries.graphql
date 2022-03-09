@@ -1,0 +1,24 @@
+query getAllProductSalePrice($input: GetAllProductSalePriceInput! ){
+    getAllProductSalePrice(input: $input){
+        ...ProductSalePriceFragment
+    }
+}
+
+query getPaginatedProductSalePrice($input: GetPaginatedProductSalePriceInput!){
+    getPaginatedProductSalePrice(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductSalePriceFragment
+        }
+    }
+}
+
+query getOneProductSalePrice($input: GetOneProductSalePriceInput! ){
+    getOneProductSalePrice(input: $input){
+        ...ProductSalePriceFragment
+    }
+}
+
+

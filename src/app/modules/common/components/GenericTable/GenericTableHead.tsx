@@ -72,7 +72,7 @@ const GenericTableHead: React.FC<GenericTableHeadProps> = ({
 
 	return (
 		<TableHead>
-			<TableRow className="h-64">
+			<TableRow className="h-64 opacity-70">
 				<TableCell padding="none" className="w-40 md:w-64 text-center z-99">
 					<Checkbox
 						indeterminate={numSelected > 0 && numSelected < pageSize}

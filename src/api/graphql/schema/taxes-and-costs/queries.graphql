@@ -1,0 +1,24 @@
+query getAllTaxesAndCosts($input: GetAllTaxesAndCostsInput! ){
+    getAllTaxesAndCosts(input: $input){
+        ...TaxesAndCostsFragment
+    }
+}
+
+query getPaginatedTaxesAndCosts($input: GetPaginatedTaxesAndCostsInput!){
+    getPaginatedTaxesAndCosts(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...TaxesAndCostsFragment
+        }
+    }
+}
+
+query getOneTaxesAndCosts($input: GetOneTaxesAndCostsInput! ){
+    getOneTaxesAndCosts(input: $input){
+        ...TaxesAndCostsFragment
+    }
+}
+
+

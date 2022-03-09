@@ -1,0 +1,16 @@
+fragment CompositionFragment on CompositionResponse {
+    id
+    product {
+         ...SolvedEntityFragment
+    }
+    supplies {
+         ...SolvedEntityFragment
+    }
+    costUnit{
+         ...SolvedEntityFragment
+    }
+    portion
+    createdAt
+    updatedAt
+}
+

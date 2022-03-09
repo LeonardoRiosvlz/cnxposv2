@@ -1,0 +1,16 @@
+mutation createPriceByVolume($input: CreatePriceByVolumeInput!){
+    createPriceByVolume(input: $input)
+}
+
+mutation updatePriceByVolume($input: UpdatePriceByVolumeInput!){
+    updatePriceByVolume(input: $input)
+}
+
+mutation deletePriceByVolume($input: DeletePriceByVolumeInput!){
+    deletePriceByVolume(input: $input)
+}
+
+mutation deleteManyPriceByVolume($input: DeleteManyPriceByVolumeInput!){
+    deleteManyPriceByVolume(input: $input)
+}
+

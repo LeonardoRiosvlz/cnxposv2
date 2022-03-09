@@ -1,0 +1,16 @@
+mutation createComposition($input: CreateCompositionInput!){
+    createComposition(input: $input)
+}
+
+mutation updateComposition($input: UpdateCompositionInput!){
+    updateComposition(input: $input)
+}
+
+mutation deleteComposition($input: DeleteCompositionInput!){
+    deleteComposition(input: $input)
+}
+
+mutation deleteManyComposition($input: DeleteManyCompositionInput!){
+    deleteManyComposition(input: $input)
+}
+

@@ -295,25 +295,15 @@ export type CompositionFilterFilter = {
   and?: Maybe<Array<CompositionFilterFilter>>;
   or?: Maybe<Array<CompositionFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
-  name?: Maybe<StringFieldComparison>;
-  code?: Maybe<StringFieldComparison>;
-  ref?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
-  createdAt?: Maybe<DateFieldComparison>;
-  updatedAt?: Maybe<DateFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
 };
 
 export type CompositionResponse = {
   id: Scalars['ID'];
-  name: Scalars['String'];
-  code: Scalars['String'];
-  ref: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  um?: Maybe<SolvedEntityResponse>;
-  area?: Maybe<SolvedEntityResponse>;
-  photoFile?: Maybe<CloudFileResponse>;
-  products?: Maybe<Array<SolvedEntityResponse>>;
-  compound: Scalars['Boolean'];
+  product: SolvedEntityResponse;
+  supplies: SolvedEntityResponse;
+  costUnit?: Maybe<SolvedEntityResponse>;
+  portion: Scalars['Float'];
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -374,15 +364,9 @@ export type CreateCompositionDecompositionInput = {
 };
 
 export type CreateCompositionInput = {
-  name: Scalars['String'];
-  code: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  ref: Scalars['String'];
-  um?: Maybe<Scalars['ID']>;
-  area?: Maybe<Scalars['ID']>;
-  photoFile?: Maybe<Scalars['ID']>;
-  products?: Maybe<Array<Scalars['ID']>>;
-  compound: Scalars['Boolean'];
+  product?: Maybe<Scalars['ID']>;
+  supplies?: Maybe<Scalars['ID']>;
+  portion: Scalars['Float'];
 };
 
 export type CreateCreditCardInput = {
@@ -548,6 +532,14 @@ export type CreatePreparationTypeInput = {
   preparation?: Maybe<Array<Scalars['ID']>>;
 };
 
+export type CreatePriceByVolumeInput = {
+  product?: Maybe<Scalars['ID']>;
+  tax?: Maybe<Scalars['ID']>;
+  utility: Scalars['Float'];
+  value: Scalars['Float'];
+  quantity: Scalars['Int'];
+};
+
 export type CreateProductAreaInput = {
   name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
@@ -584,10 +576,12 @@ export type CreateProductInput = {
   shoppingAssistant?: Maybe<Scalars['Boolean']>;
   isActive?: Maybe<Scalars['Boolean']>;
   productLine?: Maybe<Scalars['ID']>;
+  structure?: Maybe<Scalars['ID']>;
   um?: Maybe<Scalars['ID']>;
   area?: Maybe<Scalars['ID']>;
   composition?: Maybe<Scalars['ID']>;
   photoFile?: Maybe<Scalars['ID']>;
+  barCodeProduct?: Maybe<Scalars['String']>;
   barCode?: Maybe<Array<Scalars['ID']>>;
   groups?: Maybe<Array<Scalars['ID']>>;
 };
@@ -638,7 +632,6 @@ export type CreateProductSalePriceInput = {
   generalValueTax?: Maybe<Scalars['ID']>;
   generalValue: Scalars['Float'];
   generalUtilityValue: Scalars['Float'];
-  ncTax?: Maybe<Scalars['ID']>;
   commission: Scalars['Float'];
   specialOneValueTax?: Maybe<Scalars['ID']>;
   specialOneValue: Scalars['Float'];
@@ -720,9 +713,6 @@ export type CreateTaxesAndCostsInput = {
   productCost: Scalars['Float'];
   unitCost: Scalars['Float'];
   unitTaxCost?: Maybe<Scalars['ID']>;
-  valueUnitTaxCost: Scalars['Float'];
-  totalUnitCost: Scalars['Float'];
-  volumePrice: Array<Scalars['String']>;
 };
 
 export type CreateTaxesInput = {
@@ -1052,6 +1042,10 @@ export type DeleteManyPreparationTypeInput = {
   where?: Maybe<PreparationTypeFilterFilter>;
 };
 
+export type DeleteManyPriceByVolumeInput = {
+  where?: Maybe<PriceByVolumeFilterFilter>;
+};
+
 export type DeleteManyProductAreaInput = {
   where?: Maybe<ProductAreaFilterFilter>;
 };
@@ -1181,6 +1175,10 @@ export type DeletePreparationInput = {
 };
 
 export type DeletePreparationTypeInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeletePriceByVolumeInput = {
   entityId: Scalars['ID'];
 };
 
@@ -1511,6 +1509,11 @@ export type GetAllPreparationTypeInput = {
   orderBy?: Maybe<OrderByPreparationTypeInput>;
 };
 
+export type GetAllPriceByVolumeInput = {
+  where?: Maybe<PriceByVolumeFilterFilter>;
+  orderBy?: Maybe<OrderByPriceByVolumeInput>;
+};
+
 export type GetAllProductAreaInput = {
   where?: Maybe<ProductAreaFilterFilter>;
   orderBy?: Maybe<OrderByProductAreaInput>;
@@ -1740,6 +1743,10 @@ export type GetOnePreparationInput = {
 
 export type GetOnePreparationTypeInput = {
   where?: Maybe<PreparationTypeFilterFilter>;
+};
+
+export type GetOnePriceByVolumeInput = {
+  where?: Maybe<PriceByVolumeFilterFilter>;
 };
 
 export type GetOneProductAreaInput = {
@@ -1993,6 +2000,12 @@ export type GetPaginatedPreparationTypeInput = {
   paginator: PaginatorParams;
   where?: Maybe<PreparationTypeFilterFilter>;
   orderBy?: Maybe<OrderByPreparationTypeInput>;
+};
+
+export type GetPaginatedPriceByVolumeInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<PriceByVolumeFilterFilter>;
+  orderBy?: Maybe<OrderByPriceByVolumeInput>;
 };
 
 export type GetPaginatedProductAreaInput = {
@@ -2542,6 +2555,10 @@ export type Mutation = {
   updateProductLine?: Maybe<Scalars['Void']>;
   deleteProductLine?: Maybe<Scalars['Void']>;
   deleteManyProductLine?: Maybe<Scalars['Void']>;
+  createPriceByVolume?: Maybe<Scalars['Void']>;
+  updatePriceByVolume?: Maybe<Scalars['Void']>;
+  deletePriceByVolume?: Maybe<Scalars['Void']>;
+  deleteManyPriceByVolume?: Maybe<Scalars['Void']>;
   createServices?: Maybe<Scalars['Void']>;
   updateServices?: Maybe<Scalars['Void']>;
   deleteServices?: Maybe<Scalars['Void']>;
@@ -3203,6 +3220,26 @@ export type MutationDeleteProductLineArgs = {
 
 export type MutationDeleteManyProductLineArgs = {
   input: DeleteManyProductLineInput;
+};
+
+
+export type MutationCreatePriceByVolumeArgs = {
+  input: CreatePriceByVolumeInput;
+};
+
+
+export type MutationUpdatePriceByVolumeArgs = {
+  input: UpdatePriceByVolumeInput;
+};
+
+
+export type MutationDeletePriceByVolumeArgs = {
+  input: DeletePriceByVolumeInput;
+};
+
+
+export type MutationDeleteManyPriceByVolumeArgs = {
+  input: DeleteManyPriceByVolumeInput;
 };
 
 
@@ -3907,6 +3944,12 @@ export type OrderByPreparationTypeInput = {
   createdAt?: Maybe<OrderByType>;
 };
 
+export type OrderByPriceByVolumeInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
 export type OrderByProductAreaInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
@@ -4282,6 +4325,14 @@ export type PaginatedPreparationTypeResponse = {
   currentPage: Scalars['Int'];
 };
 
+export type PaginatedPriceByVolumeResponse = {
+  items: Array<PriceByVolumeResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
 export type PaginatedProductAreaResponse = {
   items: Array<ProductAreaResponse>;
   total: Scalars['Int'];
@@ -4554,15 +4605,9 @@ export type PartialCompositionDecompositionInput = {
 };
 
 export type PartialCompositionInput = {
-  name?: Maybe<Scalars['String']>;
-  code?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  ref?: Maybe<Scalars['String']>;
-  um?: Maybe<Scalars['ID']>;
-  area?: Maybe<Scalars['ID']>;
-  photoFile?: Maybe<Scalars['ID']>;
-  products?: Maybe<Array<Scalars['ID']>>;
-  compound?: Maybe<Scalars['Boolean']>;
+  product?: Maybe<Scalars['ID']>;
+  supplies?: Maybe<Scalars['ID']>;
+  portion?: Maybe<Scalars['Float']>;
 };
 
 export type PartialCreditCardInput = {
@@ -4761,6 +4806,14 @@ export type PartialPreparationTypeInput = {
   preparation?: Maybe<Array<Scalars['ID']>>;
 };
 
+export type PartialPriceByVolumeInput = {
+  product?: Maybe<Scalars['ID']>;
+  tax?: Maybe<Scalars['ID']>;
+  utility?: Maybe<Scalars['Float']>;
+  value?: Maybe<Scalars['Float']>;
+  quantity?: Maybe<Scalars['Int']>;
+};
+
 export type PartialProductAreaInput = {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -4797,10 +4850,12 @@ export type PartialProductInput = {
   shoppingAssistant?: Maybe<Scalars['Boolean']>;
   isActive?: Maybe<Scalars['Boolean']>;
   productLine?: Maybe<Scalars['ID']>;
+  structure?: Maybe<Scalars['ID']>;
   um?: Maybe<Scalars['ID']>;
   area?: Maybe<Scalars['ID']>;
   composition?: Maybe<Scalars['ID']>;
   photoFile?: Maybe<Scalars['ID']>;
+  barCodeProduct?: Maybe<Scalars['String']>;
   barCode?: Maybe<Array<Scalars['ID']>>;
   groups?: Maybe<Array<Scalars['ID']>>;
 };
@@ -4851,7 +4906,6 @@ export type PartialProductSalePriceInput = {
   generalValueTax?: Maybe<Scalars['ID']>;
   generalValue?: Maybe<Scalars['Float']>;
   generalUtilityValue?: Maybe<Scalars['Float']>;
-  ncTax?: Maybe<Scalars['ID']>;
   commission?: Maybe<Scalars['Float']>;
   specialOneValueTax?: Maybe<Scalars['ID']>;
   specialOneValue?: Maybe<Scalars['Float']>;
@@ -4951,9 +5005,6 @@ export type PartialTaxesAndCostsInput = {
   productCost?: Maybe<Scalars['Float']>;
   unitCost?: Maybe<Scalars['Float']>;
   unitTaxCost?: Maybe<Scalars['ID']>;
-  valueUnitTaxCost?: Maybe<Scalars['Float']>;
-  totalUnitCost?: Maybe<Scalars['Float']>;
-  volumePrice?: Maybe<Array<Scalars['String']>>;
 };
 
 export type PartialTaxesInput = {
@@ -5187,6 +5238,26 @@ export type PreparationTypeResponse = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export type PriceByVolumeFilterFilter = {
+  and?: Maybe<Array<PriceByVolumeFilterFilter>>;
+  or?: Maybe<Array<PriceByVolumeFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type PriceByVolumeResponse = {
+  id: Scalars['ID'];
+  product: SolvedEntityResponse;
+  tax: SolvedEntityResponse;
+  utility: Scalars['Float'];
+  value: Scalars['Float'];
+  quantity: Scalars['Int'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export enum PriceType {
   NormalPrice = 'NORMAL_PRICE',
   SpecialPriceOne = 'SPECIAL_PRICE_ONE',
@@ -5237,7 +5308,9 @@ export type ProductFilterFilter = {
   or?: Maybe<Array<ProductFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
+  structure?: Maybe<StringFieldComparison>;
+  productLine?: Maybe<StringFieldComparison>;
+  compound?: Maybe<BooleanFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
@@ -5379,17 +5452,19 @@ export type ProductResponse = {
   name: Scalars['String'];
   code: Scalars['String'];
   description?: Maybe<Scalars['String']>;
-  ref: Scalars['String'];
+  ref?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
-  shoppingAssistant: Scalars['Boolean'];
+  shoppingAssistant?: Maybe<Scalars['Boolean']>;
   compound?: Maybe<Scalars['Boolean']>;
+  structure?: Maybe<SolvedEntityResponse>;
   productLine?: Maybe<SolvedEntityResponse>;
   um?: Maybe<SolvedEntityResponse>;
   composition?: Maybe<SolvedEntityResponse>;
   area?: Maybe<SolvedEntityResponse>;
   photoFile?: Maybe<CloudFileResponse>;
-  groups: Array<SolvedEntityResponse>;
-  barCode: Array<SolvedEntityResponse>;
+  groups?: Maybe<Array<SolvedEntityResponse>>;
+  barCode?: Maybe<Array<SolvedEntityResponse>>;
+  barCodeProduct?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -5413,7 +5488,6 @@ export type ProductSalePriceResponse = {
   generalValueTax: SolvedEntityResponse;
   generalValue: Scalars['Float'];
   generalUtilityValue: Scalars['Float'];
-  ncTax: SolvedEntityResponse;
   commission: Scalars['Float'];
   specialOneValueTax: SolvedEntityResponse;
   specialOneValue: Scalars['Float'];
@@ -5421,6 +5495,12 @@ export type ProductSalePriceResponse = {
   specialTwoValueTax: SolvedEntityResponse;
   specialTwoValue: Scalars['Float'];
   specialTwoUtilityValue: Scalars['Float'];
+  priceNet: SolvedEntityResponse;
+  priceNetSpecialOne: SolvedEntityResponse;
+  priceNetSpecialTwo: SolvedEntityResponse;
+  commissionNet: SolvedEntityResponse;
+  commissionNetSpecialOne: SolvedEntityResponse;
+  commissionNetSpecialTwo: SolvedEntityResponse;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -5625,6 +5705,9 @@ export type Query = {
   getAllProductLine: Array<ProductLineResponse>;
   getOneProductLine?: Maybe<ProductLineResponse>;
   getPaginatedProductLine?: Maybe<PaginatedProductLineResponse>;
+  getAllPriceByVolume: Array<PriceByVolumeResponse>;
+  getOnePriceByVolume?: Maybe<PriceByVolumeResponse>;
+  getPaginatedPriceByVolume?: Maybe<PaginatedPriceByVolumeResponse>;
   getAllServices: Array<ServicesResponse>;
   getOneServices?: Maybe<ServicesResponse>;
   getPaginatedServices?: Maybe<PaginatedServicesResponse>;
@@ -6117,6 +6200,21 @@ export type QueryGetOneProductLineArgs = {
 
 export type QueryGetPaginatedProductLineArgs = {
   input?: Maybe<GetPaginatedProductLineInput>;
+};
+
+
+export type QueryGetAllPriceByVolumeArgs = {
+  input?: Maybe<GetAllPriceByVolumeInput>;
+};
+
+
+export type QueryGetOnePriceByVolumeArgs = {
+  input?: Maybe<GetOnePriceByVolumeInput>;
+};
+
+
+export type QueryGetPaginatedPriceByVolumeArgs = {
+  input?: Maybe<GetPaginatedPriceByVolumeInput>;
 };
 
 
@@ -6694,7 +6792,7 @@ export type TaxesAndCostsFilterFilter = {
   or?: Maybe<Array<TaxesAndCostsFilterFilter>>;
   id?: Maybe<StringFieldComparison>;
   name?: Maybe<StringFieldComparison>;
-  description?: Maybe<StringFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
   createdAt?: Maybe<DateFieldComparison>;
   updatedAt?: Maybe<DateFieldComparison>;
 };
@@ -6709,9 +6807,8 @@ export type TaxesAndCostsResponse = {
   productCost: Scalars['Float'];
   unitCost: Scalars['Float'];
   unitTaxCost: SolvedEntityResponse;
-  valueUnitTaxCost: Scalars['Float'];
-  totalUnitCost: Scalars['Float'];
-  volumePrice: Array<Scalars['String']>;
+  valueUnitTaxCost: SolvedEntityResponse;
+  totalUnitCost: SolvedEntityResponse;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -7058,6 +7155,11 @@ export type UpdatePreparationInput = {
 export type UpdatePreparationTypeInput = {
   entityId: Scalars['ID'];
   update: PartialPreparationTypeInput;
+};
+
+export type UpdatePriceByVolumeInput = {
+  entityId: Scalars['ID'];
+  update: PartialPriceByVolumeInput;
 };
 
 export type UpdateProductAreaInput = {

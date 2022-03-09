@@ -51,7 +51,7 @@ const themesConfig = {
 			},
 			background: {
 				paper: '#FFFFFF',
-				default: '#F7F7F7'
+				default: '#b5b5b5'
 			},
 			error: red
 		},
@@ -558,7 +558,7 @@ const themesConfig = {
 			},
 			secondary: {
 				light: '#B3EBC5',
-				main: '#00BD3E',
+				main: '#204657',
 				dark: '#00981B',
 				contrastText: '#FFFFFF'
 			},

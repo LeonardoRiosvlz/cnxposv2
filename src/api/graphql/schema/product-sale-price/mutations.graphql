@@ -1,0 +1,16 @@
+mutation createProductSalePrice($input: CreateProductSalePriceInput!){
+    createProductSalePrice(input: $input)
+}
+
+mutation updateProductSalePrice($input: UpdateProductSalePriceInput!){
+    updateProductSalePrice(input: $input)
+}
+
+mutation deleteProductSalePrice($input: DeleteProductSalePriceInput!){
+    deleteProductSalePrice(input: $input)
+}
+
+mutation deleteManyProductSalePrice($input: DeleteManyProductSalePriceInput!){
+    deleteManyProductSalePrice(input: $input)
+}
+

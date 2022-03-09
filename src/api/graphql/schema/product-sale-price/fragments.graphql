@@ -1,0 +1,44 @@
+fragment ProductSalePriceFragment on ProductSalePriceResponse {
+    id
+    product{
+        ...SolvedEntityFragment
+    }
+    generalValueTax{
+        ...SolvedEntityFragment
+    }
+    generalValue
+    generalUtilityValue
+    commission
+    specialOneValueTax{
+        ...SolvedEntityFragment
+    }
+    specialOneValue 
+    specialOneUtilityValue 
+    specialTwoValueTax{
+        ...SolvedEntityFragment
+    }
+    specialTwoValue
+    specialTwoUtilityValue
+
+    priceNet{
+        ...SolvedEntityFragment
+    }
+    priceNetSpecialOne{
+        ...SolvedEntityFragment
+    }
+    priceNetSpecialTwo{
+        ...SolvedEntityFragment
+    }
+    commissionNet{
+        ...SolvedEntityFragment
+    }
+    commissionNetSpecialOne{
+        ...SolvedEntityFragment
+    }
+    commissionNetSpecialTwo{
+        ...SolvedEntityFragment
+    }
+    createdAt
+    updatedAt
+}
+

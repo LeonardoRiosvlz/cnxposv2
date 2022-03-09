@@ -67,10 +67,10 @@ const GenericModal: React.FC<GenericModalProps> = ({
 	return (
 		<Dialog fullWidth maxWidth={maxWidth} onClose={handleClose} open={open}>
 			<DialogTitle className={classes.title}>{title}</DialogTitle>
-			<DialogContent style={{ minHeight }}>
+			<DialogContent className="z-10" style={{ minHeight }}>
 				{children}
 			</DialogContent>
-			<DialogActions className='w-full p-16'>
+			<DialogActions className='w-full p-16 z-10'>
 				{cancelBtn && <Button onClick={handleClose} className="whitespace-nowrap"
 									  variant="contained"
 									  color="primary">
@@ -78,13 +78,16 @@ const GenericModal: React.FC<GenericModalProps> = ({
 				</Button>}
 				<Button className="whitespace-nowrap"
 						variant="contained"
-						color="secondary"
+						color="primary"
 						type={formId ? 'submit' : 'button'}
 						onClick={handleOk}
 						form={formId}>
 					{okLoading ? <ButtonLoader /> : okBtnLabel}
 				</Button>
 			</DialogActions>
+			<div className='w-full absolute bottom-0 left-0 z-0 opacity-30' >
+				<svg width="100%" height="100%" id="svg" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150"><path d="M 0,500 C 0,500 0,250 0,250 C 198.5,283 397,316 637,316 C 877,316 1158.5,283 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="#204657ff" className="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>	
+			</div>
 		</Dialog>
 
 	);

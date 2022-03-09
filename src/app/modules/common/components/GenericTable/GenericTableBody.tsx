@@ -171,7 +171,7 @@ export const GenericTableBody: React.FC<GenericTableBodyProps> = ({
 
 	return (
 		<>
-			<div className="w-full flex flex-col">
+			<div className="w-full flex flex-col opacity-70">
 				<MyFuseScrollbars className="flex-grow overflow-x-auto">
 					<Table stickyHeader className="min-w-xl" aria-labelledby="tableTitle">
 						<GenericTableHead

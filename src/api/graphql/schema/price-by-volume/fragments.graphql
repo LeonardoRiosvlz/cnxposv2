@@ -1,0 +1,15 @@
+fragment PriceByVolumeFragment on PriceByVolumeResponse {
+    id
+    product{
+        ...SolvedEntityFragment
+    }
+    tax{
+        ...SolvedEntityFragment
+    }
+    utility
+    value
+    quantity
+    createdAt
+    updatedAt
+}
+
