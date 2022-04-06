@@ -18,6 +18,7 @@ import ConstAndPriceForm, { TaxesAndCostsFormField } from './Forms/costAndPrice'
 import SalePricesForm, { PricesFormField } from './Forms/prices';
 import PriceByVolumeForm from './Forms/priceByVolume';
 import CompositionForm from './Forms/composition';
+import ProductCurveForm from './Forms/productCurve';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props; 
@@ -78,7 +79,7 @@ const FormTabs: React.FC<Props> = (props: Props) => {
 
     fetchTaxAndCost();
     fetchSalesPrice();
-  }, [])
+  }, [value])
 
 
 
@@ -140,19 +141,11 @@ const fetchSalesPrice = () => {
               <Icon className='text-2xl'>inventory_2</Icon> 
             </Tooltip>
             } {...a11yProps(0)} /> 
-        {!props.product.compound && <Tab onClick={()=>console.log("hi")} label={
+         <Tab onClick={()=>console.log("hi")} disabled={props.product.compound} label={
             <Tooltip title={t('COSTS_AND_PRICES')}>
                <Icon className='text-2xl'>attach_money</Icon>
             </Tooltip>
-        } {...a11yProps(1)} />}
-
-        {props.product.compound &&<Tab onClick={()=>console.log("hi")} label={
-            <Tooltip title={t('COMPOSITION')}>
-               <Icon className='text-2xl'>extension</Icon>
-            </Tooltip>
-        } {...a11yProps(4)} />}
-
-
+        } {...a11yProps(1)} />
         <Tab  onClick={()=> fetchTaxAndCost} style={{ textAlign:'left'}} label={
 
           <Tooltip title={t('SALE_PRICES')}>
@@ -165,9 +158,16 @@ const fetchSalesPrice = () => {
               <Icon className='text-xl'>table_view</Icon>
            </Tooltip>
         } {...a11yProps(3)} />
-        <Tab label={t('CURVE')} {...a11yProps(7)} />
-        <Tab label={t('COMPOSITION')} {...a11yProps(5)} />
-        <Tab label={t('PRICE_BY_VOLUME')} {...a11yProps(6)} />
+        <Tab label={
+            <Tooltip title={t('COMPOSITION')}>
+                <Icon className='text-xl'>extension</Icon>
+            </Tooltip>
+        } {...a11yProps(7)}  disabled={!props.product.compound}/>
+        <Tab label={
+          <Tooltip title={t('CURVE')}>
+              <Icon className='text-xl'>airline_stops</Icon>
+          </Tooltip>
+        } {...a11yProps(5)} />
       </Tabs> 
       </Box>
       <TabPanel  value={value}   index={0}>
@@ -181,7 +181,8 @@ const fetchSalesPrice = () => {
                         um: props.product.um ? props.product.um.id : '',
                         area: props.product.area ? props.product.area.id : '',
                         structure: props.product.structure ? props.product.structure.id : '',
-                        groups: Array.from(props.product?.groups ?? []).map(x => x.id)
+                        groups: Array.from(props.product?.groups ?? []).map(x => x.id),
+                        subgroup: Array.from(props.product?.subgroup ?? []).map(x => x.id)
                     }}
                     IdProduct={props.product.id}
                     product={props.product}
@@ -257,7 +258,18 @@ const fetchSalesPrice = () => {
           </div> 
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+          <div style={{marginLeft:155}}>
+            <FuseAnimate animation="transition.slideDownIn" delay={300}>
+              <>
+                {props.product  && <ProductCurveForm
+                      product={props.product}
+                      costUnit={taxesAndCost? parseFloat(taxesAndCost.totalUnitCost.identifier) : 0}
+                      IdProduct={props.product.id}
+                      salesPrices={salesPrices}
+                  /> } 
+              </>
+            </FuseAnimate> 
+          </div> 
       </TabPanel>
       <TabPanel value={value} index={6}>
         Item Seven

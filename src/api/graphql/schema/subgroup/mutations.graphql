@@ -1,0 +1,16 @@
+mutation createSubgroup($input: CreateSubgroupInput!){
+    createSubgroup(input: $input)
+}
+
+mutation updateSubgroup($input: UpdateSubgroupInput!){
+    updateSubgroup(input: $input)
+}
+
+mutation deleteSubgroup($input: DeleteSubgroupInput!){
+    deleteSubgroup(input: $input)
+}
+
+mutation deleteManySubgroup($input: DeleteManySubgroupInput!){
+    deleteManySubgroup(input: $input)
+}
+

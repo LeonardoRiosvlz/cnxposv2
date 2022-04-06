@@ -142,7 +142,11 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
                 setEntity(res);
                 let total= 0;
                 res.map((x)=>{
-                  total = total+parseFloat(x.costUnit.identifier);
+
+                    if(x.costUnit.identifier!==null){
+                        total = total+parseFloat(x.costUnit.identifier);
+                    }
+                  
                 })
                 setValueTotal(total)
             }).catch((err: any) => { 
@@ -165,6 +169,11 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
         }).then(() => {
             fetch();
             setLoading(false);
+            setValue('portion',0)
+            setValue('structure','')
+            setValue('line','')
+            setValue('name','')
+            setValue('supplies','')
             toast.info(t('common:ELEMENT_EDITED'));
         }).catch((err: any) => {
             toast.error(err?.toString());
@@ -184,6 +193,11 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
             toast.info(t('common:ELEMENT_CREATED'));
             setLoading(false);
             setFirstLoad(true);
+            setValue('portion',0)
+            setValue('structure','')
+            setValue('line','')
+            setValue('name','')
+            setValue('supplies','')
             fetch();
         }).catch((err: any) => {
             toast.error(err?.toString());
@@ -294,9 +308,6 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
                             />)}/>
                 </Grid>
                 <Grid item xs={6} md={6} className='w-full p-16'>
-                    {selectorData.product.map((x)=>(
-                        x.name
-                    ))}
                     <Controller
                         name="supplies"
                         control={control}
@@ -370,7 +381,7 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
                     >
                     <TableCell align="left"> {row.supplies ? row.supplies.identifier : ''}</TableCell>
                     <TableCell align="left">{row.portion} </TableCell>
-                    <TableCell align="left" ><PriceCellSimple price={ row.costUnit.identifier? parseFloat(row.costUnit.identifier) : 0}/></TableCell>
+                    <TableCell align="left" ><PriceCellSimple price={ row.costUnit!==null ? parseFloat(row.costUnit.identifier) : 0}/></TableCell>
                     <TableCell align="left">
                             <IconButton disabled={loading} onClick={()=>editSetForm(row)} className='py-0 pb-0 m-0 red text-blue-600' aria-label="delete" size="small">
                                 <Icon className="p-0 m-0">edit</Icon>

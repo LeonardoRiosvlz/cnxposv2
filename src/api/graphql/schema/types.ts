@@ -38,10 +38,11 @@ export enum App_Modules {
   Files = 'FILES',
   Notifications = 'NOTIFICATIONS',
   Sales = 'SALES',
-  Products = 'PRODUCTS',
+  Product = 'PRODUCT',
   Company = 'COMPANY',
   Taxes = 'TAXES',
   Group = 'GROUP',
+  Subgroup = 'SUBGROUP',
   Warehouse = 'WAREHOUSE',
   BarCodeIdentifier = 'BAR_CODE_IDENTIFIER',
   BillingResolution = 'BILLING_RESOLUTION',
@@ -398,11 +399,7 @@ export type CreateFiscalResponsibilityInput = {
 
 export type CreateGroupInput = {
   name: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  isActive: Scalars['Boolean'];
-  area?: Maybe<Scalars['ID']>;
-  leader: Scalars['ID'];
-  members: Array<Scalars['ID']>;
+  isActive?: Maybe<Scalars['Boolean']>;
 };
 
 export type CreateInitialPhysicalInventoryInput = {
@@ -552,18 +549,15 @@ export type CreateProductCategoryInput = {
   description?: Maybe<Scalars['String']>;
 };
 
+export type CreateProductCurveInput = {
+  product?: Maybe<Scalars['ID']>;
+  name: Scalars['String'];
+  code?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+};
+
 export type CreateProductGroupInput = {
   name: Scalars['String'];
-  sortingToOrders?: Maybe<Scalars['Boolean']>;
-  source: Scalars['String'];
-  tipInOrder?: Maybe<Scalars['Boolean']>;
-  categories?: Maybe<Array<Scalars['ID']>>;
-  warehouses?: Maybe<Array<Scalars['ID']>>;
-  taxAppliedToPurchases?: Maybe<Array<Scalars['ID']>>;
-  taxAppliedToSales?: Maybe<Array<Scalars['ID']>>;
-  timeTax?: Maybe<Scalars['Boolean']>;
-  from?: Maybe<Scalars['DateTime']>;
-  to?: Maybe<Scalars['DateTime']>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -575,6 +569,7 @@ export type CreateProductInput = {
   compound?: Maybe<Scalars['Boolean']>;
   shoppingAssistant?: Maybe<Scalars['Boolean']>;
   isActive?: Maybe<Scalars['Boolean']>;
+  isProductCurve?: Maybe<Scalars['Boolean']>;
   productLine?: Maybe<Scalars['ID']>;
   structure?: Maybe<Scalars['ID']>;
   um?: Maybe<Scalars['ID']>;
@@ -584,6 +579,7 @@ export type CreateProductInput = {
   barCodeProduct?: Maybe<Scalars['String']>;
   barCode?: Maybe<Array<Scalars['ID']>>;
   groups?: Maybe<Array<Scalars['ID']>>;
+  subgroup?: Maybe<Array<Scalars['ID']>>;
 };
 
 export type CreateProductLineInput = {
@@ -701,6 +697,11 @@ export type CreateServicesInput = {
   price: Scalars['Float'];
   ultCost: Scalars['Boolean'];
   loadOrderScreen: Scalars['Boolean'];
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type CreateSubgroupInput = {
+  name: Scalars['String'];
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -1054,6 +1055,10 @@ export type DeleteManyProductCategoryInput = {
   where?: Maybe<ProductCategoryFilterFilter>;
 };
 
+export type DeleteManyProductCurveInput = {
+  where?: Maybe<ProductCurveFilterFilter>;
+};
+
 export type DeleteManyProductGroupInput = {
   where?: Maybe<ProductGroupFilterFilter>;
 };
@@ -1108,6 +1113,10 @@ export type DeleteManySerialTransferInput = {
 
 export type DeleteManyServicesInput = {
   where?: Maybe<ServicesFilterFilter>;
+};
+
+export type DeleteManySubgroupInput = {
+  where?: Maybe<SubgroupFilterFilter>;
 };
 
 export type DeleteManyTaxesAndCostsInput = {
@@ -1190,6 +1199,10 @@ export type DeleteProductCategoryInput = {
   entityId: Scalars['ID'];
 };
 
+export type DeleteProductCurveInput = {
+  entityId: Scalars['ID'];
+};
+
 export type DeleteProductGroupInput = {
   entityId: Scalars['ID'];
 };
@@ -1243,6 +1256,10 @@ export type DeleteSerialTransferInput = {
 };
 
 export type DeleteServicesInput = {
+  entityId: Scalars['ID'];
+};
+
+export type DeleteSubgroupInput = {
   entityId: Scalars['ID'];
 };
 
@@ -1524,6 +1541,11 @@ export type GetAllProductCategoryInput = {
   orderBy?: Maybe<OrderByProductCategoryInput>;
 };
 
+export type GetAllProductCurveInput = {
+  where?: Maybe<ProductCurveFilterFilter>;
+  orderBy?: Maybe<OrderByProductCurveInput>;
+};
+
 export type GetAllProductGroupInput = {
   where?: Maybe<ProductGroupFilterFilter>;
   orderBy?: Maybe<OrderByProductGroupInput>;
@@ -1592,6 +1614,11 @@ export type GetAllSerialTransferInput = {
 export type GetAllServicesInput = {
   where?: Maybe<ServicesFilterFilter>;
   orderBy?: Maybe<OrderByServicesInput>;
+};
+
+export type GetAllSubgroupInput = {
+  where?: Maybe<SubgroupFilterFilter>;
+  orderBy?: Maybe<OrderBySubgroupInput>;
 };
 
 export type GetAllTaxesAndCostsInput = {
@@ -1757,6 +1784,10 @@ export type GetOneProductCategoryInput = {
   where?: Maybe<ProductCategoryFilterFilter>;
 };
 
+export type GetOneProductCurveInput = {
+  where?: Maybe<ProductCurveFilterFilter>;
+};
+
 export type GetOneProductGroupInput = {
   where?: Maybe<ProductGroupFilterFilter>;
 };
@@ -1811,6 +1842,10 @@ export type GetOneSerialTransferInput = {
 
 export type GetOneServicesInput = {
   where?: Maybe<ServicesFilterFilter>;
+};
+
+export type GetOneSubgroupInput = {
+  where?: Maybe<SubgroupFilterFilter>;
 };
 
 export type GetOneTaxesAndCostsInput = {
@@ -2020,6 +2055,12 @@ export type GetPaginatedProductCategoryInput = {
   orderBy?: Maybe<OrderByProductCategoryInput>;
 };
 
+export type GetPaginatedProductCurveInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<ProductCurveFilterFilter>;
+  orderBy?: Maybe<OrderByProductCurveInput>;
+};
+
 export type GetPaginatedProductGroupInput = {
   paginator: PaginatorParams;
   where?: Maybe<ProductGroupFilterFilter>;
@@ -2102,6 +2143,12 @@ export type GetPaginatedServicesInput = {
   paginator: PaginatorParams;
   where?: Maybe<ServicesFilterFilter>;
   orderBy?: Maybe<OrderByServicesInput>;
+};
+
+export type GetPaginatedSubgroupInput = {
+  paginator: PaginatorParams;
+  where?: Maybe<SubgroupFilterFilter>;
+  orderBy?: Maybe<OrderBySubgroupInput>;
 };
 
 export type GetPaginatedTaxesAndCostsInput = {
@@ -2205,11 +2252,7 @@ export type GroupFilterFilter = {
 export type GroupResponse = {
   id: Scalars['ID'];
   name: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
   isActive: Scalars['Boolean'];
-  area?: Maybe<SolvedEntityResponse>;
-  leader: SolvedEntityResponse;
-  members: Array<SolvedEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -2559,6 +2602,10 @@ export type Mutation = {
   updatePriceByVolume?: Maybe<Scalars['Void']>;
   deletePriceByVolume?: Maybe<Scalars['Void']>;
   deleteManyPriceByVolume?: Maybe<Scalars['Void']>;
+  createProductCurve?: Maybe<Scalars['Void']>;
+  updateProductCurve?: Maybe<Scalars['Void']>;
+  deleteProductCurve?: Maybe<Scalars['Void']>;
+  deleteManyProductCurve?: Maybe<Scalars['Void']>;
   createServices?: Maybe<Scalars['Void']>;
   updateServices?: Maybe<Scalars['Void']>;
   deleteServices?: Maybe<Scalars['Void']>;
@@ -2655,6 +2702,10 @@ export type Mutation = {
   updateCompositionDecomposition?: Maybe<Scalars['Void']>;
   deleteCompositionDecomposition?: Maybe<Scalars['Void']>;
   deleteManyCompositionDecomposition?: Maybe<Scalars['Void']>;
+  createSubgroup?: Maybe<Scalars['Void']>;
+  updateSubgroup?: Maybe<Scalars['Void']>;
+  deleteSubgroup?: Maybe<Scalars['Void']>;
+  deleteManySubgroup?: Maybe<Scalars['Void']>;
 };
 
 
@@ -3243,6 +3294,26 @@ export type MutationDeleteManyPriceByVolumeArgs = {
 };
 
 
+export type MutationCreateProductCurveArgs = {
+  input: CreateProductCurveInput;
+};
+
+
+export type MutationUpdateProductCurveArgs = {
+  input: UpdateProductCurveInput;
+};
+
+
+export type MutationDeleteProductCurveArgs = {
+  input: DeleteProductCurveInput;
+};
+
+
+export type MutationDeleteManyProductCurveArgs = {
+  input: DeleteManyProductCurveInput;
+};
+
+
 export type MutationCreateServicesArgs = {
   input: CreateServicesInput;
 };
@@ -3722,6 +3793,26 @@ export type MutationDeleteManyCompositionDecompositionArgs = {
   input: DeleteManyCompositionDecompositionInput;
 };
 
+
+export type MutationCreateSubgroupArgs = {
+  input: CreateSubgroupInput;
+};
+
+
+export type MutationUpdateSubgroupArgs = {
+  input: UpdateSubgroupInput;
+};
+
+
+export type MutationDeleteSubgroupArgs = {
+  input: DeleteSubgroupInput;
+};
+
+
+export type MutationDeleteManySubgroupArgs = {
+  input: DeleteManySubgroupInput;
+};
+
 export type NotificationFilterFilter = {
   and?: Maybe<Array<NotificationFilterFilter>>;
   or?: Maybe<Array<NotificationFilterFilter>>;
@@ -3962,6 +4053,12 @@ export type OrderByProductCategoryInput = {
   createdAt?: Maybe<OrderByType>;
 };
 
+export type OrderByProductCurveInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
 export type OrderByProductGroupInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
@@ -4040,6 +4137,12 @@ export type OrderBySerialTransferInput = {
 };
 
 export type OrderByServicesInput = {
+  name?: Maybe<OrderByType>;
+  description?: Maybe<OrderByType>;
+  createdAt?: Maybe<OrderByType>;
+};
+
+export type OrderBySubgroupInput = {
   name?: Maybe<OrderByType>;
   description?: Maybe<OrderByType>;
   createdAt?: Maybe<OrderByType>;
@@ -4349,6 +4452,14 @@ export type PaginatedProductCategoryResponse = {
   currentPage: Scalars['Int'];
 };
 
+export type PaginatedProductCurveResponse = {
+  items: Array<ProductCurveResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
 export type PaginatedProductGroupResponse = {
   items: Array<ProductGroupResponse>;
   total: Scalars['Int'];
@@ -4455,6 +4566,14 @@ export type PaginatedSerialTransferResponse = {
 
 export type PaginatedServicesResponse = {
   items: Array<ServicesResponse>;
+  total: Scalars['Int'];
+  totalPages: Scalars['Int'];
+  limit: Scalars['Int'];
+  currentPage: Scalars['Int'];
+};
+
+export type PaginatedSubgroupResponse = {
+  items: Array<SubgroupResponse>;
   total: Scalars['Int'];
   totalPages: Scalars['Int'];
   limit: Scalars['Int'];
@@ -4639,11 +4758,7 @@ export type PartialFiscalResponsibilityInput = {
 
 export type PartialGroupInput = {
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
-  area?: Maybe<Scalars['ID']>;
-  leader?: Maybe<Scalars['ID']>;
-  members?: Maybe<Array<Scalars['ID']>>;
 };
 
 export type PartialInitialPhysicalInventoryInput = {
@@ -4826,18 +4941,15 @@ export type PartialProductCategoryInput = {
   description?: Maybe<Scalars['String']>;
 };
 
+export type PartialProductCurveInput = {
+  product?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+};
+
 export type PartialProductGroupInput = {
   name?: Maybe<Scalars['String']>;
-  sortingToOrders?: Maybe<Scalars['Boolean']>;
-  source?: Maybe<Scalars['String']>;
-  tipInOrder?: Maybe<Scalars['Boolean']>;
-  categories?: Maybe<Array<Scalars['ID']>>;
-  warehouses?: Maybe<Array<Scalars['ID']>>;
-  taxAppliedToPurchases?: Maybe<Array<Scalars['ID']>>;
-  taxAppliedToSales?: Maybe<Array<Scalars['ID']>>;
-  timeTax?: Maybe<Scalars['Boolean']>;
-  from?: Maybe<Scalars['DateTime']>;
-  to?: Maybe<Scalars['DateTime']>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -4849,6 +4961,7 @@ export type PartialProductInput = {
   compound?: Maybe<Scalars['Boolean']>;
   shoppingAssistant?: Maybe<Scalars['Boolean']>;
   isActive?: Maybe<Scalars['Boolean']>;
+  isProductCurve?: Maybe<Scalars['Boolean']>;
   productLine?: Maybe<Scalars['ID']>;
   structure?: Maybe<Scalars['ID']>;
   um?: Maybe<Scalars['ID']>;
@@ -4858,6 +4971,7 @@ export type PartialProductInput = {
   barCodeProduct?: Maybe<Scalars['String']>;
   barCode?: Maybe<Array<Scalars['ID']>>;
   groups?: Maybe<Array<Scalars['ID']>>;
+  subgroup?: Maybe<Array<Scalars['ID']>>;
 };
 
 export type PartialProductLineInput = {
@@ -4993,6 +5107,11 @@ export type PartialServicesInput = {
   price?: Maybe<Scalars['Float']>;
   ultCost?: Maybe<Scalars['Boolean']>;
   loadOrderScreen?: Maybe<Scalars['Boolean']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+};
+
+export type PartialSubgroupInput = {
+  name?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
 };
 
@@ -5303,6 +5422,26 @@ export type ProductCategoryResponse = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export type ProductCurveFilterFilter = {
+  and?: Maybe<Array<ProductCurveFilterFilter>>;
+  or?: Maybe<Array<ProductCurveFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  product?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type ProductCurveResponse = {
+  id: Scalars['ID'];
+  product: SolvedEntityResponse;
+  name: Scalars['String'];
+  code?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
 export type ProductFilterFilter = {
   and?: Maybe<Array<ProductFilterFilter>>;
   or?: Maybe<Array<ProductFilterFilter>>;
@@ -5328,16 +5467,6 @@ export type ProductGroupFilterFilter = {
 export type ProductGroupResponse = {
   id: Scalars['ID'];
   name: Scalars['String'];
-  sortingToOrders: Scalars['Boolean'];
-  source: Scalars['String'];
-  tipInOrder: Scalars['Boolean'];
-  categories: Array<SolvedEntityResponse>;
-  warehouses: Array<SolvedEntityResponse>;
-  taxAppliedToPurchases: Array<SolvedEntityResponse>;
-  taxAppliedToSales: Array<SolvedEntityResponse>;
-  timeTax?: Maybe<Scalars['Boolean']>;
-  from?: Maybe<Scalars['DateTime']>;
-  to?: Maybe<Scalars['DateTime']>;
   isActive: Scalars['Boolean'];
   createdAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -5454,6 +5583,7 @@ export type ProductResponse = {
   description?: Maybe<Scalars['String']>;
   ref?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
+  isProductCurve?: Maybe<Scalars['Boolean']>;
   shoppingAssistant?: Maybe<Scalars['Boolean']>;
   compound?: Maybe<Scalars['Boolean']>;
   structure?: Maybe<SolvedEntityResponse>;
@@ -5463,6 +5593,7 @@ export type ProductResponse = {
   area?: Maybe<SolvedEntityResponse>;
   photoFile?: Maybe<CloudFileResponse>;
   groups?: Maybe<Array<SolvedEntityResponse>>;
+  subgroup?: Maybe<Array<SolvedEntityResponse>>;
   barCode?: Maybe<Array<SolvedEntityResponse>>;
   barCodeProduct?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -5708,6 +5839,9 @@ export type Query = {
   getAllPriceByVolume: Array<PriceByVolumeResponse>;
   getOnePriceByVolume?: Maybe<PriceByVolumeResponse>;
   getPaginatedPriceByVolume?: Maybe<PaginatedPriceByVolumeResponse>;
+  getAllProductCurve: Array<ProductCurveResponse>;
+  getOneProductCurve?: Maybe<ProductCurveResponse>;
+  getPaginatedProductCurve?: Maybe<PaginatedProductCurveResponse>;
   getAllServices: Array<ServicesResponse>;
   getOneServices?: Maybe<ServicesResponse>;
   getPaginatedServices?: Maybe<PaginatedServicesResponse>;
@@ -5780,6 +5914,9 @@ export type Query = {
   getAllCompositionDecomposition: Array<CompositionDecompositionResponse>;
   getOneCompositionDecomposition?: Maybe<CompositionDecompositionResponse>;
   getPaginatedCompositionDecomposition?: Maybe<PaginatedCompositionDecompositionResponse>;
+  getAllSubgroup: Array<SubgroupResponse>;
+  getOneSubgroup?: Maybe<SubgroupResponse>;
+  getPaginatedSubgroup?: Maybe<PaginatedSubgroupResponse>;
 };
 
 
@@ -6218,6 +6355,21 @@ export type QueryGetPaginatedPriceByVolumeArgs = {
 };
 
 
+export type QueryGetAllProductCurveArgs = {
+  input?: Maybe<GetAllProductCurveInput>;
+};
+
+
+export type QueryGetOneProductCurveArgs = {
+  input?: Maybe<GetOneProductCurveInput>;
+};
+
+
+export type QueryGetPaginatedProductCurveArgs = {
+  input?: Maybe<GetPaginatedProductCurveInput>;
+};
+
+
 export type QueryGetAllServicesArgs = {
   input?: Maybe<GetAllServicesInput>;
 };
@@ -6577,6 +6729,21 @@ export type QueryGetPaginatedCompositionDecompositionArgs = {
   input?: Maybe<GetPaginatedCompositionDecompositionInput>;
 };
 
+
+export type QueryGetAllSubgroupArgs = {
+  input?: Maybe<GetAllSubgroupInput>;
+};
+
+
+export type QueryGetOneSubgroupArgs = {
+  input?: Maybe<GetOneSubgroupInput>;
+};
+
+
+export type QueryGetPaginatedSubgroupArgs = {
+  input?: Maybe<GetPaginatedSubgroupInput>;
+};
+
 export enum RegimeType {
   Common = 'COMMON',
   Simplified = 'SIMPLIFIED',
@@ -6770,6 +6937,24 @@ export type StringFieldComparison = {
   notILike?: Maybe<Scalars['String']>;
   in?: Maybe<Array<Scalars['String']>>;
   notIn?: Maybe<Array<Scalars['String']>>;
+};
+
+export type SubgroupFilterFilter = {
+  and?: Maybe<Array<SubgroupFilterFilter>>;
+  or?: Maybe<Array<SubgroupFilterFilter>>;
+  id?: Maybe<StringFieldComparison>;
+  name?: Maybe<StringFieldComparison>;
+  description?: Maybe<StringFieldComparison>;
+  createdAt?: Maybe<DateFieldComparison>;
+  updatedAt?: Maybe<DateFieldComparison>;
+};
+
+export type SubgroupResponse = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  isActive?: Maybe<Scalars['Boolean']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type Subscription = {
@@ -7172,6 +7357,11 @@ export type UpdateProductCategoryInput = {
   update: PartialProductCategoryInput;
 };
 
+export type UpdateProductCurveInput = {
+  entityId: Scalars['ID'];
+  update: PartialProductCurveInput;
+};
+
 export type UpdateProductGroupInput = {
   entityId: Scalars['ID'];
   update: PartialProductGroupInput;
@@ -7240,6 +7430,11 @@ export type UpdateSerialTransferInput = {
 export type UpdateServicesInput = {
   entityId: Scalars['ID'];
   update: PartialServicesInput;
+};
+
+export type UpdateSubgroupInput = {
+  entityId: Scalars['ID'];
+  update: PartialSubgroupInput;
 };
 
 export type UpdateTaxesAndCostsInput = {

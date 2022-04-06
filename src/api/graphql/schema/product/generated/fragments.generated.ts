@@ -31,11 +31,15 @@ export const ProductFragmentFragmentDoc = gql`
   groups {
     ...SolvedEntityFragment
   }
+  subgroup {
+    ...SolvedEntityFragment
+  }
   barCode {
     ...SolvedEntityFragment
   }
   barCodeProduct
   isActive
+  isProductCurve
   compound
   createdAt
   updatedAt
@@ -43,6 +47,6 @@ export const ProductFragmentFragmentDoc = gql`
     ${SolvedEntityFragmentFragmentDoc}
 ${CloudFileFragmentFragmentDoc}`;
 export type ProductFragmentFragment = (
-  Pick<Types.ProductResponse, 'id' | 'name' | 'code' | 'description' | 'ref' | 'barCodeProduct' | 'isActive' | 'compound' | 'createdAt' | 'updatedAt'>
-  & { productLine?: Types.Maybe<SolvedEntityFragmentFragment>, structure?: Types.Maybe<SolvedEntityFragmentFragment>, um?: Types.Maybe<SolvedEntityFragmentFragment>, area?: Types.Maybe<SolvedEntityFragmentFragment>, composition?: Types.Maybe<SolvedEntityFragmentFragment>, photoFile?: Types.Maybe<CloudFileFragmentFragment>, groups?: Types.Maybe<Array<SolvedEntityFragmentFragment>>, barCode?: Types.Maybe<Array<SolvedEntityFragmentFragment>> }
+  Pick<Types.ProductResponse, 'id' | 'name' | 'code' | 'description' | 'ref' | 'barCodeProduct' | 'isActive' | 'isProductCurve' | 'compound' | 'createdAt' | 'updatedAt'>
+  & { productLine?: Types.Maybe<SolvedEntityFragmentFragment>, structure?: Types.Maybe<SolvedEntityFragmentFragment>, um?: Types.Maybe<SolvedEntityFragmentFragment>, area?: Types.Maybe<SolvedEntityFragmentFragment>, composition?: Types.Maybe<SolvedEntityFragmentFragment>, photoFile?: Types.Maybe<CloudFileFragmentFragment>, groups?: Types.Maybe<Array<SolvedEntityFragmentFragment>>, subgroup?: Types.Maybe<Array<SolvedEntityFragmentFragment>>, barCode?: Types.Maybe<Array<SolvedEntityFragmentFragment>> }
 );

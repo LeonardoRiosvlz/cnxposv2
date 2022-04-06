@@ -18,6 +18,7 @@ import BillingResolutionModuleConfig from './billing-resolution/billing-resoluti
 import CompanyModuleConfig from './company/companyModuleConfig';
 import ProductStructureModuleConfig from './product-structure/product-structureModuleConfig';
 import ProductModuleConfig from './product/productModuleConfig';
+import SubgroupModuleConfig from './subgroup/subgroupModuleConfig';
 
 const modulesConfigs: any[] = [
     AuthModuleConfig,
@@ -38,6 +39,7 @@ const modulesConfigs: any[] = [
     ProductStructureModuleConfig,
     CompanyModuleConfig,
     ProductModuleConfig,
+    SubgroupModuleConfig,
     //Home should Be last
     HomeModuleConfig
 ];

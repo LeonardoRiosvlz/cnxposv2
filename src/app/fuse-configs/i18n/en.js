@@ -33,8 +33,8 @@ const locale = {
 	PREPARATION:'Preparation',
 	PREPARATION_TYPE:'PreparationT Type',
 	BILLING_RESOLUTION:'Billing Resolution',
-	
-
+	PRODUCT_STRUCTURE:'Product Structure',
+	PRODUCT:'Product',
 
 };
 

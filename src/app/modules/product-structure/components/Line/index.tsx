@@ -29,7 +29,7 @@ type Props = {
 }
 export const ProductLineTab: React.FC<Props> = (props: Props) => {
     const { user } = useAuth()
-    const { t } = useTranslation(['common']);
+    const { t } = useTranslation(['common','product-structure']);
     const { paginator, selected } = useAppSelector(state => state.table_little) as GenericTableLittleState;
     const dispatch = useAppDispatch();
 
@@ -242,7 +242,7 @@ export const ProductLineTab: React.FC<Props> = (props: Props) => {
                 onClose={() => handleCloseDialog('add')}
                 formId={formId.add}
                 open={dialog.add}
-                title={`${t('FILES')} `}
+                title={`${t('LINE')} `}
                 cancelBtn
                 okLoading={crudLoading.add}
                 okBtnTxt={t('common:ADD')}>
@@ -260,7 +260,7 @@ export const ProductLineTab: React.FC<Props> = (props: Props) => {
                 onClose={() => handleCloseDialog('edit')}
                 formId={formId.edit}
                 open={dialog.edit}
-                title={`${t('MEDICAL_RECORDS')} - ${t('common:EDIT')}`}
+                title={`${t('LINE')} - ${t('common:EDIT')}`}
                 cancelBtn
                 okLoading={crudLoading.edit}
                 okBtnTxt={t('common:ADD')}>
@@ -277,7 +277,7 @@ export const ProductLineTab: React.FC<Props> = (props: Props) => {
             </GenericModal>
 
             <ConfirmDialog onClose={() => handleCloseDialog('delete')}
-                title={`${t('MEDICAL_RECORDS')} - ${t('common:CONFIRM_DELETE')}`}
+                title={`${t('LINE')} - ${t('common:CONFIRM_DELETE')}`}
                 type={'CONFIRM_DELETE'}
                 message={t('common:CONFIRM_DELETE_MSG')}
                 handleOk={() => {
@@ -287,7 +287,7 @@ export const ProductLineTab: React.FC<Props> = (props: Props) => {
                 open={dialog.delete} />
 
             <ConfirmDialog onClose={() => handleCloseDialog('deleteMany')}
-                title={`${t('MEDICAL_RECORDS')} - ${t('common:CONFIRM_DELETE_MULTIPLE')}`}
+                title={`${t('LINE')} - ${t('common:CONFIRM_DELETE_MULTIPLE')}`}
                 type={'CONFIRM_DELETE'}
                 message={t('common:CONFIRM_DELETE_MULTIPLE_MSG')}
                 handleOk={() => {

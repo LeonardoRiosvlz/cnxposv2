@@ -1,0 +1,24 @@
+query getAllProductCurve($input: GetAllProductCurveInput! ){
+    getAllProductCurve(input: $input){
+        ...ProductCurveFragment
+    }
+}
+
+query getPaginatedProductCurve($input: GetPaginatedProductCurveInput!){
+    getPaginatedProductCurve(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ProductCurveFragment
+        }
+    }
+}
+
+query getOneProductCurve($input: GetOneProductCurveInput! ){
+    getOneProductCurve(input: $input){
+        ...ProductCurveFragment
+    }
+}
+
+

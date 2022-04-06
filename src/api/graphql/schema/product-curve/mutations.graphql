@@ -1,0 +1,16 @@
+mutation createProductCurve($input: CreateProductCurveInput!){
+    createProductCurve(input: $input)
+}
+
+mutation updateProductCurve($input: UpdateProductCurveInput!){
+    updateProductCurve(input: $input)
+}
+
+mutation deleteProductCurve($input: DeleteProductCurveInput!){
+    deleteProductCurve(input: $input)
+}
+
+mutation deleteManyProductCurve($input: DeleteManyProductCurveInput!){
+    deleteManyProductCurve(input: $input)
+}
+

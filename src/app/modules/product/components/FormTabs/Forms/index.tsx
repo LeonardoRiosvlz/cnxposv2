@@ -29,6 +29,8 @@ import useFile from 'app/modules/files/hooks/use-file';
 import { Product } from 'api/repositories/product/types/product.types';
 import { FormUtils } from 'app/modules/common/utils/FormUtils';
 import {ProductRepository} from "api/repositories/product/product.repository";
+import { Subgroup } from 'api/repositories/subgroup/types/subgroup.types';
+import { SubgroupRepository } from 'api/repositories/subgroup/subgroup.repository';
     
 export type ProductFormField = {
     name: string;
@@ -36,6 +38,7 @@ export type ProductFormField = {
     description?: string;
     ref?: string;
     isActive?: boolean;
+    isProductCurve?: boolean;
     shoppingAssistant?: boolean;
     compound?: boolean;
     structure: string;
@@ -44,6 +47,7 @@ export type ProductFormField = {
     composition?: string;
     area?: string;
     groups?: Array<string>;
+    subgroup?: Array<string>;
     barCode?: Array<string>;
     barCodeProduct?: string;
     photoFile?: string;
@@ -57,6 +61,7 @@ type SelectorData = {
     um: Array<UnitMeasurement>
     area: Array<ProductArea>
     groups:Array<ProductGroup>
+    subgroup:Array<Subgroup>
     structure:Array<ProductStructure>
 }
 
@@ -100,7 +105,8 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
                                                                             um: [],
                                                                             area: [], 
                                                                             groups: [],
-                                                                            structure: []
+                                                                            structure: [],
+                                                                            subgroup: [],
                                                                         })
 
     const productLineRepo = useRepository(ProductLineRepository)
@@ -108,6 +114,7 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
     const productAreaRepo = useRepository(ProductAreaRepository)
     const productGroupRepo = useRepository(ProductGroupRepository)
     const productStructureRepo = useRepository(ProductStructureRepository)
+    const subgroupRepo = useRepository(SubgroupRepository)
     const loadSelectorData = async () => {
 
         try {   
@@ -115,9 +122,10 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
             const um = await unitMeasurementRepo.findAll({input: {where: {}}})
             const area = await productAreaRepo.findAll({input: {where: {}}})
             const groups = await productGroupRepo.findAll({input: {where: {}}})
+            const subgroup = await subgroupRepo.findAll({input: {where: {}}})
             const structure = await productStructureRepo.findAll({input: {where: {}}})
             const productLine =  await productLineRepo.findAll({input: {where: {}}})
-            setSelectorData({productLine, um, area, groups, structure})
+            setSelectorData({productLine, um, area, groups, structure,subgroup})
         } catch (err) {
             toast.error(err?.toString())
         }
@@ -373,7 +381,7 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
 
                 <Controller
                     // @ts-ignore
-                    name={'shoppingAssistant'}
+                    name={'isProductCurve'}
                     // @ts-ignore
                     defaultValue={true}
                     control={control}
@@ -385,7 +393,7 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
                                 onChange={onChange}
                                 checked={Boolean(value)}
                                 inputRef={ref}
-                            /><label>{t('SHOPPING_ASSISTANT')}</label></div>)}/>
+                            /><label>{t('IS_PRODUCT_CURVE')}</label></div>)}/>
             </Grid>
 
             <Grid item xs={12} className='w-full p-16'>
@@ -402,6 +410,27 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
                             values={selectorData.groups}
                             size='small'
                             label={t('GROUPS')}
+                            variant="outlined"
+                            fullWidth
+                            
+                        />
+                    )} />
+            </Grid>
+
+            <Grid item xs={12} className='w-full p-16'>
+                <Controller
+                    name="subgroup"
+                    control={control}
+                    render={({ field }) => (
+                        <GenericSelector<Subgroup>
+                            {...omit(field, ['value'])}
+                            multiple
+                            value={Array.from(field.value ?? [])}
+                            param={'id'}
+                            displayField={'name'}
+                            values={selectorData.subgroup}
+                            size='small'
+                            label={t('SUBGROUPS')}
                             variant="outlined"
                             fullWidth
                             

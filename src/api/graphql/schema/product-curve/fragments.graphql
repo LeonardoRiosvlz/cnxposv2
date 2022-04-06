@@ -1,0 +1,12 @@
+fragment ProductCurveFragment on ProductCurveResponse {
+    id
+    product{
+        ...SolvedEntityFragment
+    }
+    name 
+    code 
+    ref 
+    createdAt
+    updatedAt
+}
+

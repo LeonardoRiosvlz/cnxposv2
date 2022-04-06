@@ -187,6 +187,14 @@ const navigationConfig: Array<MenuItem> = [
                 exact: true
             },
             {
+                id: App_Modules.Subgroup,
+                title: 'Subgroup',
+                translate: 'SUBGROUP',
+                type: 'item',
+                url: '/subgroup',
+                exact: true
+            },
+            {
                 id: App_Modules.Preparation,
                 title: 'Preparation',
                 translate: 'PREPARATION',
@@ -201,7 +209,15 @@ const navigationConfig: Array<MenuItem> = [
                 type: 'item',
                 url: '/preparation-type',
                 exact: true
-            }
+            },
+            {
+                id: App_Modules.Product,
+                title: 'Product',
+                translate: 'PRODUCT',
+                type: 'item',
+                url: '/product',
+                exact: true
+            },
         ]
     },
 ]

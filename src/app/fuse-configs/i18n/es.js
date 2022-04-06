@@ -32,7 +32,9 @@ const locale = {
 	PRODUCT_GROUP:'Grupos de productos',
 	PREPARATION:'Preparación',
 	PREPARATION_TYPE:'Tipo de preparación',
-	BILLING_RESOLUTION:'Resolución de facturación'
+	BILLING_RESOLUTION:'Resolución de facturación',
+	PRODUCT_STRUCTURE:'Estructura De Producto',
+	PRODUCT:'Producto',
 };
 
 export default locale;

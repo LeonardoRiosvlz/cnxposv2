@@ -208,7 +208,7 @@ const ProductStructureTable: React.FC<Props> = (props: Props) => {
             disabled: !hasPermission(context, Action_List.DeleteOne)
         },
         {
-            label: t('common:LINE'),
+            label: t('LINE'),
             action: (record) =>irepRoadTaxesFile(),
             icon: 'folder',
             disabled: !hasPermission(context, Action_List.Update)

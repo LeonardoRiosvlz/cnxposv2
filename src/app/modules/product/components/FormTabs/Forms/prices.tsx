@@ -396,7 +396,7 @@ const SalePricesForm: React.FC<Props> = ({ upLoading, IdProduct, editMode, costU
                             <PriceField
                                 {...field}
                                 size="small"
-                                label={t("SPECIAL_ONE_VALUE")}
+                                label={t("SPECIAL_TWO_VALUE")}
                                 variant="outlined"
                                 fullWidth
                                 inputProps={{ min: 0 }}

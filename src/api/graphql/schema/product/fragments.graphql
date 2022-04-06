@@ -25,13 +25,17 @@ fragment ProductFragment on ProductResponse {
     groups{
         ...SolvedEntityFragment
     }
+    subgroup{
+        ...SolvedEntityFragment
+    }
     barCode{
         ...SolvedEntityFragment
     }
     barCodeProduct
     isActive
+    isProductCurve
     compound
-    createdAt
+    createdAt 
     updatedAt
 }
 

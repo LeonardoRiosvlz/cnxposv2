@@ -1,0 +1,24 @@
+query getAllSubgroup($input: GetAllSubgroupInput! ){
+    getAllSubgroup(input: $input){
+        ...SubgroupFragment
+    }
+}
+
+query getPaginatedSubgroup($input: GetPaginatedSubgroupInput!){
+    getPaginatedSubgroup(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...SubgroupFragment
+        }
+    }
+}
+
+query getOneSubgroup($input: GetOneSubgroupInput! ){
+    getOneSubgroup(input: $input){
+        ...SubgroupFragment
+    }
+}
+
+

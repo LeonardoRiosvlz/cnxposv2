@@ -1,0 +1,8 @@
+fragment SubgroupFragment on SubgroupResponse {
+    id
+    name
+    isActive
+    createdAt
+    updatedAt
+}
+

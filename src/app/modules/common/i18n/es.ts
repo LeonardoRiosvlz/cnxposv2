@@ -159,5 +159,11 @@ const locale = {
     ADVANCED_OPTIONS: 'Opciones avanzadas',
     IMPORTANT: 'Importante!',
     MANAGER: 'Responsable',
+
+    
+	PRODUCT_GROUP: 'Grupos',
+	SUBGROUP: 'Subgupos',
+    PRODUCT_STRUCTURE:'Estructura De Producto',
+    LINE:'Linea'
 };
 export default locale;

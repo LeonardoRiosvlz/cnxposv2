@@ -164,8 +164,13 @@ const locale = {
 	FFMPG_TEMPLATES: 'Ffmpg Templates',
 	FFMPG_TEMPLATE: 'Ffmpg Template',
 
-	MANAGER: 'Manager'
+	MANAGER: 'Manager',
 
 
+
+	PRODUCT_GROUP: 'Group',
+	SUBGROUP: 'Subgroup',
+	PRODUCT_STRUCTURE:'Product Structure',
+	LINE:'Line'
 };
 export default locale;

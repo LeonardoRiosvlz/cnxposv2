@@ -21,7 +21,7 @@ const locale = {
 	UNIT_COST:'Costo Unitario',
 	 UNIT_TAX_COST:'IVA Costo Unitario',
 	SALE_PRICES:'Precios',
-	PRICE_NET:'Valor Neti',
+	PRICE_NET:'Valor Neto',
 	PRICE_NET_SPECIAL_ONE:'Valor Neto Especial 1',
 	PRICE_NET_SPECIAL_TWO:'Valor Neto Especial 2',
 	COMMISSION:'Comisión',
@@ -30,6 +30,24 @@ const locale = {
 	GENERAL_VALUE:'Valor',
 	GENERAL_UTILITY_VALUE:'Utilidad',
 	QUANTITY:'Cantidad',
-
+	NAME:'Nombre',
+	REF:'Referencia',
+	CODE:'Codigo',
+	GENERATE_CURVE:'Generar Curva',
+	PRODUCT_CURVE:'Curva Del Producto',
+	IS_PRODUCT_CURVE:'Producto Con Curva?',
+	SUBGROUPS:'Subgrupos',
+	PRICE_BY_VOLUME:'Precio Por Volumen',
+	SPECIAL_ONE_VALUE:'Precio Especial Uno',
+	SPECIAL_ONE_UTILITY_VALUE:'Utilidad',
+	SPECIAL_TWO_VALUE:'Precio Especial Dos',
+	UTILITY:'Utilidad',
+	VALUE:'Precio',
+	COMPOSITION:'Composicion',
+	CURVE:'Curva',
+	SUPPLIES:'Insumo',
+	PORTION:'Porción',
+	IS_PRODUCT_COMPOUND:'Marcaste este producto como compuesto'
+	
 };
 export default locale;

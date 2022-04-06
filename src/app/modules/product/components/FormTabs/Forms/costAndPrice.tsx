@@ -61,7 +61,7 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
 
     const defaultValues: TaxesAndCostsFormField | {} = initialData ? {
         ...initialData
-    } : {};
+    } : {includeIcoInCost:false,valueIco:0};
 
     const {handleSubmit,watch,getValues, setValue, control, formState: {errors, dirtyFields, isValid}} = useForm<TaxesAndCostsFormField>({
         mode: 'onChange',
@@ -85,6 +85,7 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
     React.useEffect(() => {
         loadSelectorData().then()
         fetchTaxAndCost();
+
     }, [])
 
     React.useEffect(() => {
@@ -114,6 +115,10 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
             }).then((res: Array<TaxesAndCosts>) => {
             // @ts-ignore
             setEntity(res[0]);
+            if (res.length<1) {
+                setValue('valueIco',0)
+                setValue('includeIcoInCost',false)
+            }
         }).catch((err: any) => {
             // @ts-ignore
             toast.error(err?.toString());
@@ -249,7 +254,6 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
                     label={t("PRODUCT_COST")}
                     variant="outlined"
                     fullWidth
-                    disabled={!applyIco}
                     inputProps={{ min: 0 }}
                     error={!!errors.productCost}
                     helperText={errors?.productCost?.message}
@@ -267,7 +271,7 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
                             param={'id'}
                             displayField={'name'}
                             values={selectorData.taxes}
-                            render={(item) => <label>{item.name}</label>}
+                            render={(item) => <label>{item.tax} %</label>}
                             size='small'
                             label={t('SHOPPING_TAX')}
                             variant="outlined"
@@ -288,7 +292,6 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
                     label={t("UNIT_COST")}
                     variant="outlined"
                     fullWidth
-                    disabled={!applyIco}
                     inputProps={{ min: 0 }}
                     error={!!errors.unitCost}
                     helperText={errors?.unitCost?.message}
@@ -306,7 +309,7 @@ const ConstAndPriceForm: React.FC<Props> = ({ upLoading,IdProduct, editMode, tax
                             param={'id'}
                             displayField={'name'}
                             values={selectorData.taxes}
-                            render={(item) => <label>{item.name}</label>}
+                            render={(item) => <label>{item.tax} %</label>}
                             size='small'
                             label={t('UNIT_TAX_COST')}
                             variant="outlined"

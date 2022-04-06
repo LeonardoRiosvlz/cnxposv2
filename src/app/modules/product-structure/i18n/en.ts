@@ -1,4 +1,5 @@
 const locale = {
-	HELLO: 'Hello'
+	HELLO: 'Hello',
+	LINE:'Line'
 };
 export default locale;

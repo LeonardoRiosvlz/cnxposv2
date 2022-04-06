@@ -5,7 +5,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import {Switch} from '@material-ui/core';
+import {Switch, Typography } from '@material-ui/core';
 import { ProductLine } from 'api/repositories/product-line/types/product-line.types';
 import { UnitMeasurement } from 'api/repositories/unit-measurement/types/unit-measurement.types';
 import { ProductArea } from 'api/repositories/product-area/types/product-area.types';
@@ -26,6 +26,9 @@ import _ from '@lodash';
 import {CloudFile} from "api/types/cloud-file.type";
 import { makeProcessedFieldsMerger } from '@apollo/client/cache/inmemory/helpers';
 import useFile from 'app/modules/files/hooks/use-file';
+import { Subgroup } from 'api/repositories/subgroup/types/subgroup.types';
+import { SubgroupRepository } from 'api/repositories/subgroup/subgroup.repository';
+import { getVariableValues } from 'graphql/execution/values';
 
 export type ProductFormField = {
     name: string;
@@ -33,6 +36,7 @@ export type ProductFormField = {
     description?: string;
     ref?: string;
     isActive?: boolean;
+    isProductCurve?: boolean;
     shoppingAssistant?: boolean;
     compound?: boolean;
     structure: string;
@@ -41,6 +45,7 @@ export type ProductFormField = {
     composition?: string;
     area?: string;
     groups?: Array<string>;
+    subgroup?: Array<string>;
     barCode?: Array<string>;
     barCodeProduct?: string;
     photoFile?: string;
@@ -55,6 +60,7 @@ type SelectorData = {
     area: Array<ProductArea>
     groups:Array<ProductGroup>
     structure:Array<ProductStructure>
+    subgroup:Array<Subgroup>
 }
 
 type ProductFormFiles = {
@@ -79,7 +85,7 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
 
     const defaultValues: ProductFormField | {} = initialData ? {
         ...initialData
-    } : {isActive: true,code:""};
+    } : {isActive: true,code:"",isProductCurve:false};
 
     const {handleSubmit,watch,setValue,control, formState: {errors, dirtyFields, isValid}} = useForm<ProductFormField>({
         mode: 'onChange',
@@ -88,6 +94,7 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
         defaultValues
 
     }); 
+    const curve = Boolean(watch('isProductCurve'));
     const structure = Boolean(watch('structure'));
     
     const [files, setFiles] = React.useState<{ [K in keyof ProductFormFiles]?: File }>({photoFile: undefined});
@@ -97,7 +104,8 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
                                                                             um: [],
                                                                             area: [], 
                                                                             groups: [],
-                                                                            structure: []
+                                                                            structure: [],
+                                                                            subgroup: [],
                                                                         })
 
     const productLineRepo = useRepository(ProductLineRepository)
@@ -105,15 +113,16 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
     const productAreaRepo = useRepository(ProductAreaRepository)
     const productGroupRepo = useRepository(ProductGroupRepository)
     const productStructureRepo = useRepository(ProductStructureRepository)
+    const subgroupRepo = useRepository(SubgroupRepository)
     const loadSelectorData = async () => {
-
         try {
             const productLine =  await productLineRepo.findAll({input: {where: {}}})
             const um = await unitMeasurementRepo.findAll({input: {where: {}}})
             const area = await productAreaRepo.findAll({input: {where: {}}})
             const groups = await productGroupRepo.findAll({input: {where: {}}})
             const structure = await productStructureRepo.findAll({input: {where: {}}})
-            setSelectorData({productLine, um, area, groups, structure})
+            const subgroup = await subgroupRepo.findAll({input: {where: {}}})
+            setSelectorData({productLine, um, area, groups, structure,subgroup})
         } catch (err) {
             toast.error(err?.toString())
         }
@@ -124,9 +133,10 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
             const um=selectorData.um
             const area=selectorData.area
             const groups=selectorData.groups
+            const subgroup=selectorData.subgroup
             const structure=selectorData.structure
             const productLine =  await productLineRepo.findAll({input: {where: {productStructure:{eq:id}}}})
-            setSelectorData({productLine, um, area, groups, structure})
+            setSelectorData({productLine, um, area, groups, structure,subgroup})
         } catch (err) {
             toast.error(err?.toString())
         }
@@ -158,7 +168,9 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
                   className='w-full flex flex-col p-2'
                   onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
-
+        {Boolean(watch('compound')) &&<Grid item xs={12} className='w-full p-16 flex justify-end'>
+            <Typography className='text-red' variant='button'>{t('IS_PRODUCT_COMPOUND')}</Typography> 
+        </Grid>}
             <Grid item xs={6} className='w-full p-16 flex justify-end'>
 
                 <Controller
@@ -214,6 +226,7 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
 
                         />)}/>
             </Grid>
+
 
             <Grid item xs={6} className='w-full p-16'>
 
@@ -335,13 +348,13 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
             </Grid>           
             <Grid item xs={12} md={6} className='w-full p-16'>
                 <Controller
-                    name="shoppingAssistant"
+                    name="isProductCurve"
                     control={control}
                     render={({ field }) => (
                         <BooleanSelector
                             {...field}
                             size='small'
-                            label={t('SHOPPING_ASSISTANT')}
+                            label={t('IS_PRODUCT_CURVE')}
                             variant="outlined"
                             fullWidth
                         />)} />
@@ -360,8 +373,31 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
                             displayField={'name'}
                             values={selectorData.groups}
                             size='small'
-                            label={t('GROUPS')}
+                            label={t('SUBGROUPS')}
                             variant="outlined"
+                            disabled={!curve}
+                            fullWidth
+                            
+                        />
+                    )} />
+            </Grid>
+
+            <Grid item xs={12} className='w-full p-16'>
+                <Controller
+                    name="subgroup"
+                    control={control}
+                    render={({ field }) => (
+                        <GenericSelector<Subgroup>
+                            {...omit(field, ['value'])}
+                            multiple
+                            value={Array.from(field.value ?? [])}
+                            param={'id'}
+                            displayField={'name'}
+                            values={selectorData.subgroup}
+                            size='small'
+                            label={t('SUBGROUPS')}
+                            variant="outlined"
+                            disabled={!curve}
                             fullWidth
                             
                         />

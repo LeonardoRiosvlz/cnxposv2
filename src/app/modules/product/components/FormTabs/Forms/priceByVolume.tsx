@@ -212,110 +212,108 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
         className='w-full flex flex-col p-2'
         onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
-            <Grid item xs={12} className='w-full p-16 flex justify-between'>
+                <Grid item xs={12} className='w-full p-16 flex justify-between'>
 
-                <Typography variant="h6" className="text-center mb-16 opacity-75">
-                    {t('PRICE_BY_VOLUME')}
-                </Typography>
-            </Grid>
-            <Grid item xs={12} className='w-full p-16 flex justify-between'>
+                    <Typography variant="h6" className="text-center mb-16 opacity-75">
+                        {t('PRICE_BY_VOLUME')}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} className='w-full p-16 flex justify-between'>
 
-                <PriceCell title={t('TOTAL_UNIT_COST')} stl={'text-2xl text-green-600'} price={costUnit} />
-        
-            </Grid>
+                    <PriceCell title={t('TOTAL_UNIT_COST')} stl={'text-2xl text-green-600'} price={costUnit} />
+            
+                </Grid>
 
-            <Divider className="w-full" />
-            <Grid item xs={6} md={6} className='w-full p-16'>
-                {watch('tax')}
-                <Controller
-                    name="tax"
-                    control={control}
-                    render={({ field }) => (
-                        <GenericSelector<Taxes>
-                            {...field}
-                            param={'id'}
-                            displayField={'name'}
-                            values={selectorData.taxes}
-                            render={(item) => <label>{item.tax? item.tax : collection.tax.identifier}</label>}
-                            size='small'
-                            label={t('TAX')}
-                            variant="outlined"
-                            fullWidth
-                        />
-                    )} />
-            </Grid>
-            <Grid item xs={6} md={6} className="w-full p-16">
+                <Divider className="w-full" />
+                <Grid item xs={6} md={6} className='w-full p-16'>
+                    <Controller
+                        name="tax"
+                        control={control}
+                        render={({ field }) => (
+                            <GenericSelector<Taxes>
+                                {...field}
+                                param={'id'}
+                                displayField={'name'}
+                                values={selectorData.taxes}
+                                render={(item) => <label>{item.tax? item.tax : collection.tax.identifier}</label>}
+                                size='small'
+                                label={t('TAX')}
+                                variant="outlined"
+                                fullWidth
+                            />
+                        )} />
+                </Grid>
+                <Grid item xs={6} md={6} className="w-full p-16">
 
-                <Controller
-                    name="value"
-                    control={control}
-                    render={({ field }) => (
-                        <PriceField
-                            {...field}
-                            size="small"
-                            label={t("GENERAL_VALUE")}
-                            variant="outlined"
-                            fullWidth
-                            inputProps={{ min: 0 }}
-                            error={!!errors.value}
-                            helperText={errors?.value?.message}
-                            onChange={e =>{
-                                setValue('value',parseFloat(e.target.value))
-                                utilityToGeneraValue()
-                              }
-                            }
-                            required
-                        />)} />
-            </Grid>
-             
-            <Grid item xs={6} md={6} className="w-full p-16">
+                    <Controller
+                        name="value"
+                        control={control}
+                        render={({ field }) => (
+                            <PriceField
+                                {...field}
+                                size="small"
+                                label={t("GENERAL_VALUE")}
+                                variant="outlined"
+                                fullWidth
+                                inputProps={{ min: 0 }}
+                                error={!!errors.value}
+                                helperText={errors?.value?.message}
+                                onChange={e =>{
+                                    setValue('value',parseFloat(e.target.value))
+                                    utilityToGeneraValue()
+                                }
+                                }
+                                required
+                            />)} />
+                </Grid>
+                
+                <Grid item xs={6} md={6} className="w-full p-16">
 
-                <Controller
-                    name="utility"
-                    control={control}
-                    render={({ field }) => (
-                        <PercentageField
-                            {...field}
-                            size="small"
-                            label={t("GENERAL_UTILITY_VALUE")}
-                            variant="outlined"
-                            fullWidth
-                            inputProps={{ min: 0 }}
-                            error={!!errors.utility}
-                            helperText={errors?.utility?.message}
-                            onChange={e =>{
-                                setValue('utility',parseFloat(e.target.value));
-                                utilityToPercentage();
-                              }
-                            }
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            required
-                        />)} />
-            </Grid>
+                    <Controller
+                        name="utility"
+                        control={control}
+                        render={({ field }) => (
+                            <PercentageField
+                                {...field}
+                                size="small"
+                                label={t("GENERAL_UTILITY_VALUE")}
+                                variant="outlined"
+                                fullWidth
+                                inputProps={{ min: 0 }}
+                                error={!!errors.utility}
+                                helperText={errors?.utility?.message}
+                                onChange={e =>{
+                                    setValue('utility',parseFloat(e.target.value));
+                                    utilityToPercentage();
+                                }
+                                }
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                required
+                            />)} />
+                </Grid>
 
-            <Grid item xs={6} md={6} className="w-full p-16">
 
-                <Controller
-                    name="quantity"
-                    control={control}
-                    render={({ field }) => (
-                        <PercentageField
-                            {...field}
-                            size="small"
-                            label={t("QUANTITY")}
-                            variant="outlined"
-                            fullWidth
-                            inputProps={{ min: 0 }}
-                            error={!!errors.quantity}
-                            helperText={errors?.quantity?.message}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            required
-                        />)} />
-            </Grid>
+
+                <Grid item xs={6} className='w-full p-16'>
+
+                    <Controller
+                        name="quantity"
+                        control={control}
+                        render={({field}) => (
+                            <TextField
+                                {...field}
+                                size='small'
+                                label={t('QUANTITY')}
+                                autoFocus
+                                variant="outlined"
+                                fullWidth
+                                error={!!errors.quantity}
+                                helperText={errors?.quantity?.message}
+
+                            />)}/>
+                </Grid>
             
 				<Grid item xs={12} className='w-full p-16'>
 					{loading && <CircularProgress className=" float-center "  />}

@@ -30,5 +30,23 @@ const locale = {
 	GENERAL_VALUE:'General Value',
 	GENERAL_UTILITY_VALUE:'Utility',
 	QUANTITY:'Quantity',
+	NAME:'Name',
+	REF:'Ref',
+	CODE:'Code',
+	GENERATE_CURVE:'Generate Curve',
+	PRODUCT_CURVE:'Product Curve',
+	IS_PRODUCT_CURVE:'Is Product Curve',
+	SUBGROUPS:'Subgroups',
+	PRICE_BY_VOLUME:'Price By Volume',
+	SPECIAL_ONE_VALUE:'Special One Price',
+	SPECIAL_ONE_UTILITY_VALUE:'Utility',
+	SPECIAL_TWO_VALUE:'Special Two Price',
+	UTILITY:'Utility',
+	VALUE:'Price',
+	COMPOSITION:'Composition',
+	CURVE:'Curve',
+	SUPPLIES:'Supplies',
+	PORTION:'Portion',
+	IS_PRODUCT_COMPOUND:'Is Selected Compound'
 };
 export default locale;

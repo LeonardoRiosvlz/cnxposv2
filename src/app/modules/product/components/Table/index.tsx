@@ -42,6 +42,7 @@ const ProductTable: React.FC<Props> = (props: Props) => {
     const productRepo = useRepository(ProductRepository)
     const paginatorInput = paginator.in;
     const [id, setId] = React.useState<string>('')
+    const [productSelected, setProductSelected] = React.useState<Product>(undefined)
     const [dialog, setDialog] = React.useState<DialogState>({
         view: false,
         add: false,
@@ -118,6 +119,7 @@ const ProductTable: React.FC<Props> = (props: Props) => {
             // @ts-ignore
             setId(res.items[0].id)
             setDialog({...dialog, tab: true, add:false});
+            setProductSelected(res.items[0])
         }).catch((err: any) => {
             // @ts-ignore
 
@@ -261,7 +263,6 @@ const ProductTable: React.FC<Props> = (props: Props) => {
     // @ts-ignore
     return (<>
             <div className='w-full flex flex-col'>
-            <button onClick={()=>fetchLast()}>Buscar</button>
                 <GenericTable rows={rows}
                               addBtn
                               headerIcon={'inventory_2'}
@@ -326,7 +327,7 @@ const ProductTable: React.FC<Props> = (props: Props) => {
                           handleOk={() => handleCloseDialog('view')}
                           okBtnTxt={t('common:CLOSE')}>
           
-                 {selectedItem&&id&&<FormTabs product={selectedItem} dataID={id}/>}
+                 {(selectedItem || productSelected )&&id&&<FormTabs product={selectedItem??productSelected} dataID={id}/>}
            
             </GenericModal>
 

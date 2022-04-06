@@ -171,20 +171,6 @@ const ProductGroupTable: React.FC<Props> = (props: Props) => {
             label: t('common:NAME')
         },
         {
-            id: 'sortingToOrders',
-            align: 'left',
-            sort: true,
-            label: t('SORTING_TO_ORDERS'),
-            render: (record) => <BooleanCell value={record.sortingToOrders}/>
-        },       
-        {
-            id: 'tipInOrder',
-            align: 'left',
-            sort: true,
-            label: t('TIP_IN_ORDER'),
-            render: (record) => <BooleanCell value={record.tipInOrder}/>
-        },
-        {
             id: 'isActive',
             align: 'left',
             sort: true,
@@ -273,11 +259,7 @@ const ProductGroupTable: React.FC<Props> = (props: Props) => {
                     <ProductGroupForm
                         upLoading={() => setCrudLoading({ ...crudLoading, edit: true })}
                         initialData={{
-                        ...FormUtils.setInitialData<ProductGroup, ProductGroupFormField>(selectedItem, ['categories','warehouses','taxAppliedToPurchases','taxAppliedToSales']),
-                        categories: Array.from(selectedItem?.categories ?? []).map(x => x.id),
-                        warehouses: Array.from(selectedItem?.warehouses ?? []).map(x => x.id),
-                        taxAppliedToPurchases: Array.from(selectedItem?.taxAppliedToPurchases ?? []).map(x => x.id),
-                        taxAppliedToSales: Array.from(selectedItem?.taxAppliedToSales ?? []).map(x => x.id),
+                        ...FormUtils.setInitialData<ProductGroup, ProductGroupFormField>(selectedItem)
                     }}
                                   submitAction={editAction}
                                   formId={formId.edit}/>
