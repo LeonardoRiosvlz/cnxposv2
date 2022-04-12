@@ -1,0 +1,24 @@
+query getAllThirdPartyClassification($input: GetAllThirdPartyClassificationInput! ){
+    getAllThirdPartyClassification(input: $input){
+        ...ThirdPartyClassificationFragment
+    }
+}
+
+query getPaginatedThirdPartyClassification($input: GetPaginatedThirdPartyClassificationInput!){
+    getPaginatedThirdPartyClassification(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ThirdPartyClassificationFragment
+        }
+    }
+}
+
+query getOneThirdPartyClassification($input: GetOneThirdPartyClassificationInput! ){
+    getOneThirdPartyClassification(input: $input){
+        ...ThirdPartyClassificationFragment
+    }
+}
+
+

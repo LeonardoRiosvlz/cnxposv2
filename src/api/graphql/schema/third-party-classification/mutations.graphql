@@ -1,0 +1,16 @@
+mutation createThirdPartyClassification($input: CreateThirdPartyClassificationInput!){
+    createThirdPartyClassification(input: $input)
+}
+
+mutation updateThirdPartyClassification($input: UpdateThirdPartyClassificationInput!){
+    updateThirdPartyClassification(input: $input)
+}
+
+mutation deleteThirdPartyClassification($input: DeleteThirdPartyClassificationInput!){
+    deleteThirdPartyClassification(input: $input)
+}
+
+mutation deleteManyThirdPartyClassification($input: DeleteManyThirdPartyClassificationInput!){
+    deleteManyThirdPartyClassification(input: $input)
+}
+

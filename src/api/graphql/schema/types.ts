@@ -5277,6 +5277,7 @@ export type PaymentMethodFilterFilter = {
 };
 
 export type PaymentMethodResponse = {
+  id: Scalars['ID'];
   name: Scalars['String'];
   code: Scalars['String'];
   cashOnHand: Scalars['Boolean'];
@@ -5303,6 +5304,8 @@ export type PaymentMethodResponse = {
   confirmReturns: Scalars['Boolean'];
   confirmCreditCut: Scalars['Boolean'];
   photoFile?: Maybe<CloudFileResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type PermitsInput = {

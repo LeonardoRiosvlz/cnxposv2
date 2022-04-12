@@ -1,0 +1,16 @@
+mutation createPaymentMethod($input: CreatePaymentMethodInput!){
+    createPaymentMethod(input: $input)
+}
+
+mutation updatePaymentMethod($input: UpdatePaymentMethodInput!){
+    updatePaymentMethod(input: $input)
+}
+
+mutation deletePaymentMethod($input: DeletePaymentMethodInput!){
+    deletePaymentMethod(input: $input)
+}
+
+mutation deleteManyPaymentMethod($input: DeleteManyPaymentMethodInput!){
+    deleteManyPaymentMethod(input: $input)
+}
+

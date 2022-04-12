@@ -235,7 +235,7 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
                                 param={'id'}
                                 displayField={'name'}
                                 values={selectorData.taxes}
-                                render={(item) => <label>{item.tax? item.tax : collection.tax.identifier}</label>}
+                                render={(item) => <label>{item.tax}</label>}
                                 size='small'
                                 label={t('TAX')}
                                 variant="outlined"

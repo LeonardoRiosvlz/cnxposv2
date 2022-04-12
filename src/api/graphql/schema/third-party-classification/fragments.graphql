@@ -1,0 +1,11 @@
+fragment ThirdPartyClassificationFragment on ThirdPartyClassificationResponse {
+    id
+    name
+    assignDebtQuota
+    debtQuota
+    gourmetConnection
+    includeServiceOrders
+    createdAt
+    updatedAt
+}
+

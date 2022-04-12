@@ -1,0 +1,38 @@
+fragment PaymentMethodFragment on PaymentMethodResponse {
+    id
+    name 
+    code
+    cashOnHand
+    credit 
+    divideIntoInstallments
+    paycheck 
+    deferPayment 
+    days  
+    accounting 
+    alwaysLinkedWith 
+    accountingAccount 
+    askBank 
+    askBoucherNumber 
+    askDocumentDate 
+    askCardType 
+    paymentMethodDian{
+        ...SolvedEntityFragment
+    }
+    paymentMethodDianType 
+    administersDominicilios 
+    administersBonuses 
+    administersAdvanceReservationsOrders 
+    affectVouchersConsignmentsThirds 
+    showIva 
+    iva{
+        ...SolvedEntityFragment
+    }
+    confirmReturns 
+    confirmCreditCut
+    photoFile{
+        ...CloudFileFragment
+    }
+    createdAt
+    updatedAt
+}
+

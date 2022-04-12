@@ -1,0 +1,16 @@
+mutation createThirdParties($input: CreateThirdPartiesInput!){
+    createThirdParties(input: $input)
+}
+
+mutation updateThirdParties($input: UpdateThirdPartiesInput!){
+    updateThirdParties(input: $input)
+}
+
+mutation deleteThirdParties($input: DeleteThirdPartiesInput!){
+    deleteThirdParties(input: $input)
+}
+
+mutation deleteManyThirdParties($input: DeleteManyThirdPartiesInput!){
+    deleteManyThirdParties(input: $input)
+}
+

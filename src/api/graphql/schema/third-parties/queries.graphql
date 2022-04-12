@@ -1,0 +1,24 @@
+query getAllThirdParties($input: GetAllThirdPartiesInput! ){
+    getAllThirdParties(input: $input){
+        ...ThirdPartiesFragment
+    }
+}
+
+query getPaginatedThirdParties($input: GetPaginatedThirdPartiesInput!){
+    getPaginatedThirdParties(input: $input){
+        total
+        totalPages
+        currentPage
+        items{
+            ...ThirdPartiesFragment
+        }
+    }
+}
+
+query getOneThirdParties($input: GetOneThirdPartiesInput! ){
+    getOneThirdParties(input: $input){
+        ...ThirdPartiesFragment
+    }
+}
+
+
