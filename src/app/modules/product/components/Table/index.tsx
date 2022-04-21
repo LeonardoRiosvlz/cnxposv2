@@ -128,7 +128,11 @@ const ProductTable: React.FC<Props> = (props: Props) => {
  
     const addAction = (formData: ProductFormField) => {
         setCrudLoading({...crudLoading, add: true});
-        productRepo.create({input: {...formData}}).then(() => {
+        productRepo.create({input: {
+            ...formData,
+            compound:formData.compound??false,
+            isActive:formData.isActive??true
+        }}).then(() => {
             setCrudLoading({...crudLoading, add: false});
             fetch();
             fetchLast()

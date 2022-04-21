@@ -47,7 +47,11 @@ const locale = {
 	CURVE:'Curva',
 	SUPPLIES:'Insumo',
 	PORTION:'Porción',
-	IS_PRODUCT_COMPOUND:'Marcaste este producto como compuesto'
+	IS_PRODUCT_COMPOUND:'Marcaste este producto como compuesto',
+	IS_COMPOUND:'Compuesto',
+	NOT_COMPOUND:'Producto Simple',
+	IS_ACTIVE:'Activo',
+	NOT_ACTIVE:'Inactivo',
 	
 };
 export default locale;

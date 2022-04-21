@@ -87,7 +87,7 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
     React.useEffect(() => {
 
 
-    }, [entity,watch('tax')])
+    }, [entity,getValues('value')])
 
 
     const utilityToPercentage =  ( ) => {
@@ -148,6 +148,7 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
             fetch();
             setLoading(false);
             toast.info(t('common:ELEMENT_EDITED'));
+            resetForm()
         }).catch((err: any) => {
             toast.error(err?.toString());
             setLoading(false);
@@ -163,8 +164,13 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
             }
         }).then(() => {
             toast.info(t('common:ELEMENT_CREATED'));
+            setValue('utility',0);
+            setValue('value',costUnit);
+            setValue('quantity',1);
+            setValue('tax','');
             setLoading(false);
-            setFirstLoad(true);
+            setEditMode(false);
+            setFirstLoad(false);
             fetch();
         }).catch((err: any) => {
             toast.error(err?.toString());
@@ -195,7 +201,8 @@ const PriceByVolumeForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }
 		// @ts-ignore
         setValue('utility',row.utility);
 		setValue('value',row.value);
-		setValue('quantity',row.quantity);
+        // @ts-ignore
+		setValue('quantity',parseInt(row.quantity));
 		setValue('tax',row.tax.id);
 	}
     const styles = {

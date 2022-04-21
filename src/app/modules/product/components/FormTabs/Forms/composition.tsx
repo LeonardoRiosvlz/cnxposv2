@@ -192,7 +192,7 @@ const CompositionForm: React.FC<Props> = ({ IdProduct, costUnit, salesPrices }: 
         }).then(() => {
             toast.info(t('common:ELEMENT_CREATED'));
             setLoading(false);
-            setFirstLoad(true);
+            setFirstLoad(false);
             setValue('portion',0)
             setValue('structure','')
             setValue('line','')

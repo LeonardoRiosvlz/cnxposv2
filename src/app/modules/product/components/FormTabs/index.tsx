@@ -19,6 +19,7 @@ import SalePricesForm, { PricesFormField } from './Forms/prices';
 import PriceByVolumeForm from './Forms/priceByVolume';
 import CompositionForm from './Forms/composition';
 import ProductCurveForm from './Forms/productCurve';
+import { ProductRepository } from 'api/repositories/product/product.repository';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props; 
@@ -67,8 +68,10 @@ const FormTabs: React.FC<Props> = (props: Props) => {
   const { t } = useTranslation(['product', 'common']);
   const taxesAndCostsRepo = useRepository(TaxesAndCostsRepository)
   const salePricesRepo = useRepository(ProductSalePriceRepository)
+  const productRepo = useRepository(ProductRepository)
   const [editModeSalePrices, setEditModeSalePrices] = React.useState<Boolean>(false);
   const [salesPrices, setSalesPrices] = React.useState<ProductSalePrice>(null);
+  const [productTab, setProduct] = React.useState<Product>(undefined);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -76,11 +79,28 @@ const FormTabs: React.FC<Props> = (props: Props) => {
 
 
   React.useEffect(() => {
-
+    fetchProduct();
     fetchTaxAndCost();
     fetchSalesPrice();
   }, [value])
 
+  const fetchProduct = () => {
+    // @ts-ignore
+    productRepo.findAll(
+        {
+            input: {
+                where: {
+                    and: [{ id: { eq: props.product.id } }]
+                }
+            }
+        }).then((res: Array<Product>) => {
+            // @ts-ignore
+            setProduct(res[0]);
+        }).catch((err: any) => {
+            // @ts-ignore
+            toast.error(err?.toString());
+        });
+};
 
 
   const fetchTaxAndCost = () => {
@@ -141,7 +161,7 @@ const fetchSalesPrice = () => {
               <Icon className='text-2xl'>inventory_2</Icon> 
             </Tooltip>
             } {...a11yProps(0)} /> 
-         <Tab onClick={()=>console.log("hi")} disabled={props.product.compound} label={
+         <Tab onClick={()=>console.log("hi")} disabled={productTab?.compound??props.product.compound} label={
             <Tooltip title={t('COSTS_AND_PRICES')}>
                <Icon className='text-2xl'>attach_money</Icon>
             </Tooltip>
@@ -162,7 +182,7 @@ const fetchSalesPrice = () => {
             <Tooltip title={t('COMPOSITION')}>
                 <Icon className='text-xl'>extension</Icon>
             </Tooltip>
-        } {...a11yProps(7)}  disabled={!props.product.compound}/>
+        } {...a11yProps(7)}  disabled={!productTab?.compound??props.product.compound}/>
         <Tab label={
           <Tooltip title={t('CURVE')}>
               <Icon className='text-xl'>airline_stops</Icon>
@@ -172,8 +192,23 @@ const fetchSalesPrice = () => {
       </Box>
       <TabPanel  value={value}   index={0}>
         <div style={{marginLeft:155}}>
-          <FuseAnimate animation="transition.slideDownIn" delay={300}>
-            <>
+          <FuseAnimate animation="transition.slideDownIn" delay={300}><>
+            {productTab&&<>
+              {props.product && <ProductIndexForm
+                    initialData={{
+                        ...FormUtils.setInitialData<Product, ProductFormField>(productTab,['um','productLine','area','structure','groups']),
+                        productLine: productTab.productLine ? productTab.productLine.id : '',
+                        um: productTab.um ? productTab.um.id : '',
+                        area: productTab.area ? productTab.area.id : '',
+                        structure: productTab.structure ? productTab.structure.id : '',
+                        groups: Array.from(productTab?.groups ?? []).map(x => x.id),
+                        subgroup: Array.from(productTab?.subgroup ?? []).map(x => x.id)
+                    }}
+                    IdProduct={productTab.id}
+                    product={productTab}
+                 /> }
+            </>}
+            {!productTab&&<>
               {props.product && <ProductIndexForm
                     initialData={{
                         ...FormUtils.setInitialData<Product, ProductFormField>(props.product,['um','productLine','area','structure','groups']),
@@ -187,6 +222,7 @@ const fetchSalesPrice = () => {
                     IdProduct={props.product.id}
                     product={props.product}
                  /> }
+            </>}
             </>
           </FuseAnimate>
         </div> 

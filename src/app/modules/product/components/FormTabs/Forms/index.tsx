@@ -145,7 +145,10 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
         }
     }
 
+    React.useEffect(() => {
 
+    }, [watch('compound'),watch('isActive')]);
+    
     React.useEffect(() => {
         loadSelectorData().then()
         setValue('structure',getValues('structure'))
@@ -203,39 +206,16 @@ const ProductIndexForm: React.FC<Props> = ({initialFiles, upLoading,IdProduct,pr
             </Grid>
             <Grid item xs={6} className='w-full p-16 flex justify-end'>
 
-                <Controller
-                    // @ts-ignore
-                    name={'compound'}
-                    // @ts-ignore
-                    defaultValue={true}
-                    control={control}
-                    render={({field: {onChange, onBlur, value, name, ref}}) => (
-                        <div className='flex items-center'>
-                            <Switch
-                                size='small'
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                checked={Boolean(value)}
-                                inputRef={ref}
-                            /><label>{t('COMPOUND')}</label></div>)}/>
+                {watch('compound')&&<Button onClick={()=>setValue('compound',false)} className='bg-blue w-full'>{t('IS_COMPOUND')}</Button>}
+                {!watch('compound')&&<Button onClick={()=>setValue('compound',true)} className='bg-green w-full'>{t('NOT_COMPOUND')}</Button>}
+
             </Grid>
+
             <Grid item xs={6} className='w-full p-16 flex justify-end'>
 
-                <Controller
-                    // @ts-ignore
-                    name={'isActive'}
-                    // @ts-ignore
-                    defaultValue={true}
-                    control={control}
-                    render={({field: {onChange, onBlur, value, name, ref}}) => (
-                        <div className='flex items-center'>
-                            <Switch
-                                size='small'
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                checked={Boolean(value)}
-                                inputRef={ref}
-                            /><label>{t('common:ACTIVE')}</label></div>)}/>
+                {watch('isActive')&&<Button onClick={()=>setValue('isActive',false)} className='bg-green w-full'>{t('IS_ACTIVE')}</Button>}
+                {!watch('isActive')&&<Button onClick={()=>setValue('isActive',true)} className='bg-red w-full'>{t('NOT_ACTIVE')}</Button>}
+
             </Grid>
 
             <Grid item xs={6} className='w-full p-16'>

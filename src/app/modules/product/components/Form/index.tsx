@@ -5,7 +5,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import {Switch, Typography } from '@material-ui/core';
+import {Button, Switch, Typography } from '@material-ui/core';
 import { ProductLine } from 'api/repositories/product-line/types/product-line.types';
 import { UnitMeasurement } from 'api/repositories/unit-measurement/types/unit-measurement.types';
 import { ProductArea } from 'api/repositories/product-area/types/product-area.types';
@@ -87,7 +87,7 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
         ...initialData
     } : {isActive: true,code:"",isProductCurve:false};
 
-    const {handleSubmit,watch,setValue,control, formState: {errors, dirtyFields, isValid}} = useForm<ProductFormField>({
+    const {handleSubmit,watch,setValue,getValues,control, formState: {errors, dirtyFields, isValid}} = useForm<ProductFormField>({
         mode: 'onChange',
         // @ts-ignore
         resolver: yupResolver(schema),
@@ -146,7 +146,10 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
     React.useEffect(() => {
         loadSelectorData().then()
     }, [])
-    
+
+    React.useEffect(() => {
+
+    }, [watch('compound'),watch('isActive')])
  
     const onSubmit = async (data: ProductFormField)  => {
        
@@ -168,46 +171,21 @@ const ProductForm: React.FC<Props> = ({submitAction, initialFiles, upLoading, fo
                   className='w-full flex flex-col p-2'
                   onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
-        {Boolean(watch('compound')) &&<Grid item xs={12} className='w-full p-16 flex justify-end'>
-            <Typography className='text-red' variant='button'>{t('IS_PRODUCT_COMPOUND')}</Typography> 
-        </Grid>}
+
             <Grid item xs={6} className='w-full p-16 flex justify-end'>
 
-                <Controller
-                    // @ts-ignore
-                    name={'compound'}
-                    // @ts-ignore
-                    defaultValue={true}
-                    control={control}
-                    render={({field: {onChange, onBlur, value, name, ref}}) => (
-                        <div className='flex items-center'>
-                            <Switch
-                                size='small'
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                checked={Boolean(value)}
-                                inputRef={ref}
-                            /><label>{t('COMPOUND')}</label></div>)}/>
+                {watch('compound')&&<Button onClick={()=>setValue('compound',false)} className='bg-blue w-full'>{t('IS_COMPOUND')}</Button>}
+                {!watch('compound')&&<Button onClick={()=>setValue('compound',true)} className='bg-green w-full'>{t('NOT_COMPOUND')}</Button>}
+
             </Grid>
 
             <Grid item xs={6} className='w-full p-16 flex justify-end'>
 
-                <Controller
-                    // @ts-ignore
-                    name={'isActive'}
-                    // @ts-ignore
-                    defaultValue={true}
-                    control={control}
-                    render={({field: {onChange, onBlur, value, name, ref}}) => (
-                        <div className='flex items-center'>
-                            <Switch
-                                size='small'
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                checked={Boolean(value)}
-                                inputRef={ref}
-                            /><label>{t('common:ACTIVE')}</label></div>)}/>
+                {watch('isActive')&&<Button onClick={()=>setValue('isActive',false)} className='bg-green w-full'>{t('IS_ACTIVE')}</Button>}
+                {!watch('isActive')&&<Button onClick={()=>setValue('isActive',true)} className='bg-red w-full'>{t('NOT_ACTIVE')}</Button>}
+
             </Grid>
+
             <Grid item xs={6} className='w-full p-16'>
 
                 <Controller
